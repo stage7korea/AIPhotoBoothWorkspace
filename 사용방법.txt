@@ -1,0 +1,18 @@
+AI 포토부스 프로세스·스토리보드 워크벤치 V3.1
+
+1. start_storyboard.command를 더블클릭합니다. 메인 화면은 index.html입니다.
+2. 프로세스 카드를 한 번 누르면 오른쪽에서 단계 이름과 설명을 수정할 수 있습니다.
+3. 카드를 두 번 누르거나 ‘스토리보드 보기’를 누르면 4:6 화면과 TTS 설명을 확인할 수 있습니다.
+4. 스토리보드 화면의 ‘← 프로세스 맵’을 누르면 원래 프로세스 화면으로 돌아갑니다.
+5. ‘변경 저장’을 누르면 AI_PhotoBooth_Storyboard_Data.js에 반영됩니다.
+6. 저장 전 기존 데이터는 storyboard-backups 폴더에 자동 보관됩니다.
+
+데이터 구성
+- 별도 데이터베이스 없이 AI_PhotoBooth_Storyboard_Data.js 한 파일을 사용합니다.
+- AI01 화면은 AI_PhotoBooth_UI_Option9_TabExpand_4x6.html과 연결되어 있습니다.
+- 나머지 화면은 storyboard-ui/screen.html이 카드별 설정에 맞춰 4:6으로 표시합니다.
+- PPT 내용은 스토리보드 작성 시 참고만 했으며, 원본 PPT나 원본 페이지 보기 기능은 연결하지 않습니다.
+
+주의
+- HTML 파일만 직접 열어도 내용을 볼 수 있지만, 브라우저 보안상 JS 파일에 직접 저장할 수 없습니다.
+- 수정 내용을 실제 파일에 저장하려면 반드시 start_storyboard.command로 실행해 주세요.
