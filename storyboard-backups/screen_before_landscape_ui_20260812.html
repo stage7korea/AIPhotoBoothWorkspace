@@ -20,32 +20,6 @@ body{display:grid;place-items:center;padding:12px}.kiosk{position:relative;width
 .sheet-wrap{display:grid;grid-template-columns:42% 1fr;gap:12px;min-height:0;flex:1}.sheet{aspect-ratio:6/4;align-self:center;padding:9px;border-radius:6px;background:#fff;box-shadow:0 8px 26px rgba(0,0,0,.16)}.sheet.vertical{aspect-ratio:4/6}.sheet-grid{display:grid;width:100%;height:100%;gap:5px}.sheet-grid.two{grid-template-rows:1fr 1fr}.sheet-grid.four{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}.slot-photo{border-radius:3px;background:linear-gradient(135deg,#aebeb6,#527263)}.slot-photo:nth-child(2){background:linear-gradient(135deg,#d7c0aa,#976b51)}.slot-photo:nth-child(3){background:linear-gradient(135deg,#c0cddd,#64758a)}.slot-photo:nth-child(4){background:linear-gradient(135deg,#d9ceb6,#88795b)}.settings{display:grid;align-content:center;gap:8px}.pill{padding:10px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:10px;font-weight:800}.pill.active{background:var(--green);color:#fff}
 .sticker-stage{position:relative;flex:1;border-radius:22px;background:linear-gradient(145deg,#c8d7cf,#527061);overflow:hidden}.sticker{position:absolute;display:grid;place-items:center;width:62px;height:62px;border-radius:50%;background:#ffe780;border:3px solid #fff;font-size:29px;box-shadow:0 8px 18px rgba(0,0,0,.2)}.sticker.a{left:20%;top:20%;transform:rotate(-12deg)}.sticker.b{right:18%;bottom:18%;transform:rotate(16deg)}.tools{display:flex;gap:7px;overflow:hidden}.tools span{flex:0 0 52px;height:52px;display:grid;place-items:center;border-radius:13px;background:#fff;border:1px solid var(--line);font-size:23px}
 .pickup{display:grid;place-items:center;flex:1;border-radius:22px;background:#153f33;color:#fff;text-align:center}.pickup .icon{font-size:64px}.pickup strong{display:block;font:800 30px Georgia,serif}.pickup p{font-size:11px;line-height:1.6}.qr{width:116px;height:116px;margin:auto;background:repeating-conic-gradient(#15231d 0 25%,#fff 0 50%) 0/18px 18px;border:8px solid #fff}.goodbye{display:grid;place-items:center;flex:1;text-align:center}.goodbye .mark{display:grid;place-items:center;width:110px;height:110px;border-radius:50%;background:var(--mint);color:var(--green);font-size:45px}.goodbye h2{font:800 35px Georgia,serif}.goodbye p{color:var(--muted);font-size:11px;line-height:1.7}.body.welcome-mode{padding:0;gap:0}.promo-full{position:absolute;inset:0;overflow:hidden;background:#17231f}.promo-full>img{width:100%;height:100%;object-fit:cover}.promo-full:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.1) 36%,rgba(0,0,0,.78))}.language-float{position:absolute;z-index:3;left:6%;right:6%;bottom:5%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.language-start{border:1px solid rgba(255,255,255,.6);border-radius:999px;background:rgba(16,35,28,.7);color:#fff;padding:10px 13px;box-shadow:0 12px 28px rgba(0,0,0,.3);backdrop-filter:blur(10px);text-align:center;cursor:pointer;animation:languageFloat 2.8s ease-in-out infinite}.language-start:nth-child(2n){animation-delay:-1.4s}.language-start strong{display:block;font-size:13px}.language-start span{display:block;margin-top:2px;font-size:8px;opacity:.76}@keyframes languageFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-/* 세로 키오스크에 가로 참고 화면의 정보 구조를 재배치한 평면형 UI */
-.kiosk{border-radius:0;border:7px solid #292825;box-shadow:none}
-.body{padding-top:7%;background:linear-gradient(180deg,#fffdf9 0 18%,#f7f2eb 18% 100%)}
-.hero,.tile,.note,.amount,.mode-card,.camera,.thumb,.photo,.progress,.result-photo,.choice-row button,.sheet,.pill,.sticker-stage,.tools span,.pickup,.language-start,.lang-return,.next{border-radius:0}
-.title{padding-bottom:3%;border-bottom:1px solid #d8d1c7}
-.lead{max-width:90%}
-.mode-options{gap:1px;border:1px solid var(--line)}
-.mode-card{border:0;border-bottom:1px solid rgba(255,255,255,.45);box-shadow:none}
-.mode-card:hover,.mode-card.selected{transform:none;border-color:#fff;box-shadow:inset 8px 0 0 var(--green)}
-.body.payment-mode .amount{border-radius:0;border-left:9px solid #d47742}
-.body.payment-mode .grid{gap:1px;border:1px solid var(--line)}
-.camera,.result-photo,.sticker-stage,.pickup{border:1px solid #343633}
-.photo-grid,.thumbs,.choice-row{gap:2px}
-.sheet{box-shadow:0 0 0 1px #aaa}
-/* 실제 키오스크 화면: 외곽 액자와 주변 여백 제거 */
-html,body{width:100%;height:100%;min-height:0;background:transparent}
-body{padding:0}
-.kiosk{width:100%;height:100%;aspect-ratio:auto;border:0;border-radius:0;box-shadow:none}
-/* 화면 내부 조작 요소에만 라운드를 사용 */
-.hero{border-radius:20px}
-.tile,.note,.amount,.mode-card,.camera,.photo,.progress,.result-photo,.sheet,.sticker-stage,.pickup{border-radius:14px}
-.choice-row button,.tools span,.lang-return{border-radius:10px}
-.thumb{border-radius:7px}
-.pill,.language-start,.next{border-radius:999px}
-.goodbye>div{width:100%;height:100%;display:grid;place-items:center;align-content:center;justify-items:center}
-.goodbye .mark{margin:0 auto;line-height:1}
 </style>
 </head>
 <body>

@@ -208,69 +208,19 @@
 .setting-tabs{flex-basis:9%}
 .menus{flex:1 1 auto}
 .menus .rail.is-active{height:78%}
-/* 생성 콘셉트 적용: 배경은 가로 합성 이미지, 의상은 남2·여2 2×2 보드 */
-.rail[data-kind="theme"] .thumb.has-image{background-position:center;background-size:cover}
-.rail[data-kind="outfit"] .thumb.has-image{background-position:center;background-size:cover}
-.person.person-photo{background-size:200% 200%;background-repeat:no-repeat}
-/* 세로 4:6 본체 유지 · 가로 참고 화면을 상단 라이브/하단 선택으로 재구성 */
-body{padding:18px;background:#e8b08e}
-.booth{width:min(100%,430px,calc(94vh * 2 / 3));height:auto;aspect-ratio:4/6;border:7px solid #292825;border-radius:0;box-shadow:none;background:#fffdf9}
-.live{flex:0 0 auto;width:100%;aspect-ratio:16/9;border-bottom:1px solid #292825}
-.live-badge,.done,.setting-tab,.flow-card,.thumb,.person-shot,.person-shot .person-outfit,.count-toggle button,.live-text span,.live-frame-preview{border-radius:0!important}
-.status-panel{border-bottom:1px solid #9e968c;background:#f5f0e8}
-.setting-tabs{gap:1px;padding:0;border-bottom:1px solid #292825}
-.setting-tab{border:0;border-right:1px solid var(--line);background:#fffdf9}
-.setting-tab:last-child{border-right:0}
-.menus{padding:7px 10px 10px}
-.flow{mask-image:none}
-.flow-card{background:#fff;border-color:#bcb4a9}
-.flow-card.is-center{box-shadow:inset 0 -4px 0 var(--key),0 5px 12px rgba(34,39,36,.15)}
-.art-sample{position:absolute;z-index:6;right:9px;bottom:8px;width:27%;aspect-ratio:1/1.18;display:none;border:2px solid #fff;background:#fff;box-shadow:0 5px 14px rgba(0,0,0,.25);overflow:hidden;pointer-events:none}
-.art-sample.is-visible{display:block}
-.art-sample::before{content:"AI 결과 예시";position:absolute;z-index:2;left:0;top:0;padding:3px 5px;background:rgba(24,25,24,.76);color:#fff;font-size:6px;font-weight:800}
-.art-sample-image{position:absolute;inset:0;background-image:url('assets/ui-references/art-style-samples-reference.png');background-repeat:no-repeat;background-size:300% 200%;background-position:0 0}
-.art-sample[data-art="1"] .art-sample-image{background-position:0 0}
-.art-sample[data-art="2"] .art-sample-image{background-position:50% 0}
-.art-sample[data-art="3"] .art-sample-image{background-position:100% 0}
-.art-sample[data-art="4"] .art-sample-image{background-position:0 100%}
-.art-sample[data-art="5"] .art-sample-image{background-position:50% 100%}
-.art-sample[data-art="6"] .art-sample-image{background-position:100% 100%}
-.rail[data-kind="art"] .thumb.has-art-sample{background-image:url('assets/ui-references/art-style-samples-reference.png');background-repeat:no-repeat;background-size:300% 200%}
-.rail[data-kind="art"] .art-1{background-position:0 0}.rail[data-kind="art"] .art-2{background-position:50% 0}.rail[data-kind="art"] .art-3{background-position:100% 0}.rail[data-kind="art"] .art-4{background-position:0 100%}.rail[data-kind="art"] .art-5{background-position:50% 100%}.rail[data-kind="art"] .art-6{background-position:100% 100%}
-/* 스토리보드의 화면 예시: 별도 액자 없이 4:6 화면 전체를 사용 */
-html,body{width:100%;height:100%;min-height:0;background:transparent}
-body{padding:0}
-.booth{width:100%;height:100%;aspect-ratio:auto;border:0;border-radius:0;box-shadow:none}
-.live{border-radius:0}
-/* 실제 조작 요소에만 라운드 적용 */
-.live-badge{border-radius:999px!important}
-.done{border-radius:9px!important}
-.setting-tabs{gap:4px;padding:5px 8px}
-.setting-tab{border:1px solid var(--line);border-radius:8px!important}
-.setting-tab:last-child{border-right:1px solid var(--line)}
-.flow-card{border-radius:12px!important}
-.thumb{border-radius:8px!important}
-.person-shot{border-radius:9px!important}
-.person-shot .person-outfit{border-radius:5px!important}
-.count-toggle button{border-radius:6px!important}
-.art-sample{border-radius:8px}
-.status-panel{flex-basis:13%;grid-template-columns:minmax(0,1fr) auto;padding:7px 10px}
-.status-panel .live-text{display:none!important}
-.status-frame{justify-items:end}
-.status-panel .live-frame-preview{border-radius:6px!important}
 </style>
 </head>
 <body>
 <main class="booth" id="booth">
   <section class="live theme-studio" id="live" aria-label="라이브 카메라 화면">
-    <span class="live-badge">● LIVE</span><div class="person outfit-casual" id="person"></div><div class="guide"></div><div class="art-sample" id="artSample" data-art="0" aria-label="선택 화풍 AI 결과 예시"><span class="art-sample-image"></span></div><button class="done" type="button">설정 완료</button>
+    <span class="live-badge">● LIVE</span><div class="person outfit-casual" id="person"></div><div class="guide"></div><button class="done" type="button">설정 완료</button>
   </section>
-  <section class="status-panel" id="statusPanel"><div class="status-person"><span>인물 선택</span><div class="live-people" id="livePeople" aria-label="설정할 인물 선택"></div></div><div class="live-text"><span id="themeText">#배경_제주돌담유채꽃</span><span id="personText">#인물1</span><span id="outfitText">#의상_조선무관호위대</span><span id="faceText">#보정_자연스럽게</span><span id="artText">#화풍_기본</span><span id="frameText">#프레임_화이트</span></div><div class="status-frame"><span>프레임</span><div class="live-frame-preview frame-white" id="framePreview" aria-label="선택한 AI 사진 1~2장 프레임 미리보기"><i class="frame-photo"></i><i class="frame-photo"></i></div></div></section>
-  <nav class="setting-tabs" aria-label="설정 메뉴"><button type="button" class="setting-tab is-active" data-tab="theme"><span>배경</span><small>제주 돌담·유채꽃</small></button><button type="button" class="setting-tab" data-tab="art"><span>화풍</span><small>기본</small></button><button type="button" class="setting-tab" data-tab="outfit"><span>의상</span><small>조선 무관·호위대</small></button><button type="button" class="setting-tab" data-tab="face"><span>얼굴</span><small>자연스럽게</small></button><button type="button" class="setting-tab" data-tab="frame"><span>프레임</span><small>화이트</small></button></nav>
+  <section class="status-panel" id="statusPanel"><div class="status-person"><span>인물 선택</span><div class="live-people" id="livePeople" aria-label="설정할 인물 선택"></div></div><div class="live-text"><span id="themeText">#배경_스튜디오</span><span id="personText">#인물1</span><span id="outfitText">#의상_캐주얼</span><span id="faceText">#보정_자연스럽게</span><span id="artText">#화풍_기본</span><span id="frameText">#프레임_화이트</span></div><div class="status-frame"><span>프레임</span><div class="live-frame-preview frame-white" id="framePreview" aria-label="선택한 AI 사진 1~2장 프레임 미리보기"><i class="frame-photo"></i><i class="frame-photo"></i></div></div></section>
+  <nav class="setting-tabs" aria-label="설정 메뉴"><button type="button" class="setting-tab is-active" data-tab="theme"><span>배경</span><small>아이돌 서재</small></button><button type="button" class="setting-tab" data-tab="art"><span>화풍</span><small>기본</small></button><button type="button" class="setting-tab" data-tab="outfit"><span>의상</span><small>여성 한복</small></button><button type="button" class="setting-tab" data-tab="face"><span>얼굴</span><small>자연스럽게</small></button><button type="button" class="setting-tab" data-tab="frame"><span>프레임</span><small>화이트</small></button></nav>
   <div class="menus">
-    <section class="rail is-active" data-kind="theme"><div class="rail-head"><strong>배경 테마</strong><span class="rail-current">제주 돌담·유채꽃</span></div><div class="flow"></div></section>
+    <section class="rail is-active" data-kind="theme"><div class="rail-head"><strong>배경 테마</strong><span class="rail-current">스튜디오</span></div><div class="flow"></div></section>
     <section class="rail" data-kind="art"><div class="rail-head"><strong>화풍</strong><span class="rail-current">기본</span></div><div class="flow"></div></section>
-    <section class="rail" data-kind="outfit"><div class="rail-head"><strong>의상 스타일 <span class="rail-scope">· 인물 1</span></strong><span class="rail-current">조선 무관·호위대</span></div><div class="flow"></div></section>
+    <section class="rail" data-kind="outfit"><div class="rail-head"><strong>의상 스타일 <span class="rail-scope">· 인물 1</span></strong><span class="rail-current">캐주얼</span></div><div class="flow"></div></section>
     <section class="rail" data-kind="face"><div class="rail-head"><strong>얼굴 보정 <span class="rail-scope">· 인물 1</span></strong><span class="rail-current">자연스럽게</span></div><div class="flow"></div></section>
     <section class="rail" data-kind="frame"><div class="rail-head"><strong>사진 프레임</strong><div class="count-toggle" aria-label="프레임에 배치할 사진 수"><button type="button" data-count="1">1장</button><button type="button" class="is-active" data-count="2">2장</button></div><span class="rail-current">화이트</span></div><div class="flow"></div></section>
   </div>
@@ -279,28 +229,27 @@ body{padding:0}
 (()=>{
   const data={
     theme:[
-      ['제주 돌담·유채꽃','theme-studio','assets/generated-concepts-20260812/backgrounds/01_jeju_stonewall_canola.png'],
-      ['비 오는 한옥 골목','theme-studio','assets/generated-concepts-20260812/backgrounds/02_rainy_hanok_alley.png'],
-      ['부산 바다 노을','theme-studio','assets/generated-concepts-20260812/backgrounds/03_busan_seaside_sunset.png'],
-      ['달빛 궁궐','theme-studio','assets/generated-concepts-20260812/backgrounds/04_moonlit_palace.png'],
-      ['서울 네온 스튜디오','theme-studio','assets/generated-concepts-20260812/backgrounds/05_seoul_neon_studio.png']
+      ['아이돌 그룹 서재','theme-studio','assets/backgrounds/idol-library.png'],
+      ['첨성대','theme-studio','assets/backgrounds/cheomseongdae.png'],
+      ['경복궁','theme-studio','assets/backgrounds/gyeongbokgung.png'],
+      ['레트로','theme-retro'],['한옥','theme-hanok'],['해변','theme-beach'],['네온 시티','theme-neon'],['설원','theme-snow'],['유럽 거리','theme-europe'],['꽃 정원','theme-garden']
     ],
     outfit:[
-      ['조선 무관·호위대','outfit-hanbok','assets/generated-concepts-20260812/costumes/01_joseon_guard_2x2.png'],
-      ['고려 귀족','outfit-hanbok','assets/generated-concepts-20260812/costumes/02_goryeo_aristocrat_2x2.png'],
-      ['경성 모던룩','outfit-vintage','assets/generated-concepts-20260812/costumes/03_gyeongseong_modern_2x2.png'],
-      ['K-판타지 수호자','outfit-fantasy','assets/generated-concepts-20260812/costumes/04_k_fantasy_guardian_2x2.png'],
-      ['모던 포멀','outfit-suit','assets/generated-concepts-20260812/costumes/05_modern_formal_2x2.png']
+      ['여성 한복 네이비','outfit-hanbok','assets/costumes/female-navy.png'],
+      ['남성 한복 와인','outfit-hanbok','assets/costumes/male-wine.png'],
+      ['여성 한복 블루','outfit-hanbok','assets/costumes/female-blue.png'],
+      ['남성 한복 네이비','outfit-hanbok','assets/costumes/male-navy.png'],
+      ['데님','outfit-denim'],['스포츠','outfit-sports'],['드레스','outfit-dress'],['교복','outfit-school'],['우주복','outfit-space'],['빈티지','outfit-vintage']
     ],
     face:[['자연스럽게',''],['화사하게',''],['선명하게',''],['부드럽게',''],['잡티 완화',''],['윤곽 보정',''],['눈 강조',''],['피부톤 정리',''],['흑백 보정',''],['보정 없음','']],
-    art:[['기본',''],['팝아트','art-1'],['벤데이 도트','art-2'],['석판화','art-3'],['우키요에','art-4'],['목판화','art-5'],['에칭','art-6']],
+    art:[['기본',''],['팝아트',''],['유화',''],['애니메이션',''],['수채화',''],['수묵화',''],['필름',''],['코믹북',''],['석판화',''],['목판화','']],
     frame:[['화이트','frame-white'],['블랙','frame-black'],['골드','frame-gold'],['필름','frame-film'],['파스텔','frame-pastel'],['미니멀','frame-minimal'],['빈티지','frame-vintage'],['핑크','frame-pink'],['블루','frame-blue'],['프레임 없음','frame-none']]
   };
   const people=['인물 1','인물 2','인물 3'];
   const index={theme:0,art:0,frame:0};
   const personSettings=people.map(()=>({outfit:0,face:0}));
   let activePerson=0,outputCount=2,activeKind='theme';
-  const live=document.querySelector('#live'),person=document.querySelector('#person'),artSample=document.querySelector('#artSample'),framePreview=document.querySelector('#framePreview'),statusPanel=document.querySelector('#statusPanel'),themeText=document.querySelector('#themeText'),personText=document.querySelector('#personText'),outfitText=document.querySelector('#outfitText'),faceText=document.querySelector('#faceText'),artText=document.querySelector('#artText'),frameText=document.querySelector('#frameText');
+  const live=document.querySelector('#live'),person=document.querySelector('#person'),framePreview=document.querySelector('#framePreview'),statusPanel=document.querySelector('#statusPanel'),themeText=document.querySelector('#themeText'),personText=document.querySelector('#personText'),outfitText=document.querySelector('#outfitText'),faceText=document.querySelector('#faceText'),artText=document.querySelector('#artText'),frameText=document.querySelector('#frameText');
   function selectedIndex(kind){return kind==='outfit'||kind==='face'?personSettings[activePerson][kind]:index[kind]}
   function selectedLabel(kind){return data[kind][selectedIndex(kind)][0]}
   function updateLive(){
@@ -311,9 +260,6 @@ body{padding:0}
     live.style.backgroundPosition=themeItem[2]?'center':'';
     person.className=outfitItem[2]?'person person-photo':`person ${outfitItem[1]}`;
     person.style.backgroundImage=outfitItem[2]?`url("${encodeURI(outfitItem[2])}")`:'';
-    const outfitQuadrants=[['0%','0%'],['100%','0%'],['0%','100%'],['100%','100%']],quadrant=outfitQuadrants[activePerson%outfitQuadrants.length];
-    person.style.backgroundPosition=outfitItem[2]?`${quadrant[0]} ${quadrant[1]}`:'';
-    const artIndex=selectedIndex('art');artSample.dataset.art=String(artIndex);artSample.classList.toggle('is-visible',artIndex>0);
     framePreview.className=`live-frame-preview ${data.frame[selectedIndex('frame')][1]}${outputCount===1?' is-one':''}`;
     themeText.textContent=`#배경_${selectedLabel('theme').replaceAll(' ','')}`;
     personText.textContent=`#${people[activePerson].replaceAll(' ','')}`;
@@ -342,7 +288,7 @@ body{padding:0}
   }
   function build(kind){
     const flow=document.querySelector(`.rail[data-kind="${kind}"] .flow`);
-    data[kind].forEach(([label,,image],i)=>{const card=document.createElement('button');card.type='button';card.className='flow-card';const imageStyle=image?` style="background-image:url('${encodeURI(image)}')"`:'';const artThumb=kind==='art'&&i>0?`<span class="thumb has-art-sample art-${i}"></span>`:'';const thumb=kind==='frame'?`<span class="thumb tone-${i} frame-preview"><i class="frame-photo"></i><i class="frame-photo"></i></span>`:artThumb||`<span class="thumb tone-${i}${image?' has-image':''}"${imageStyle}></span>`;card.innerHTML=`${thumb}<strong>${label}</strong>`;card.onclick=()=>{if(kind==='outfit'||kind==='face'){personSettings[activePerson][kind]=i;syncPeople()}else index[kind]=i;draw(kind)};flow.appendChild(card)});draw(kind);
+    data[kind].forEach(([label,,image],i)=>{const card=document.createElement('button');card.type='button';card.className='flow-card';const imageStyle=image?` style="background-image:url('${encodeURI(image)}')"`:'';const thumb=kind==='frame'?`<span class="thumb tone-${i} frame-preview"><i class="frame-photo"></i><i class="frame-photo"></i></span>`:`<span class="thumb tone-${i}${image?' has-image':''}"${imageStyle}></span>`;card.innerHTML=`${thumb}<strong>${label}</strong>`;card.onclick=()=>{if(kind==='outfit'||kind==='face'){personSettings[activePerson][kind]=i;syncPeople()}else index[kind]=i;draw(kind)};flow.appendChild(card)});draw(kind);
   }
   people.forEach((name,i)=>{const button=document.createElement('button');button.type='button';button.className='person-shot';button.dataset.person=i;button.title=name;button.setAttribute('aria-label',name);button.innerHTML=`<span>${i+1}</span><b class="person-outfit">${data.outfit[personSettings[i].outfit][0]}</b>`;button.onclick=()=>selectPerson(i);document.querySelector('#livePeople').appendChild(button)});
   ['theme','art','outfit','face','frame'].forEach(build);
