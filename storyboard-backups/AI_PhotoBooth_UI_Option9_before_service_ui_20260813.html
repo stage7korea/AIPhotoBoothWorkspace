@@ -258,105 +258,6 @@ body{padding:0}
 .status-panel .live-text{display:none!important}
 .status-frame{justify-items:end}
 .status-panel .live-frame-preview{border-radius:6px!important}
-/* 실제 서비스용 통합 설정 화면 */
-:root{
-  --bg:#f3f9fb;
-  --paper:#f9fcfd;
-  --soft:#eef8fa;
-  --ink:#10223b;
-  --muted:#68798d;
-  --line:#dce8ec;
-  --key:#249df0;
-  --mint:#dff8f3;
-  --pink:#ffe6ec;
-  --purple:#7d74f5;
-}
-html,body{background:transparent}
-.booth{
-  position:relative;
-  isolation:isolate;
-  background:
-    radial-gradient(circle at 105% 23%,rgba(255,113,141,.15),transparent 25%),
-    radial-gradient(circle at -5% 92%,rgba(63,210,194,.18),transparent 29%),
-    linear-gradient(180deg,#fbfeff,#f1f9fb);
-  color:var(--ink);
-}
-.live{border-bottom:0;box-shadow:0 14px 32px rgba(26,67,94,.17)}
-.live::after{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(180deg,rgba(7,20,34,.02) 45%,rgba(7,20,34,.30));pointer-events:none}
-.live-badge{z-index:7;border:1px solid rgba(255,255,255,.26);background:rgba(13,31,49,.68);padding:5px 9px;backdrop-filter:blur(8px);font-weight:800}
-.done{z-index:7;border:0;background:linear-gradient(135deg,#24a8f3,#397feb);padding:7px 12px;box-shadow:0 9px 20px rgba(35,126,202,.28)}
-.guide{z-index:3;border:3px solid rgba(255,255,255,.9);box-shadow:0 0 0 5px rgba(36,157,240,.18),0 7px 19px rgba(10,30,45,.25)}
-.art-sample{z-index:7;border:3px solid rgba(255,255,255,.94);border-radius:12px;box-shadow:0 11px 25px rgba(10,36,56,.25)}
-.status-panel{
-  position:relative;
-  z-index:5;
-  border:0;
-  background:rgba(255,255,255,.88);
-  box-shadow:0 10px 24px rgba(34,74,101,.09);
-}
-.status-person>span,.status-frame>span{color:#668097;font-size:7px;font-weight:850;letter-spacing:.05em}
-.status-panel .live-people .person-shot{
-  border:2px solid rgba(255,255,255,.95);
-  border-radius:10px!important;
-  background:linear-gradient(145deg,#e4f6fb,#c7e9ef);
-  box-shadow:0 7px 15px rgba(34,73,101,.10);
-}
-.status-panel .live-people .person-shot.is-active{border-color:#51baf0;box-shadow:0 0 0 3px rgba(36,157,240,.14),0 8px 17px rgba(32,110,165,.14)}
-.person-shot span{background:var(--key);color:#fff}
-.person-shot .person-outfit{background:rgba(255,255,255,.92)!important;color:#344a61!important}
-.status-panel .live-frame-preview{border:1px solid #d5e2e7;box-shadow:0 7px 16px rgba(33,75,102,.11)}
-.setting-tabs{
-  position:relative;
-  z-index:4;
-  gap:6px;
-  padding:7px 9px;
-  border:0;
-  background:rgba(244,250,252,.90);
-}
-.setting-tab{
-  min-width:0;
-  border:1px solid rgba(255,255,255,.94)!important;
-  border-radius:11px!important;
-  background:rgba(255,255,255,.88);
-  box-shadow:0 7px 15px rgba(35,75,102,.07);
-  transition:transform .18s,box-shadow .18s,background .18s;
-}
-.setting-tab.is-active{border-color:#60c4f2!important;background:linear-gradient(145deg,#e8f9ff,#dcf5fb);color:#147db7;box-shadow:0 0 0 3px rgba(36,157,240,.10),0 9px 18px rgba(33,118,175,.12)}
-.setting-tab span{font-weight:900}.setting-tab small{color:#77889a}
-.menus{padding:7px 11px 11px}
-.rail{border-bottom:0;padding:4px 0}
-.rail-head{height:17px;padding:0 3px 4px;background:transparent;color:#20354c}
-.rail-head strong{font-weight:900}.rail-current{color:#718398}
-.flow{mask-image:linear-gradient(90deg,transparent,black 4%,black 96%,transparent)}
-.flow-card{
-  border:2px solid rgba(255,255,255,.92);
-  border-radius:15px!important;
-  background:rgba(255,255,255,.88);
-  box-shadow:0 10px 21px rgba(35,75,102,.10);
-}
-.flow-card.is-center{border-color:#64c2ed;box-shadow:0 0 0 4px rgba(36,157,240,.12),0 15px 27px rgba(33,112,164,.16)}
-.flow-card strong{color:#34475e;font-weight:850}
-.thumb{border-radius:11px!important}
-.count-toggle button{border:1px solid #d7e5ea;background:#fff;color:#65778a}
-.count-toggle button.is-active{border-color:var(--key);background:var(--key);color:#fff}
-/* 라이브 복장 합성: 원본 사각 배경을 최소화하고 얼굴을 끼우는 영역은 비움 */
-.person.person-photo{
-  top:-1%;
-  width:52%;
-  height:124%;
-  background-color:transparent;
-  border-radius:0;
-  clip-path:polygon(45% 0,55% 0,57% 7%,59% 11%,59% 20%,62% 25%,64% 39%,61% 58%,60% 100%,40% 100%,39% 58%,36% 39%,38% 25%,41% 20%,41% 11%,43% 7%);
-  -webkit-clip-path:polygon(45% 0,55% 0,57% 7%,59% 11%,59% 20%,62% 25%,64% 39%,61% 58%,60% 100%,40% 100%,39% 58%,36% 39%,38% 25%,41% 20%,41% 11%,43% 7%);
-  -webkit-mask-image:radial-gradient(ellipse 17% 13% at 50% 19%,transparent 0 91%,#000 100%);
-  mask-image:radial-gradient(ellipse 17% 13% at 50% 19%,transparent 0 91%,#000 100%);
-  filter:drop-shadow(0 8px 12px rgba(8,23,38,.20));
-}
-/* 단독 HTML은 4:6 키오스크로, 스토리보드 iframe에서는 영역을 가득 채움 */
-html:not(.embedded) body{padding:18px;background:#f3f9fb}
-html:not(.embedded) .booth{width:min(100%,430px,calc(94vh * 2 / 3));height:auto;aspect-ratio:4/6}
-html.embedded body{padding:0;background:transparent}
-html.embedded .booth{width:100%;height:100%;aspect-ratio:auto}
 </style>
 </head>
 <body>
@@ -376,7 +277,6 @@ html.embedded .booth{width:100%;height:100%;aspect-ratio:auto}
 </main>
 <script>
 (()=>{
-  document.documentElement.classList.toggle('embedded',window.self!==window.top);
   const data={
     theme:[
       ['제주 돌담·유채꽃','theme-studio','assets/generated-concepts-20260812/backgrounds/01_jeju_stonewall_canola.png'],
@@ -414,9 +314,7 @@ html.embedded .booth{width:100%;height:100%;aspect-ratio:auto}
     const outfitQuadrants=[['0%','0%'],['100%','0%'],['0%','100%'],['100%','100%']],quadrant=outfitQuadrants[activePerson%outfitQuadrants.length];
     person.style.backgroundPosition=outfitItem[2]?`${quadrant[0]} ${quadrant[1]}`:'';
     const artIndex=selectedIndex('art');artSample.dataset.art=String(artIndex);artSample.classList.toggle('is-visible',artIndex>0);
-    const frameClass=data.frame[selectedIndex('frame')][1];
-    framePreview.className=`live-frame-preview ${frameClass}${outputCount===1?' is-one':''}`;
-    live.dataset.frame=frameClass;
+    framePreview.className=`live-frame-preview ${data.frame[selectedIndex('frame')][1]}${outputCount===1?' is-one':''}`;
     themeText.textContent=`#배경_${selectedLabel('theme').replaceAll(' ','')}`;
     personText.textContent=`#${people[activePerson].replaceAll(' ','')}`;
     outfitText.textContent=`#의상_${selectedLabel('outfit').replaceAll(' ','')}`;
