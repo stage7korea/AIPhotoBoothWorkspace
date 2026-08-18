@@ -244,27 +244,6 @@ html,body{background:transparent;color:var(--ink)}
 .language-float{left:7%;right:7%;bottom:6%;gap:10px}
 .language-start{border:1px solid rgba(255,255,255,.42);border-radius:15px;background:rgba(255,255,255,.14);padding:11px 14px;box-shadow:0 12px 28px rgba(0,0,0,.22);backdrop-filter:blur(16px)}
 .language-start strong{font-size:14px}.language-start span{font-size:8px}
-/* 공통 자식 배치 규칙이 화면 전용 absolute 배치를 덮어쓰지 않도록 복원 */
-.body.welcome-mode>.promo-full{
-  position:absolute;
-  inset:0;
-  z-index:1;
-  width:100%;
-  height:100%;
-}
-.body.welcome-mode .language-float{
-  position:absolute;
-  top:auto;
-  bottom:6%;
-}
-.body[data-kind="notice"]>.lang-return{
-  position:absolute;
-  z-index:12;
-  top:3.5%;
-  right:4.6%;
-}
-.body[data-kind="notice"]>.title{padding-right:34%}
-.body[data-kind="notice"]>.notice{margin-top:2%}
 @media(max-width:430px){
   .body{padding-left:5%;padding-right:5%}
   .title{font-size:28px}
