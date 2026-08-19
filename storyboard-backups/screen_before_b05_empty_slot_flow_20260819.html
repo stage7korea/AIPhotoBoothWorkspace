@@ -337,8 +337,6 @@ html,body{background:transparent;color:var(--ink)}
 .result-thumb:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 48%,rgba(5,20,30,.78))}.result-thumb.selected{border-color:#238fcb;box-shadow:0 0 0 3px rgba(35,143,203,.18),0 10px 19px rgba(15,77,110,.18);transform:translateY(-2px)}.result-thumb.swap-ready{border-color:#f29a3f;box-shadow:0 0 0 3px rgba(242,154,63,.2),0 10px 19px rgba(15,77,110,.18)}
 .result-thumb .pick-order{position:absolute;z-index:3;right:7px;top:7px;display:grid;place-items:center;width:25px;height:25px;border-radius:50%;background:rgba(255,255,255,.92);color:#174765;font-size:12px;font-style:normal;box-shadow:0 5px 12px rgba(0,0,0,.18)}
 .result-thumb.selected .pick-order{background:#238fcb;color:#fff}.result-thumb .thumb-label{position:absolute;z-index:3;left:8px;right:38px;bottom:7px;color:#fff;font-size:8px;font-weight:900;text-align:left}
-.result-thumb.placed{display:none}
-.print-cell.slot-button{border:0;padding:0;cursor:pointer}.print-cell.empty-slot{display:grid;place-items:center;border:2px dashed rgba(48,91,105,.32);background:rgba(255,255,255,.48);color:#6c828b}.print-cell.empty-slot span{display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:#fff;color:#335d6b;font-size:10px;font-weight:900}.print-cell.empty-slot small{font-size:7px;font-weight:800}.slot-badge{position:absolute;z-index:5;left:5px;top:5px;display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:rgba(21,86,113,.88);color:#fff;font-size:8px;font-weight:900}
 .selection-line{margin:0;color:#62747d;font-size:8px;text-align:center}.next:disabled{opacity:.42;cursor:not-allowed;box-shadow:none}
 
 /* B04 — 6×4 가로 인화지 프레임과 5개가 겹쳐 보이는 순환형 커버플로우 */
@@ -610,54 +608,42 @@ if(s.kind==='frame'){
   syncFrame();
 }
 if(s.kind==='layout'&&s.variant==='normal'){
-  const order=[null,null,null,null];
+  const order=[1,2,3,4];
   const cards=[...body.querySelectorAll('.result-thumb')];
   const status=body.querySelector('.selection-line');
   const sheet=body.querySelector('#printSheet');
   const frame=sessionStorage.getItem('selectedFrame')||'frame-white';
   const selectedIndexes=JSON.parse(sessionStorage.getItem('selectedNormalCandidates')||'[0,1,2,3]');
   const chosenPairs=selectedIndexes.slice(0,4).map(index=>NORMAL_PAIRS[index]||NORMAL_PAIRS[0]);
-  body.querySelector('.picker-head span').textContent='사진을 누르면 다음 빈칸에 배치';
+  let swapFrom=null;
   sheet.classList.add(frame);
   cards.forEach((card,index)=>{
     card.dataset.pairIndex=String(index);
-    card.classList.remove('selected','swap-ready');
-    card.innerHTML=pairMarkup(chosenPairs[index],`선택한 일반 사진 ${index+1}`)+`<span class="thumb-label">사진 ${index+1}</span><b class="pick-order">＋</b>`;
+    card.innerHTML=pairMarkup(chosenPairs[index],`선택한 일반 사진 ${index+1}`)+`<span class="thumb-label">사진 ${index+1}</span><b class="pick-order">${index+1}</b>`;
   });
   const cardByValue=value=>cards.find(card=>Number(card.dataset.result)===value);
-  const cellHtml=(value,index)=>{
-    if(value===null)return `<button class="print-cell slot-button empty-slot" type="button" data-slot="${index}"><span>${index+1}</span><small>사진 선택</small></button>`;
-    const card=cardByValue(value);
-    return `<button class="print-cell slot-button" type="button" data-slot="${index}" aria-label="${index+1}번 배치 취소">${pairMarkup(chosenPairs[Number(card.dataset.pairIndex)],'일반 4컷 인쇄 사진')}<span class="slot-badge">${index+1}</span></button>`;
-  };
+  const cellHtml=card=>`<div class="print-cell">${pairMarkup(chosenPairs[Number(card.dataset.pairIndex)],'일반 4컷 인쇄 사진')}</div>`;
   const syncFour=()=>{
     cards.forEach(card=>{
       const value=Number(card.dataset.result),position=order.indexOf(value);
-      card.classList.toggle('placed',position>=0);
-      card.querySelector('.pick-order').textContent='＋';
+      card.classList.add('selected');
+      card.classList.toggle('swap-ready',swapFrom===value);
+      card.querySelector('.pick-order').textContent=String(position+1);
     });
     sheet.className=`print-sheet four ${frame}`;
-    sheet.innerHTML=order.map(cellHtml).join('')+'<span class="preview-caption">6×4 · 빈칸부터 순서대로 배치</span>';
-    const filled=order.filter(value=>value!==null).length;
-    status.textContent=filled===4?'사진 4장 배치 완료 · 선택 완료를 눌러 주세요':`배치 ${filled} / 4 · 아래 사진을 누르면 다음 빈칸에 들어갑니다`;
-    nextButton.disabled=filled!==4;
-    sheet.querySelectorAll('.slot-button').forEach(slot=>slot.onclick=()=>{
-      const index=Number(slot.dataset.slot);
-      if(order[index]===null)return;
-      order[index]=null;
-      syncFour();
-    });
+    sheet.innerHTML=order.map(value=>cellHtml(cardByValue(value))).join('')+'<span class="preview-caption">6×4 · 4컷 가로 배치</span>';
+    status.textContent=swapFrom===null?'사진 4장 모두 배치됨 · 두 사진을 차례로 누르면 위치가 바뀝니다':`${order.indexOf(swapFrom)+1}번 사진 선택됨 · 바꿀 사진을 눌러 주세요`;
   };
   cards.forEach(card=>card.onclick=()=>{
     const value=Number(card.dataset.result);
-    if(order.includes(value))return;
-    const empty=order.indexOf(null);
-    if(empty<0)return;
-    order[empty]=value;
-    syncFour();
+    if(swapFrom===null){swapFrom=value;syncFour();return}
+    if(swapFrom===value){swapFrom=null;syncFour();return}
+    const from=order.indexOf(swapFrom),to=order.indexOf(value);
+    [order[from],order[to]]=[order[to],order[from]];
+    swapFrom=null;syncFour();
   });
-  nextButton.disabled=true;
-  nextButton.onclick=()=>{if(order.includes(null))return;sessionStorage.setItem('selectedNormalResults',JSON.stringify(order));go('result-01')};
+  nextButton.disabled=false;
+  nextButton.onclick=()=>{sessionStorage.setItem('selectedNormalResults',JSON.stringify(order));go('result-01')};
   syncFour();
 }
 if(s.kind==='ai-result-select'){

@@ -314,76 +314,29 @@ html,body{background:transparent;color:var(--ink)}
 .flow-next{position:absolute;z-index:15;left:6%;right:6%;bottom:4.5%;border:0;border-radius:15px;background:linear-gradient(135deg,#24a8f3,#3f8bef);color:#fff;padding:14px 16px;font-size:13px;font-weight:900;box-shadow:0 14px 28px rgba(35,126,202,.3);cursor:pointer}
 .flow-next:active{transform:translateY(1px)}
 
-/* A05 · B05 — 실제 인화지 비율을 크게 확인한 뒤 아래 사진에서 1~2장 선택 */
-.body.result-layout-mode{padding:4.5% 5% 13.5%;gap:1.8%;background:linear-gradient(180deg,#f7fbfd,#eef7f7 58%,#f9fbfb)}
-.body.result-layout-mode>.title{font-size:27px}.body.result-layout-mode>.lead{font-size:9px;line-height:1.35}
-.print-picker{display:grid;grid-template-rows:minmax(0,1fr) auto auto;gap:8px;flex:1;min-height:0}
-.print-preview-zone{display:grid;place-items:center;min-height:0;padding:8px 10px;border:1px solid rgba(20,66,88,.12);border-radius:19px;background:linear-gradient(145deg,#dbe9ed,#f8fbfb);box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
-.print-sheet{--sheet-frame:#fff;position:relative;display:grid;overflow:hidden;width:min(92%,440px);aspect-ratio:6/4;padding:10px;gap:6px;background:var(--sheet-frame);border:1px solid rgba(14,47,65,.18);box-shadow:0 15px 34px rgba(13,55,79,.21);transition:width .28s ease,aspect-ratio .28s ease,transform .28s ease}
-.print-sheet.one{aspect-ratio:6/4;width:min(92%,440px);grid-template-rows:1fr}
-.print-sheet.two{aspect-ratio:4/6;width:min(54%,260px);grid-template-rows:1fr 1fr}
-.print-sheet.four{aspect-ratio:6/4;width:min(92%,440px);grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:5px}
-.print-sheet.frame-white{--sheet-frame:#fff}.print-sheet.frame-black{--sheet-frame:#111820}.print-sheet.frame-gold{--sheet-frame:#c6a459}.print-sheet.frame-pastel{--sheet-frame:#cfe5e2}.print-sheet.frame-minimal{--sheet-frame:#e8e7e2}
-.print-cell{position:relative;min-height:0;overflow:hidden;background:linear-gradient(145deg,#bac9c6,#7c9590)}
-.print-cell img{width:100%;height:100%;display:block;object-fit:cover}.print-cell.costume-cell{background:#ececea}.print-cell.costume-cell img{object-fit:contain;object-position:center top;background:#ececea}
-.print-cell.duo{display:grid;grid-template-columns:1fr 1fr}.print-cell.duo img{min-width:0}
-.print-empty{display:grid;place-items:center;color:#6c7d85;font-size:11px;font-weight:900;letter-spacing:-.02em;text-align:center}
-.print-empty:before{content:'6 × 4';display:grid;place-items:center;width:60px;height:34px;margin-bottom:5px;border:1px dashed #80959d;border-radius:8px;color:#58717a;font:800 13px Georgia,serif}
-.preview-caption{position:absolute;z-index:4;right:8px;bottom:7px;padding:4px 7px;border-radius:999px;background:rgba(8,26,38,.78);color:#fff;font-size:7px;font-weight:900}
-.picker-head{display:flex;justify-content:space-between;align-items:end;gap:10px}.picker-head strong{font-size:11px}.picker-head span{color:#708087;font-size:8px;text-align:right}
-.result-thumb-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}.result-thumb-grid.normal{grid-template-columns:repeat(4,1fr)}
-.result-thumb{position:relative;overflow:hidden;aspect-ratio:6/4;border:2px solid transparent;border-radius:12px;background:#d5dcde;padding:0;cursor:pointer;box-shadow:0 7px 15px rgba(19,60,80,.1);transition:.2s}
-.result-thumb img{width:100%;height:100%;display:block;object-fit:cover}.result-thumb.costume{background:#e7e7e5}.result-thumb.costume img{object-position:center 8%}.result-thumb.duo{display:grid;grid-template-columns:1fr 1fr}.result-thumb.duo img{min-width:0}
-.result-thumb:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 48%,rgba(5,20,30,.78))}.result-thumb.selected{border-color:#238fcb;box-shadow:0 0 0 3px rgba(35,143,203,.18),0 10px 19px rgba(15,77,110,.18);transform:translateY(-2px)}.result-thumb.swap-ready{border-color:#f29a3f;box-shadow:0 0 0 3px rgba(242,154,63,.2),0 10px 19px rgba(15,77,110,.18)}
-.result-thumb .pick-order{position:absolute;z-index:3;right:7px;top:7px;display:grid;place-items:center;width:25px;height:25px;border-radius:50%;background:rgba(255,255,255,.92);color:#174765;font-size:12px;font-style:normal;box-shadow:0 5px 12px rgba(0,0,0,.18)}
-.result-thumb.selected .pick-order{background:#238fcb;color:#fff}.result-thumb .thumb-label{position:absolute;z-index:3;left:8px;right:38px;bottom:7px;color:#fff;font-size:8px;font-weight:900;text-align:left}
-.result-thumb.placed{display:none}
-.print-cell.slot-button{border:0;padding:0;cursor:pointer}.print-cell.empty-slot{display:grid;place-items:center;border:2px dashed rgba(48,91,105,.32);background:rgba(255,255,255,.48);color:#6c828b}.print-cell.empty-slot span{display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:#fff;color:#335d6b;font-size:10px;font-weight:900}.print-cell.empty-slot small{font-size:7px;font-weight:800}.slot-badge{position:absolute;z-index:5;left:5px;top:5px;display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:rgba(21,86,113,.88);color:#fff;font-size:8px;font-weight:900}
-.selection-line{margin:0;color:#62747d;font-size:8px;text-align:center}.next:disabled{opacity:.42;cursor:not-allowed;box-shadow:none}
-
-/* B04 — 6×4 가로 인화지 프레임과 5개가 겹쳐 보이는 순환형 커버플로우 */
-.body.frame-mode{padding:4.8% 5% 14%;gap:2%}.body.frame-mode>.title{font-size:29px}
-.frame-picker{display:grid;grid-template-rows:minmax(0,1fr) auto;gap:12px;flex:1;min-height:0}
-.frame-main-preview{display:grid;place-items:center;min-height:0;padding:12px;border-radius:20px;background:linear-gradient(145deg,#dbe5e2,#f8faf8)}
-.frame-main-sheet{--sheet-frame:#fff;position:relative;width:min(94%,460px);aspect-ratio:6/4;padding:12px;background:var(--sheet-frame);border:1px solid rgba(16,44,58,.2);box-shadow:0 16px 32px rgba(11,48,68,.2);transition:background .25s}
-.frame-main-sheet.frame-white{--sheet-frame:#fff}.frame-main-sheet.frame-black{--sheet-frame:#111820}.frame-main-sheet.frame-gold{--sheet-frame:#c6a459}.frame-main-sheet.frame-pastel{--sheet-frame:#cfe5e2}.frame-main-sheet.frame-minimal{--sheet-frame:#e8e7e2}
-.frame-main-sheet img{display:block;width:100%;height:100%;object-fit:cover}.frame-name{position:absolute;right:9px;bottom:8px;padding:4px 8px;border-radius:999px;background:rgba(7,25,37,.82);color:#fff;font-size:7px;font-weight:900}
-.coverflow{display:grid;grid-template-columns:34px minmax(0,1fr) 34px;align-items:center;gap:4px}.coverflow-track{position:relative;height:132px;overflow:hidden;perspective:800px}
-.coverflow-card{position:absolute;left:50%;top:7px;width:132px;aspect-ratio:6/4;padding:6px;border:1px solid rgba(14,44,58,.2);background:var(--card-frame,#fff);box-shadow:0 10px 24px rgba(9,42,59,.22);cursor:pointer;transform:translateX(-50%);transition:.34s cubic-bezier(.2,.75,.25,1);z-index:10}
-.coverflow-card[data-distance='-1']{transform:translateX(calc(-50% - 74px)) translateZ(-22px) rotateY(18deg) scale(.9);opacity:.82;z-index:8}.coverflow-card[data-distance='1']{transform:translateX(calc(-50% + 74px)) translateZ(-22px) rotateY(-18deg) scale(.9);opacity:.82;z-index:8}.coverflow-card[data-distance='-2']{transform:translateX(calc(-50% - 132px)) translateZ(-46px) rotateY(25deg) scale(.76);opacity:.5;z-index:6}.coverflow-card[data-distance='2']{transform:translateX(calc(-50% + 132px)) translateZ(-46px) rotateY(-25deg) scale(.76);opacity:.5;z-index:6}.coverflow-card.selected{outline:3px solid #238fcb;outline-offset:2px}.coverflow-card img{display:block;width:100%;height:100%;object-fit:cover}.coverflow-card small{position:absolute;left:6px;right:6px;bottom:-19px;color:#274653;font-size:7px;font-weight:900;text-align:center}
-.coverflow-card.frame-white{--card-frame:#fff}.coverflow-card.frame-black{--card-frame:#111820}.coverflow-card.frame-gold{--card-frame:#c6a459}.coverflow-card.frame-pastel{--card-frame:#cfe5e2}.coverflow-card.frame-minimal{--card-frame:#e8e7e2}
-.cover-arrow{display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(20,61,80,.16);border-radius:50%;background:#fff;color:#174765;font-size:18px;font-weight:900;cursor:pointer;box-shadow:0 6px 15px rgba(17,59,79,.12)}
-
-/* B01 — 8장 자동 촬영 진행 */
-.body.normal-capture-mode{padding:4.5% 5% 5%;gap:1.8%;background:linear-gradient(180deg,#f7faf8,#eef5f2)}
-.body.normal-capture-mode>.title{font-size:28px}.body.normal-capture-mode>.lead{font-size:9px}
-.normal-camera{position:relative;flex:1;min-height:0;overflow:hidden;border-radius:18px;background:#15231e url('../assets/backgrounds/gyeongbokgung.png') center/cover;box-shadow:0 14px 30px rgba(20,54,40,.2)}
-.normal-camera:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 45%,rgba(0,0,0,.64))}.normal-camera .counter{z-index:3}.normal-camera .cut{z-index:4}
-.capture-guide{position:absolute;z-index:4;left:12px;right:12px;bottom:11px;display:flex;justify-content:space-between;align-items:center;color:#fff;font-size:8px;font-weight:800}.capture-guide strong{font-size:10px}
-.capture-eight{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,52px);gap:6px}
-.capture-slot{position:relative;overflow:hidden;border:2px solid transparent;border-radius:9px;background:#dfe6e2}.capture-slot.done{border-color:#39b98b}.capture-slot.current{border-color:#f29a3f;box-shadow:0 0 0 3px rgba(242,154,63,.17)}.capture-slot.empty{border-style:dashed;border-color:#aebdb7;background:linear-gradient(145deg,#edf2ef,#dbe4df)}.capture-slot b{position:absolute;z-index:4;right:4px;bottom:3px;display:grid;place-items:center;width:16px;height:16px;border-radius:50%;background:rgba(8,28,21,.72);color:#fff;font-size:7px}
-.auto-note{margin:0;color:#64736d;font-size:8px;text-align:center}
-
-/* B02 — 촬영된 8장 전체에서 4장 선택 */
-.body.normal-select-mode{padding:28px 5% 76px;gap:8px;background:linear-gradient(180deg,#f7faf8,#eef5f2)}
-.body.normal-select-mode>.title{font-size:26px}.body.normal-select-mode>.lead{font-size:9px}
-.photo-grid.normal-eight{flex:none;width:86%;max-width:410px;align-self:center;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(4,auto);gap:6px}.photo-grid.normal-eight .photo{aspect-ratio:6/4;border:0;border-radius:10px;background:#dfe6e2}.photo-grid.normal-eight .photo.selected{outline:3px solid #f29a3f;outline-offset:-3px}
-.photo-grid.normal-eight .photo>b{z-index:6}
-
-/* 두 사람이 함께 찍힌 가로 6:4 후보 사진 */
-.pair-shot{position:absolute;inset:0;overflow:hidden;background-position:center;background-size:cover}
-.pair-shot:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,18,28,.03),rgba(3,18,28,.18));pointer-events:none}
-.pair-shot img{position:absolute;z-index:2;bottom:-2%;width:46%;height:102%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 6px 8px rgba(0,0,0,.2))}
-.pair-shot img:first-child{left:5%}.pair-shot img:nth-child(2){right:5%}
-
-/* B03 — 6:4 작업 사진 1장 + 나머지 3장 + 카테고리별 커버플로우 */
-.body.decorate-mode{padding:24px 5% 70px;gap:7px;background:linear-gradient(180deg,#f8faf8,#f0f5f2)}
-.body.decorate-mode>.title{font-size:25px}.body.decorate-mode>.lead{font-size:8px;margin-bottom:2px}
-.decorate-workspace{display:grid;grid-template-rows:auto auto auto;justify-content:center;gap:7px;flex:1;min-height:0}.decorate-workspace>*{width:min(100%,450px);justify-self:center}
-.decorate-canvas{position:relative;aspect-ratio:6/4;overflow:hidden;border-radius:15px;background:#121a22;box-shadow:0 12px 25px rgba(10,39,53,.17)}
-.decorate-canvas .pair-shot{z-index:1}.decorate-overlay{position:absolute;z-index:5;inset:0;pointer-events:none}.decorate-overlay .ar-item{position:absolute;display:grid;place-items:center;text-shadow:0 2px 5px rgba(0,0,0,.34)}.decorate-overlay .headband{left:31%;top:7%;font-size:36px;transform:rotate(-8deg)}.decorate-overlay .phrase{left:50%;bottom:8%;transform:translateX(-50%);padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.88);color:#173d32;font-size:10px;font-weight:900;text-shadow:none;white-space:nowrap}.decorate-overlay .accent{right:10%;top:22%;font-size:26px}
-.decorate-photo-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.decorate-thumb{position:relative;overflow:hidden;aspect-ratio:6/4;border:2px solid transparent;border-radius:8px;background:#dfe5e2;padding:0;cursor:pointer}.decorate-thumb.active{border-color:#238fcb;box-shadow:0 0 0 3px rgba(35,143,203,.16)}.decorate-thumb b{position:absolute;z-index:5;right:4px;top:4px;display:grid;place-items:center;width:17px;height:17px;border-radius:50%;background:rgba(7,29,41,.76);color:#fff;font-size:7px}.decorate-thumb.active b{background:#238fcb}
-.sticker-flow-list{display:grid;grid-template-rows:repeat(3,minmax(0,1fr));gap:5px;min-height:0}.sticker-flow-row{display:grid;grid-template-columns:56px minmax(0,1fr);align-items:center;gap:4px;min-height:0;border-top:1px solid rgba(26,67,81,.13)}.sticker-flow-row>strong{color:#244854;font-size:9px}.sticker-flow{position:relative;height:52px;overflow:hidden;perspective:500px}.sticker-card{position:absolute;left:50%;top:5px;width:52px;height:42px;display:grid;place-items:center;border:1px solid rgba(25,64,80,.15);border-radius:10px;background:#fff;color:#153b47;font-size:16px;font-weight:900;box-shadow:0 5px 12px rgba(13,51,69,.12);transform:translateX(-50%);transition:.28s cubic-bezier(.2,.78,.25,1);cursor:pointer}.sticker-card[data-distance='-1']{transform:translateX(calc(-50% - 48px)) rotateY(20deg) scale(.88);opacity:.78;z-index:2}.sticker-card[data-distance='1']{transform:translateX(calc(-50% + 48px)) rotateY(-20deg) scale(.88);opacity:.78;z-index:2}.sticker-card[data-distance='-2']{transform:translateX(calc(-50% - 84px)) rotateY(28deg) scale(.7);opacity:.42}.sticker-card[data-distance='2']{transform:translateX(calc(-50% + 84px)) rotateY(-28deg) scale(.7);opacity:.42}.sticker-card.selected{z-index:5;border-color:#238fcb;background:#e8f6fc;box-shadow:0 0 0 2px rgba(35,143,203,.17),0 7px 15px rgba(13,51,69,.16)}.sticker-card small{font-size:7px}
+/* AI 결과 2장 중 인쇄할 1~2장 선택 */
+.body.ai-result-mode{padding-bottom:15%}
+.ai-result-picker{display:grid;grid-template-rows:minmax(0,1fr) auto;gap:11px;flex:1;min-height:0}
+.ai-result-grid{display:grid;grid-template-columns:1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:9px;min-height:0}
+.ai-result-card{position:relative;min-height:0;overflow:hidden;border:2px solid rgba(13,51,77,.12);border-radius:18px;background:#d5d9dc;box-shadow:0 11px 24px rgba(14,45,66,.1);cursor:pointer;transition:.2s ease}
+.ai-result-card .result-gallery{position:absolute;inset:0;display:grid;background:#d5d9dc;transition:transform .25s ease}
+.ai-result-card .result-gallery.two-people{grid-template-columns:1fr 1fr}
+.ai-result-card .result-gallery.one-person{grid-template-columns:1fr}
+.ai-result-card .costume-shot{width:100%;height:100%;min-width:0;object-fit:cover;object-position:center 26%}
+.ai-result-card:after{content:"";position:absolute;z-index:3;inset:0;background:linear-gradient(180deg,rgba(4,18,29,.02) 42%,rgba(4,18,29,.82))}
+.ai-result-card.selected{border-color:#27a6ef;box-shadow:0 0 0 3px rgba(39,166,239,.2),0 14px 28px rgba(14,76,119,.22);transform:translateY(-2px)}
+.ai-result-card.selected .result-gallery{transform:scale(1.015)}
+.ai-result-card .result-copy{position:absolute;z-index:4;left:12px;right:12px;bottom:11px;color:#fff;text-align:left}
+.ai-result-card .result-copy small{display:block;margin-bottom:3px;color:#8fe2ff;font-size:7px;font-weight:900;letter-spacing:.08em}
+.ai-result-card .result-copy strong{display:block;font-size:14px}
+.ai-result-card .result-copy span{display:block;margin-top:3px;font-size:7px;opacity:.78}
+.ai-result-card .pick-order{position:absolute;z-index:5;right:10px;top:10px;display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:rgba(255,255,255,.9);color:#174765;font-size:13px;font-style:normal;box-shadow:0 7px 14px rgba(0,0,0,.2)}
+.ai-result-card.selected .pick-order{background:#27a6ef;color:#fff}
+.ai-layout-summary{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px;padding:10px 12px;border:1px solid rgba(26,69,96,.13);border-radius:17px;background:rgba(255,255,255,.86);box-shadow:0 8px 20px rgba(19,69,100,.08)}
+.ai-layout-summary strong{display:block;font-size:11px;color:#14364d}.ai-layout-summary p{margin:3px 0 0;color:#6d7d86;font-size:8px}
+.ai-mini-sheet{--sheet-frame:#f7f7f3;width:45px;aspect-ratio:4/6;display:grid;grid-template-rows:1fr;gap:2px;padding:4px;border:1px solid rgba(18,47,65,.14);background:var(--sheet-frame);box-shadow:0 6px 13px rgba(12,39,56,.18)}
+.ai-mini-sheet.two{grid-template-rows:1fr 1fr}.ai-mini-sheet span{display:block;background:linear-gradient(145deg,#9db8b0,#d7c2a9 48%,#587685 49%,#b29a83)}.ai-mini-sheet span:nth-child(2){display:none}.ai-mini-sheet.two span:nth-child(2){display:block}
+.ai-mini-sheet.frame-white{--sheet-frame:#fff}.ai-mini-sheet.frame-black{--sheet-frame:#15191d}.ai-mini-sheet.frame-gold{--sheet-frame:#c8a764}.ai-mini-sheet.frame-pastel{--sheet-frame:#d8e8e5}.ai-mini-sheet.frame-minimal{--sheet-frame:#e9e8e2}
 
 /* 대기 홍보 영상 — 세로 화면 전체를 하나의 홍보 화면으로 사용 */
 .promo-full{background:#080f18}
@@ -402,49 +355,31 @@ const data=window.AI_PHOTOBOOTH_STORYBOARD;const id=new URLSearchParams(location
 const body=document.querySelector('#body');const header=()=>`<h1 class="title">${s.headline}</h1><p class="lead">${item.detail}</p>`;
 const tiles=(arr,sel=0)=>`<div class="grid two">${arr.map((x,i)=>`<button class="tile ${i===sel?'selected':''}"><strong>${x}</strong><small>${s.copy[i]||'선택 후 다음 단계로 이동합니다.'}</small></button>`).join('')}</div>`;
 const FACES=['../assets/generated-concepts-20260812/faces/head1.png','../assets/generated-concepts-20260812/faces/head2.png','../assets/generated-concepts-20260812/faces/head3.png'];
-const NORMAL_SHOTS=['../assets/costumes/male-wine.png','../assets/costumes/female-blue.png','../assets/costumes/male-navy.png','../assets/costumes/female-navy.png','../assets/generated-concepts-20260812/costumes-cut/01_joseon_guard_m1.png','../assets/generated-concepts-20260812/costumes-cut/01_joseon_guard_f1.png','../assets/generated-concepts-20260812/costumes-cut/02_goryeo_aristocrat_m1.png','../assets/generated-concepts-20260812/costumes-cut/02_goryeo_aristocrat_f1.png'];
-const CUT='../assets/generated-concepts-20260812/costumes-cut/';
-const BG='../assets/generated-concepts-20260812/backgrounds/';
-const NORMAL_PAIRS=[
-  {bg:BG+'01_jeju_stonewall_canola.png',people:[CUT+'05_modern_formal_m1.png',CUT+'05_modern_formal_f1.png']},
-  {bg:BG+'02_rainy_hanok_alley.png',people:[CUT+'01_joseon_guard_m1.png',CUT+'01_joseon_guard_f1.png']},
-  {bg:BG+'03_busan_seaside_sunset.png',people:[CUT+'05_modern_formal_m2.png',CUT+'05_modern_formal_f2.png']},
-  {bg:BG+'04_moonlit_palace.png',people:[CUT+'02_goryeo_aristocrat_m1.png',CUT+'02_goryeo_aristocrat_f1.png']},
-  {bg:BG+'05_seoul_neon_studio.png',people:[CUT+'03_gyeongseong_modern_m1.png',CUT+'03_gyeongseong_modern_f1.png']},
-  {bg:BG+'01_jeju_stonewall_canola.png',people:[CUT+'04_k_fantasy_guardian_m1.png',CUT+'04_k_fantasy_guardian_f1.png']},
-  {bg:BG+'02_rainy_hanok_alley.png',people:[CUT+'01_joseon_guard_m2.png',CUT+'01_joseon_guard_f2.png']},
-  {bg:BG+'04_moonlit_palace.png',people:[CUT+'02_goryeo_aristocrat_m2.png',CUT+'02_goryeo_aristocrat_f2.png']}
-];
-const pairMarkup=(pair,label='두 사람이 함께 찍은 사진')=>`<span class="pair-shot" style="background-image:url('${pair.bg}')"><img src="${pair.people[0]}" alt="${label} 인물 1"><img src="${pair.people[1]}" alt="${label} 인물 2"></span>`;
 if(s.kind==='option9'){location.replace('../AI_PhotoBooth_UI_Option9_TabExpand_4x6.html?flow=1&ui=20260819-v17');}
 function render(){let html=header();switch(s.kind){
 case'welcome':html=`<div class="promo-full"><span class="promo-bg" style="background-image:url('../assets/video/blur.jpg')"></span><video class="promo-video" poster="../assets/video/poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="AI 포토부스 홍보 영상"><source src="../assets/video/promo.mp4" type="video/mp4"><source src="../assets/video/promo.webm" type="video/webm"></video><div class="campip" id="campip" style="background-image:url('../assets/generated-concepts-20260812/backgrounds/01_jeju_stonewall_canola.png')"><img class="cam-person" src="../assets/generated-concepts-20260812/costumes-cut/05_modern_formal_m1_thumb.png" style="left:13%;width:19%" alt=""><img class="cam-person" src="../assets/generated-concepts-20260812/costumes-cut/05_modern_formal_f1_thumb.png" style="left:40.5%;width:19%" alt=""><img class="cam-person" src="../assets/generated-concepts-20260812/costumes-cut/05_modern_formal_m2_thumb.png" style="left:68%;width:19%" alt=""><span class="detbox" style="left:13%;top:16%;width:19%;height:74%"><u>1</u></span><span class="detbox" style="left:40.5%;top:16%;width:19%;height:74%"><u>2</u></span><span class="detbox" style="left:68%;top:16%;width:19%;height:74%"><u>3</u></span><span class="scan"></span><span class="noone">사람 없음</span></div><button class="start-invite" id="startInvite" type="button" aria-label="화면을 터치해 언어 선택 열기"><span>시작</span><span>Start</span><span>スタート</span><span>开始</span><span dir="rtl">ابدأ</span><span>Starten</span></button><div class="language-float is-gated" aria-label="언어 선택"><div class="detect" id="detect"><span class="dot"></span><span class="txt"><strong id="detTitle">사람 3명 감지됨</strong><small id="detSub">언어를 선택하면 다음 단계로 이동합니다</small></span><span class="faces" id="detFaces"></span><button class="sim" type="button" id="simToggle">감지 없음으로 전환</button></div><button class="language-start" type="button" lang="ko"><strong>한국어</strong></button><button class="language-start" type="button" lang="en"><strong>English</strong></button><button class="language-start" type="button" lang="ja"><strong>日本語</strong></button><button class="language-start" type="button" lang="zh"><strong>中文</strong></button><button class="language-start" type="button" lang="ar" dir="rtl"><strong>العربية</strong></button><button class="language-start" type="button" lang="de"><strong>Deutsch</strong></button></div><div class="toastmsg" id="toastMsg"></div></div>`;break;
 case'notice':html+=`<button class="lang-return" type="button" aria-label="언어 선택 화면으로 뒤로 가기" title="언어 선택 화면으로 뒤로 가기"><span class="back-arrow" aria-hidden="true">←</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg><small>KO</small></button><div class="notice">${s.copy.map((x,i)=>`<div class="note"><b>${i+1}</b><div><strong>${['이용 범위','보관·삭제'][i]}</strong><p>${x}</p></div></div>`).join('')}</div>`;break;
 case'mode':html+=`<div class="mode-options"><button class="mode-card" type="button" data-mode="ai"><img class="mode-image" src="../assets/backgrounds/idol-library.png" alt="AI 합성 사진 대표 이미지"><span class="mode-copy"><em>AI COMPOSITE</em><strong>AI 합성 사진</strong><span>배경·의상·화풍을 적용한 새로운 사진</span></span></button><button class="mode-card" type="button" data-mode="normal"><img class="mode-image" src="../assets/backgrounds/gyeongbokgung.png" alt="일반 4컷 촬영 대표 이미지"><span class="fourcut-grid" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="mode-copy"><em>ORIGINAL 4 CUT</em><strong>일반 4컷 촬영</strong><span>원본 촬영 후 AR 스티커로 꾸미기</span></span></button></div>`;break;
 case'payment':html+=`<div class="amount"><small>선택 상품 · AI 합성 사진</small><strong>₩ 12,000</strong></div>${tiles(['신용카드','카카오페이','티머니','간편결제'],-1)}`;break;
-case'capture':html+=s.variant==='normal'?`<div class="normal-camera"><span class="cut">CUT 3 / 8</span><span class="counter">3</span><div class="capture-guide"><strong>2인 촬영 · 8장 자동 촬영 중</strong><span>촬영이 끝나면 사진 선택으로 이동합니다</span></div></div><div class="capture-eight">${NORMAL_PAIRS.map((pair,i)=>`<span class="capture-slot ${i<2?'done':i===2?'current':'empty'}">${i<3?pairMarkup(pair,`촬영 사진 ${i+1}`):''}<b>${i+1}</b></span>`).join('')}</div><p class="auto-note">두 사람이 함께 찍힌 가로 6:4 사진 8장을 연속 촬영합니다</p>`:`<div class="camera"><span class="cut">CUT 2 / 4</span><span class="counter">3</span></div><div class="thumbs">${[1,2,3,4].map(x=>`<span class="thumb"><b>${x}</b></span>`).join('')}</div>`;break;
-case'select':{const normal=s.variant==='normal',required=normal?4:2;html+=`<div class="photo-grid ${normal?'normal-eight':''}">${Array.from({length:normal?8:4},(_,i)=>`<button class="photo" type="button" data-index="${i}">${normal?pairMarkup(NORMAL_PAIRS[i],`6:4 후보 사진 ${i+1}`):''}<b>＋</b></button>`).join('')}</div><p class="lead selection-status">선택 0 / ${required}${normal?' · 2인 가로 사진 8장 중 4장을 선택해 주세요.':' · 선택한 2장만 업로드됩니다.'}</p>`;break}
+case'capture':html+=`<div class="camera ${s.variant==='normal'?'normal':''}"><span class="cut">${s.variant==='normal'?'CUT 3 / 8':'CUT 2 / 4'}</span><span class="counter">3</span></div><div class="thumbs">${[1,2,3,4].map(x=>`<span class="thumb"><b>${x}</b></span>`).join('')}</div>`;break;
+case'select':{const total=s.variant==='normal'?8:4;const required=s.variant==='normal'?4:2;html+=`<div class="photo-grid">${Array.from({length:Math.min(total,4)},(_,i)=>`<button class="photo" type="button" data-index="${i}"><b>＋</b></button>`).join('')}</div><p class="lead selection-status">선택 0 / ${required}${s.variant==='normal'?' · 4장을 선택하면 자동으로 다음 단계로 이동합니다.':' · 선택한 2장만 업로드됩니다.'}</p>`;break}
 case'progress':html+=`<div class="progress"><div class="ring"><strong>68%</strong></div><p>인물·의상·배경을 자연스럽게 합성하고 있어요</p></div>`;break;
-case'ai-result-select':html+=`<div class="print-picker" data-picker="ai"><div class="print-preview-zone"><div class="print-sheet one" id="printSheet"><div class="print-cell print-empty">사진을 선택하면<br>인쇄 모습을 보여드려요</div><span class="preview-caption">6×4 인화 미리보기</span></div></div><div class="picker-head"><strong>AI 결과 사진</strong><span>1장 또는 2장을 선택해 주세요</span></div><div class="result-thumb-grid"><button class="result-thumb costume duo" type="button" data-result="1" data-images="../assets/costumes/male-wine.png|../assets/costumes/female-blue.png"><img src="../assets/costumes/male-wine.png" alt="남성 한복 예제"><img src="../assets/costumes/female-blue.png" alt="여성 한복 예제"><span class="thumb-label">AI 결과 1 · 2명</span><b class="pick-order">＋</b></button><button class="result-thumb costume" type="button" data-result="2" data-images="../assets/costumes/male-navy.png"><img src="../assets/costumes/male-navy.png" alt="남성 한복 예제"><span class="thumb-label">AI 결과 2 · 1명</span><b class="pick-order">＋</b></button></div><p class="selection-line">선택 0 / 최대 2 · 재생성 없이 선택한 결과를 인쇄합니다</p></div>`;break;
-case'layout':html+=s.variant==='normal'?`<div class="print-picker" data-picker="normal"><div class="print-preview-zone"><div class="print-sheet four" id="printSheet"><div class="print-cell costume-cell"><img src="../assets/costumes/male-wine.png" alt="일반 4컷 사진 1"></div><div class="print-cell costume-cell"><img src="../assets/costumes/female-blue.png" alt="일반 4컷 사진 2"></div><div class="print-cell costume-cell"><img src="../assets/costumes/male-navy.png" alt="일반 4컷 사진 3"></div><div class="print-cell costume-cell"><img src="../assets/costumes/female-navy.png" alt="일반 4컷 사진 4"></div><span class="preview-caption">6×4 · 4컷 가로 배치</span></div></div><div class="picker-head"><strong>8장 중 선택한 사진 4장</strong><span>두 사진을 차례로 누르면 위치 교체</span></div><div class="result-thumb-grid normal"><button class="result-thumb costume selected" type="button" data-result="1" data-images="../assets/costumes/male-wine.png"><img src="../assets/costumes/male-wine.png" alt="얼굴이 보이는 일반 촬영 사진 1"><span class="thumb-label">사진 1</span><b class="pick-order">1</b></button><button class="result-thumb costume selected" type="button" data-result="2" data-images="../assets/costumes/female-blue.png"><img src="../assets/costumes/female-blue.png" alt="얼굴이 보이는 일반 촬영 사진 2"><span class="thumb-label">사진 2</span><b class="pick-order">2</b></button><button class="result-thumb costume selected" type="button" data-result="3" data-images="../assets/costumes/male-navy.png"><img src="../assets/costumes/male-navy.png" alt="얼굴이 보이는 일반 촬영 사진 3"><span class="thumb-label">사진 3</span><b class="pick-order">3</b></button><button class="result-thumb costume selected" type="button" data-result="4" data-images="../assets/costumes/female-navy.png"><img src="../assets/costumes/female-navy.png" alt="얼굴이 보이는 일반 촬영 사진 4"><span class="thumb-label">사진 4</span><b class="pick-order">4</b></button></div><p class="selection-line">사진 4장 모두 배치됨 · 선택한 프레임으로 인쇄됩니다</p></div>`:`<div class="sheet-wrap"><div class="sheet vertical"><div class="sheet-grid two"><i class="slot-photo"></i><i class="slot-photo"></i></div></div><div class="settings"><span class="pill active">4×6 2장</span><span class="pill">사진 교체</span><span class="pill">위치 조정</span><span class="pill">선택 프레임</span></div></div>`;break;
-case'decorate':{const initial=NORMAL_PAIRS.slice(0,4);html+=`<div class="decorate-workspace"><div class="decorate-canvas"><div id="decorateMain">${pairMarkup(initial[0],'현재 꾸미는 6:4 사진')}</div><div class="decorate-overlay"><span class="ar-item headband" id="arHeadband">👑</span><span class="ar-item phrase" id="arPhrase">우리 오늘 최고!</span><span class="ar-item accent" id="arAccent">✨</span></div></div><div class="decorate-photo-strip">${initial.map((pair,i)=>`<button class="decorate-thumb ${i===0?'active':''}" type="button" data-slot="${i}">${pairMarkup(pair,`선택한 사진 ${i+1}`)}<b>${i+1}</b></button>`).join('')}</div><div class="sticker-flow-list"><div class="sticker-flow-row" data-category="headband"><strong>머리띠</strong><div class="sticker-flow">${['없음','👑','🐰','😈','🌸'].map((x,i)=>`<button class="sticker-card ${i===1?'selected':''}" type="button" data-value="${x}" data-index="${i}"><span>${x}</span></button>`).join('')}</div></div><div class="sticker-flow-row" data-category="phrase"><strong>문구</strong><div class="sticker-flow">${['없음','우리 오늘 최고!','찰칵!','우정 영원','오늘의 주인공'].map((x,i)=>`<button class="sticker-card ${i===1?'selected':''}" type="button" data-value="${x}" data-index="${i}"><small>${x}</small></button>`).join('')}</div></div><div class="sticker-flow-row" data-category="accent"><strong>강조</strong><div class="sticker-flow">${['없음','✨','💥','💖','⚡'].map((x,i)=>`<button class="sticker-card ${i===1?'selected':''}" type="button" data-value="${x}" data-index="${i}"><span>${x}</span></button>`).join('')}</div></div></div></div>`;break}
-case'frame':html+=`<div class="frame-picker"><div class="frame-main-preview"><div class="frame-main-sheet frame-white" id="frameMainSheet"><img src="../assets/generated-concepts-20260812/backgrounds/02_rainy_hanok_alley.png" alt="6×4 가로 사진 프레임 미리보기"><span class="frame-name" id="frameName">화이트 · 6×4 가로</span></div></div><div class="coverflow"><button class="cover-arrow" id="framePrev" type="button" aria-label="이전 프레임">‹</button><div class="coverflow-track" id="frameTrack"><button class="coverflow-card frame-white" type="button" data-frame="frame-white" data-label="화이트"><img src="../assets/generated-concepts-20260812/backgrounds/02_rainy_hanok_alley.png" alt="화이트 프레임"><small>화이트</small></button><button class="coverflow-card frame-black" type="button" data-frame="frame-black" data-label="블랙"><img src="../assets/generated-concepts-20260812/backgrounds/02_rainy_hanok_alley.png" alt="블랙 프레임"><small>블랙</small></button><button class="coverflow-card frame-gold" type="button" data-frame="frame-gold" data-label="골드"><img src="../assets/generated-concepts-20260812/backgrounds/02_rainy_hanok_alley.png" alt="골드 프레임"><small>골드</small></button><button class="coverflow-card frame-pastel" type="button" data-frame="frame-pastel" data-label="파스텔"><img src="../assets/generated-concepts-20260812/backgrounds/02_rainy_hanok_alley.png" alt="파스텔 프레임"><small>파스텔</small></button><button class="coverflow-card frame-minimal" type="button" data-frame="frame-minimal" data-label="미니멀"><img src="../assets/generated-concepts-20260812/backgrounds/02_rainy_hanok_alley.png" alt="미니멀 프레임"><small>미니멀</small></button></div><button class="cover-arrow" id="frameNext" type="button" aria-label="다음 프레임">›</button></div></div>`;break;
+case'ai-result-select':html+=`<div class="ai-result-picker"><div class="ai-result-grid"><button class="ai-result-card" type="button" data-result="1"><span class="result-gallery two-people"><img class="costume-shot" src="../assets/costumes/male-wine.png" alt="남성 한복 예제"><img class="costume-shot" src="../assets/costumes/female-blue.png" alt="여성 한복 예제"></span><span class="result-copy"><small>촬영 사진 1 기반 · 2명</small><strong>AI 결과 1</strong><span>선택한 의상 예제 적용</span></span><b class="pick-order">＋</b></button><button class="ai-result-card" type="button" data-result="2"><span class="result-gallery one-person"><img class="costume-shot" src="../assets/costumes/male-navy.png" alt="남성 한복 예제"></span><span class="result-copy"><small>촬영 사진 2 기반 · 1명</small><strong>AI 결과 2</strong><span>선택한 의상 예제 적용</span></span><b class="pick-order">＋</b></button></div><div class="ai-layout-summary"><div class="ai-mini-sheet" id="aiMiniSheet"><span></span><span></span></div><div><strong id="aiPickTitle">인쇄할 결과를 1장 또는 2장 선택</strong><p class="ai-selection-status">선택 0 / 최대 2 · 2장은 6×4 용지 위아래 배치</p></div></div></div>`;break;
+case'layout':html+=`<div class="sheet-wrap"><div class="sheet vertical"><div class="sheet-grid ${s.variant==='normal'?'four':'two'}">${Array.from({length:s.variant==='normal'?4:2},()=>'<i class="slot-photo"></i>').join('')}</div></div><div class="settings"><span class="pill active">6×4 ${s.variant==='normal'?'4컷':'2장'}</span><span class="pill">사진 교체</span><span class="pill">위치 조정</span><span class="pill">선택 프레임</span></div></div>`;break;
+case'decorate':html+=`<div class="sticker-stage"><span class="sticker a">★</span><span class="sticker b">♥</span></div><div class="tools"><span>★</span><span>♥</span><span>♛</span><span>☁</span><span>✦</span></div>`;break;
+case'frame':html+=`<div class="sheet-wrap"><div class="sheet vertical"><div class="sheet-grid four">${Array.from({length:4},()=>'<i class="slot-photo"></i>').join('')}</div></div><div class="settings"><span class="pill active">WHITE</span><span class="pill">COLOR</span><span class="pill">SEASON</span><span class="pill">MINIMAL</span></div></div>`;break;
 case'print':html+=`<div class="pickup"><div><div class="qr"></div><strong>72%</strong><p>부스 밖에서 잠시 기다려 주세요.<br>사진·영상 QR을 준비하고 있습니다.</p></div></div>`;break;
 case'pickup':html+=`<div class="pickup"><div><div class="icon">⇩</div><strong>인쇄 완료</strong><p>아래 출력구에서 사진을 가져가세요.</p></div></div>`;break;
 case'exit':html=`<div class="goodbye"><div><div class="mark">✓</div><h2>${s.headline}</h2><p>${s.copy.join('<br>')}</p></div></div>`;break;
 default:html+=tiles(s.copy,0)}
-const actionLabels={notice:'안내 확인','ai-result-select':'선택 완료',layout:'선택 완료',decorate:'꾸미기 완료',frame:'프레임 확정'};
-const actionLabel=(s.kind==='select'&&s.variant==='normal')?'선택 완료':actionLabels[s.kind];
+const actionLabels={notice:'안내 확인','ai-result-select':'선택 완료',layout:'배치 확정',decorate:'꾸미기 완료',frame:'프레임 확정'};
+const actionLabel=actionLabels[s.kind];
 const foot=document.querySelector('.foot');
 const nextButton=foot.querySelector('.next');
 body.classList.toggle('welcome-mode',s.kind==='welcome');
 body.classList.toggle('mode-mode',s.kind==='mode');
 body.classList.toggle('payment-mode',s.kind==='payment');
-body.classList.toggle('result-layout-mode',s.kind==='ai-result-select'||(s.kind==='layout'&&s.variant==='normal'));
-body.classList.toggle('frame-mode',s.kind==='frame');
-body.classList.toggle('normal-capture-mode',s.kind==='capture'&&s.variant==='normal');
-body.classList.toggle('normal-select-mode',s.kind==='select'&&s.variant==='normal');
-body.classList.toggle('decorate-mode',s.kind==='decorate');
+body.classList.toggle('ai-result-mode',s.kind==='ai-result-select');
 body.classList.toggle('no-action',!actionLabel);
 body.dataset.kind=s.kind;
 foot.style.display=actionLabel?'block':'none';
@@ -521,59 +456,17 @@ if(s.kind==='select'){
 const required=s.variant==='normal'?4:2;
 const selected=new Set();
 const status=body.querySelector('.selection-status');
-if(s.variant==='normal'){
-  nextButton.disabled=true;
-  nextButton.onclick=()=>{
-    if(selected.size!==required)return;
-    sessionStorage.setItem('selectedNormalCandidates',JSON.stringify([...selected]));
-    location.href='screen.html?id=normal-03';
-  };
-}
 body.querySelectorAll('.photo').forEach(photo=>photo.onclick=()=>{
 const index=Number(photo.dataset.index);
 if(selected.has(index))selected.delete(index);else if(selected.size<required)selected.add(index);
 body.querySelectorAll('.photo').forEach(card=>{const cardIndex=Number(card.dataset.index);const order=[...selected].indexOf(cardIndex);card.classList.toggle('selected',order>=0);card.querySelector('b').textContent=order>=0?order+1:'＋'});
-status.textContent=`선택 ${selected.size} / ${required}${s.variant==='normal'?(selected.size===required?' · 선택 완료를 눌러 AR 꾸미기로 이동합니다.':' · 8장 중 네 장을 선택해 주세요.'):' · 선택한 2장만 업로드됩니다.'}`;
-if(s.variant==='normal'){
-  nextButton.disabled=selected.size!==required;
-  if(selected.size===required)sessionStorage.setItem('selectedNormalCandidates',JSON.stringify([...selected]));
-  else sessionStorage.removeItem('selectedNormalCandidates');
-}else if(selected.size===required){setTimeout(()=>{location.href='screen.html?id=ai-04'},420)}
+status.textContent=`선택 ${selected.size} / ${required}${s.variant==='normal'?' · 4장을 선택하면 자동으로 다음 단계로 이동합니다.':' · 선택한 2장만 업로드됩니다.'}`;
+if(selected.size===required)setTimeout(()=>{location.href=`screen.html?id=${s.variant==='normal'?'normal-03':'ai-04'}`},420);
 });
 }
 
-if(s.kind==='decorate'){
-  const selectedIndexes=JSON.parse(sessionStorage.getItem('selectedNormalCandidates')||'[0,1,2,3]');
-  const chosen=selectedIndexes.slice(0,4).map(index=>NORMAL_PAIRS[index]||NORMAL_PAIRS[0]);
-  const main=body.querySelector('#decorateMain');
-  const thumbs=[...body.querySelectorAll('.decorate-thumb')];
-  let activePhoto=0;
-  const syncPhoto=()=>{
-    main.innerHTML=pairMarkup(chosen[activePhoto],`현재 꾸미는 사진 ${activePhoto+1}`);
-    thumbs.forEach((thumb,index)=>{
-      thumb.innerHTML=pairMarkup(chosen[index],`선택한 사진 ${index+1}`)+`<b>${index+1}</b>`;
-      thumb.classList.toggle('active',index===activePhoto);
-    });
-  };
-  thumbs.forEach((thumb,index)=>thumb.onclick=()=>{activePhoto=index;syncPhoto()});
-  const overlayTargets={headband:body.querySelector('#arHeadband'),phrase:body.querySelector('#arPhrase'),accent:body.querySelector('#arAccent')};
-  body.querySelectorAll('.sticker-flow-row').forEach(row=>{
-    const cards=[...row.querySelectorAll('.sticker-card')];
-    let active=Math.max(0,cards.findIndex(card=>card.classList.contains('selected')));
-    const signedDistance=index=>{let d=index-active;const half=Math.floor(cards.length/2);if(d>half)d-=cards.length;if(d<-half)d+=cards.length;return d};
-    const syncFlow=()=>{
-      cards.forEach((card,index)=>{const d=signedDistance(index);card.dataset.distance=String(d);card.classList.toggle('selected',d===0)});
-      const value=cards[active].dataset.value;
-      overlayTargets[row.dataset.category].textContent=value==='없음'?'':value;
-    };
-    cards.forEach((card,index)=>card.onclick=()=>{active=index;syncFlow()});
-    syncFlow();
-  });
-  syncPhoto();
-}
-
 /* 화면별 다음 단계로 이동하는 클릭 체인 */
-const NEXT={'ai-02':'ai-03','ai-04':'ai-05','ai-05':'result-01',
+const NEXT={'ai-02':'ai-03','normal-01':'normal-02','ai-04':'ai-05','ai-05':'result-01',
             'normal-03':'normal-04','normal-04':'normal-05','normal-05':'result-01',
             'result-01':'result-02','result-02':'result-03','result-03':'common-01'};
 const go=id=>{location.href='screen.html?id='+id};
@@ -590,112 +483,36 @@ if(NEXT[id]){
     body.style.paddingBottom='86px';
   }
 }
-if(s.kind==='frame'){
-  const cards=[...body.querySelectorAll('.coverflow-card')];
-  const sheet=body.querySelector('#frameMainSheet');
-  const label=body.querySelector('#frameName');
-  let active=Math.max(0,cards.findIndex(card=>card.dataset.frame===(sessionStorage.getItem('selectedFrame')||'frame-white')));
-  const signedDistance=(index)=>{let d=index-active;const half=Math.floor(cards.length/2);if(d>half)d-=cards.length;if(d<-half)d+=cards.length;return d};
-  const syncFrame=()=>{
-    cards.forEach((card,index)=>{const d=signedDistance(index);card.dataset.distance=String(d);card.classList.toggle('selected',d===0)});
-    const chosen=cards[active];
-    sheet.className=`frame-main-sheet ${chosen.dataset.frame}`;
-    label.textContent=`${chosen.dataset.label} · 6×4 가로`;
-    sessionStorage.setItem('selectedFrame',chosen.dataset.frame);
-  };
-  cards.forEach((card,index)=>card.onclick=()=>{active=index;syncFrame()});
-  body.querySelector('#framePrev').onclick=()=>{active=(active-1+cards.length)%cards.length;syncFrame()};
-  body.querySelector('#frameNext').onclick=()=>{active=(active+1)%cards.length;syncFrame()};
-  nextButton.onclick=()=>go('normal-05');
-  syncFrame();
-}
-if(s.kind==='layout'&&s.variant==='normal'){
-  const order=[null,null,null,null];
-  const cards=[...body.querySelectorAll('.result-thumb')];
-  const status=body.querySelector('.selection-line');
-  const sheet=body.querySelector('#printSheet');
-  const frame=sessionStorage.getItem('selectedFrame')||'frame-white';
-  const selectedIndexes=JSON.parse(sessionStorage.getItem('selectedNormalCandidates')||'[0,1,2,3]');
-  const chosenPairs=selectedIndexes.slice(0,4).map(index=>NORMAL_PAIRS[index]||NORMAL_PAIRS[0]);
-  body.querySelector('.picker-head span').textContent='사진을 누르면 다음 빈칸에 배치';
-  sheet.classList.add(frame);
-  cards.forEach((card,index)=>{
-    card.dataset.pairIndex=String(index);
-    card.classList.remove('selected','swap-ready');
-    card.innerHTML=pairMarkup(chosenPairs[index],`선택한 일반 사진 ${index+1}`)+`<span class="thumb-label">사진 ${index+1}</span><b class="pick-order">＋</b>`;
-  });
-  const cardByValue=value=>cards.find(card=>Number(card.dataset.result)===value);
-  const cellHtml=(value,index)=>{
-    if(value===null)return `<button class="print-cell slot-button empty-slot" type="button" data-slot="${index}"><span>${index+1}</span><small>사진 선택</small></button>`;
-    const card=cardByValue(value);
-    return `<button class="print-cell slot-button" type="button" data-slot="${index}" aria-label="${index+1}번 배치 취소">${pairMarkup(chosenPairs[Number(card.dataset.pairIndex)],'일반 4컷 인쇄 사진')}<span class="slot-badge">${index+1}</span></button>`;
-  };
-  const syncFour=()=>{
-    cards.forEach(card=>{
-      const value=Number(card.dataset.result),position=order.indexOf(value);
-      card.classList.toggle('placed',position>=0);
-      card.querySelector('.pick-order').textContent='＋';
-    });
-    sheet.className=`print-sheet four ${frame}`;
-    sheet.innerHTML=order.map(cellHtml).join('')+'<span class="preview-caption">6×4 · 빈칸부터 순서대로 배치</span>';
-    const filled=order.filter(value=>value!==null).length;
-    status.textContent=filled===4?'사진 4장 배치 완료 · 선택 완료를 눌러 주세요':`배치 ${filled} / 4 · 아래 사진을 누르면 다음 빈칸에 들어갑니다`;
-    nextButton.disabled=filled!==4;
-    sheet.querySelectorAll('.slot-button').forEach(slot=>slot.onclick=()=>{
-      const index=Number(slot.dataset.slot);
-      if(order[index]===null)return;
-      order[index]=null;
-      syncFour();
-    });
-  };
-  cards.forEach(card=>card.onclick=()=>{
-    const value=Number(card.dataset.result);
-    if(order.includes(value))return;
-    const empty=order.indexOf(null);
-    if(empty<0)return;
-    order[empty]=value;
-    syncFour();
-  });
-  nextButton.disabled=true;
-  nextButton.onclick=()=>{if(order.includes(null))return;sessionStorage.setItem('selectedNormalResults',JSON.stringify(order));go('result-01')};
-  syncFour();
-}
 if(s.kind==='ai-result-select'){
   const selected=[];
-  const cards=[...body.querySelectorAll('.result-thumb')];
-  const status=body.querySelector('.selection-line');
-  const sheet=body.querySelector('#printSheet');
+  const cards=[...body.querySelectorAll('.ai-result-card')];
+  const status=body.querySelector('.ai-selection-status');
+  const title=body.querySelector('#aiPickTitle');
+  const sheet=body.querySelector('#aiMiniSheet');
   const frame=sessionStorage.getItem('selectedFrame')||'frame-white';
   sheet.classList.add(frame);
-  const cellHtml=card=>{
-    const images=card.dataset.images.split('|');
-    return `<div class="print-cell ${images.length>1?'duo':''} ${card.classList.contains('costume')?'costume-cell':''}">${images.map(src=>`<img src="${src}" alt="선택한 인쇄 사진">`).join('')}</div>`;
-  };
-  const syncPicker=()=>{
+  const sync=()=>{
     cards.forEach(card=>{
       const value=Number(card.dataset.result),order=selected.indexOf(value);
       card.classList.toggle('selected',order>=0);
       card.querySelector('.pick-order').textContent=order>=0?String(order+1):'＋';
     });
-    sheet.classList.toggle('one',selected.length!==2);
     sheet.classList.toggle('two',selected.length===2);
-    const chosen=selected.map(value=>cards.find(card=>Number(card.dataset.result)===value)).filter(Boolean);
-    sheet.innerHTML=chosen.length?chosen.map(cellHtml).join(''):`<div class="print-cell print-empty">사진을 선택하면<br>인쇄 모습을 보여드려요</div>`;
-    sheet.insertAdjacentHTML('beforeend',`<span class="preview-caption">${selected.length===2?'4×6 · 위아래 2장':'6×4 · 한 장 크게'}</span>`);
-    status.textContent=`선택 ${selected.length} / 최대 2 · ${selected.length===2?'4×6 세로 용지 위아래 배치':selected.length===1?'6×4 가로 용지 한 장 크게 배치':'재생성 없이 선택한 결과를 인쇄합니다'}`;
+    title.textContent=selected.length?`${selected.length}장 인쇄 · ${selected.length===2?'위아래 배치':'한 장 크게 배치'}`:'인쇄할 결과를 1장 또는 2장 선택';
+    status.textContent=`선택 ${selected.length} / 최대 2 · 재생성 없이 선택한 결과를 사용합니다`;
     nextButton.disabled=selected.length===0;
   };
   cards.forEach(card=>card.onclick=()=>{
     const value=Number(card.dataset.result),at=selected.indexOf(value);
     if(at>=0)selected.splice(at,1);else if(selected.length<2)selected.push(value);
-    syncPicker();
+    sync();
   });
   nextButton.onclick=()=>{
     if(!selected.length)return;
     sessionStorage.setItem('selectedAiResults',JSON.stringify(selected));
     go('result-01');
   };
-  syncPicker();
+  sync();
 }
 if(s.kind==='progress')setTimeout(()=>{},0);
 }render();

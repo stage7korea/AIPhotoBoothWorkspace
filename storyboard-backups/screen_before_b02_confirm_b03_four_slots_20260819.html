@@ -337,8 +337,6 @@ html,body{background:transparent;color:var(--ink)}
 .result-thumb:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 48%,rgba(5,20,30,.78))}.result-thumb.selected{border-color:#238fcb;box-shadow:0 0 0 3px rgba(35,143,203,.18),0 10px 19px rgba(15,77,110,.18);transform:translateY(-2px)}.result-thumb.swap-ready{border-color:#f29a3f;box-shadow:0 0 0 3px rgba(242,154,63,.2),0 10px 19px rgba(15,77,110,.18)}
 .result-thumb .pick-order{position:absolute;z-index:3;right:7px;top:7px;display:grid;place-items:center;width:25px;height:25px;border-radius:50%;background:rgba(255,255,255,.92);color:#174765;font-size:12px;font-style:normal;box-shadow:0 5px 12px rgba(0,0,0,.18)}
 .result-thumb.selected .pick-order{background:#238fcb;color:#fff}.result-thumb .thumb-label{position:absolute;z-index:3;left:8px;right:38px;bottom:7px;color:#fff;font-size:8px;font-weight:900;text-align:left}
-.result-thumb.placed{display:none}
-.print-cell.slot-button{border:0;padding:0;cursor:pointer}.print-cell.empty-slot{display:grid;place-items:center;border:2px dashed rgba(48,91,105,.32);background:rgba(255,255,255,.48);color:#6c828b}.print-cell.empty-slot span{display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:#fff;color:#335d6b;font-size:10px;font-weight:900}.print-cell.empty-slot small{font-size:7px;font-weight:800}.slot-badge{position:absolute;z-index:5;left:5px;top:5px;display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:rgba(21,86,113,.88);color:#fff;font-size:8px;font-weight:900}
 .selection-line{margin:0;color:#62747d;font-size:8px;text-align:center}.next:disabled{opacity:.42;cursor:not-allowed;box-shadow:none}
 
 /* B04 — 6×4 가로 인화지 프레임과 5개가 겹쳐 보이는 순환형 커버플로우 */
@@ -382,7 +380,7 @@ html,body{background:transparent;color:var(--ink)}
 .decorate-workspace{display:grid;grid-template-rows:auto auto auto;justify-content:center;gap:7px;flex:1;min-height:0}.decorate-workspace>*{width:min(100%,450px);justify-self:center}
 .decorate-canvas{position:relative;aspect-ratio:6/4;overflow:hidden;border-radius:15px;background:#121a22;box-shadow:0 12px 25px rgba(10,39,53,.17)}
 .decorate-canvas .pair-shot{z-index:1}.decorate-overlay{position:absolute;z-index:5;inset:0;pointer-events:none}.decorate-overlay .ar-item{position:absolute;display:grid;place-items:center;text-shadow:0 2px 5px rgba(0,0,0,.34)}.decorate-overlay .headband{left:31%;top:7%;font-size:36px;transform:rotate(-8deg)}.decorate-overlay .phrase{left:50%;bottom:8%;transform:translateX(-50%);padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.88);color:#173d32;font-size:10px;font-weight:900;text-shadow:none;white-space:nowrap}.decorate-overlay .accent{right:10%;top:22%;font-size:26px}
-.decorate-photo-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.decorate-thumb{position:relative;overflow:hidden;aspect-ratio:6/4;border:2px solid transparent;border-radius:8px;background:#dfe5e2;padding:0;cursor:pointer}.decorate-thumb.active{border-color:#238fcb;box-shadow:0 0 0 3px rgba(35,143,203,.16)}.decorate-thumb b{position:absolute;z-index:5;right:4px;top:4px;display:grid;place-items:center;width:17px;height:17px;border-radius:50%;background:rgba(7,29,41,.76);color:#fff;font-size:7px}.decorate-thumb.active b{background:#238fcb}
+.decorate-photo-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding-left:24%}.decorate-thumb{position:relative;overflow:hidden;aspect-ratio:6/4;border:2px solid transparent;border-radius:8px;background:#dfe5e2;padding:0;cursor:pointer}.decorate-thumb.active{display:none}.decorate-thumb b{position:absolute;z-index:5;right:4px;top:4px;display:grid;place-items:center;width:17px;height:17px;border-radius:50%;background:rgba(7,29,41,.76);color:#fff;font-size:7px}
 .sticker-flow-list{display:grid;grid-template-rows:repeat(3,minmax(0,1fr));gap:5px;min-height:0}.sticker-flow-row{display:grid;grid-template-columns:56px minmax(0,1fr);align-items:center;gap:4px;min-height:0;border-top:1px solid rgba(26,67,81,.13)}.sticker-flow-row>strong{color:#244854;font-size:9px}.sticker-flow{position:relative;height:52px;overflow:hidden;perspective:500px}.sticker-card{position:absolute;left:50%;top:5px;width:52px;height:42px;display:grid;place-items:center;border:1px solid rgba(25,64,80,.15);border-radius:10px;background:#fff;color:#153b47;font-size:16px;font-weight:900;box-shadow:0 5px 12px rgba(13,51,69,.12);transform:translateX(-50%);transition:.28s cubic-bezier(.2,.78,.25,1);cursor:pointer}.sticker-card[data-distance='-1']{transform:translateX(calc(-50% - 48px)) rotateY(20deg) scale(.88);opacity:.78;z-index:2}.sticker-card[data-distance='1']{transform:translateX(calc(-50% + 48px)) rotateY(-20deg) scale(.88);opacity:.78;z-index:2}.sticker-card[data-distance='-2']{transform:translateX(calc(-50% - 84px)) rotateY(28deg) scale(.7);opacity:.42}.sticker-card[data-distance='2']{transform:translateX(calc(-50% + 84px)) rotateY(-28deg) scale(.7);opacity:.42}.sticker-card.selected{z-index:5;border-color:#238fcb;background:#e8f6fc;box-shadow:0 0 0 2px rgba(35,143,203,.17),0 7px 15px rgba(13,51,69,.16)}.sticker-card small{font-size:7px}
 
 /* 대기 홍보 영상 — 세로 화면 전체를 하나의 홍보 화면으로 사용 */
@@ -434,7 +432,7 @@ case'pickup':html+=`<div class="pickup"><div><div class="icon">⇩</div><strong>
 case'exit':html=`<div class="goodbye"><div><div class="mark">✓</div><h2>${s.headline}</h2><p>${s.copy.join('<br>')}</p></div></div>`;break;
 default:html+=tiles(s.copy,0)}
 const actionLabels={notice:'안내 확인','ai-result-select':'선택 완료',layout:'선택 완료',decorate:'꾸미기 완료',frame:'프레임 확정'};
-const actionLabel=(s.kind==='select'&&s.variant==='normal')?'선택 완료':actionLabels[s.kind];
+const actionLabel=actionLabels[s.kind];
 const foot=document.querySelector('.foot');
 const nextButton=foot.querySelector('.next');
 body.classList.toggle('welcome-mode',s.kind==='welcome');
@@ -521,24 +519,12 @@ if(s.kind==='select'){
 const required=s.variant==='normal'?4:2;
 const selected=new Set();
 const status=body.querySelector('.selection-status');
-if(s.variant==='normal'){
-  nextButton.disabled=true;
-  nextButton.onclick=()=>{
-    if(selected.size!==required)return;
-    sessionStorage.setItem('selectedNormalCandidates',JSON.stringify([...selected]));
-    location.href='screen.html?id=normal-03';
-  };
-}
 body.querySelectorAll('.photo').forEach(photo=>photo.onclick=()=>{
 const index=Number(photo.dataset.index);
 if(selected.has(index))selected.delete(index);else if(selected.size<required)selected.add(index);
 body.querySelectorAll('.photo').forEach(card=>{const cardIndex=Number(card.dataset.index);const order=[...selected].indexOf(cardIndex);card.classList.toggle('selected',order>=0);card.querySelector('b').textContent=order>=0?order+1:'＋'});
-status.textContent=`선택 ${selected.size} / ${required}${s.variant==='normal'?(selected.size===required?' · 선택 완료를 눌러 AR 꾸미기로 이동합니다.':' · 8장 중 네 장을 선택해 주세요.'):' · 선택한 2장만 업로드됩니다.'}`;
-if(s.variant==='normal'){
-  nextButton.disabled=selected.size!==required;
-  if(selected.size===required)sessionStorage.setItem('selectedNormalCandidates',JSON.stringify([...selected]));
-  else sessionStorage.removeItem('selectedNormalCandidates');
-}else if(selected.size===required){setTimeout(()=>{location.href='screen.html?id=ai-04'},420)}
+status.textContent=`선택 ${selected.size} / ${required}${s.variant==='normal'?' · 8장 중 네 장을 모두 고르면 AR 꾸미기로 이동합니다.':' · 선택한 2장만 업로드됩니다.'}`;
+if(selected.size===required){if(s.variant==='normal')sessionStorage.setItem('selectedNormalCandidates',JSON.stringify([...selected]));setTimeout(()=>{location.href=`screen.html?id=${s.variant==='normal'?'normal-03':'ai-04'}`},420)}
 });
 }
 
@@ -610,54 +596,42 @@ if(s.kind==='frame'){
   syncFrame();
 }
 if(s.kind==='layout'&&s.variant==='normal'){
-  const order=[null,null,null,null];
+  const order=[1,2,3,4];
   const cards=[...body.querySelectorAll('.result-thumb')];
   const status=body.querySelector('.selection-line');
   const sheet=body.querySelector('#printSheet');
   const frame=sessionStorage.getItem('selectedFrame')||'frame-white';
   const selectedIndexes=JSON.parse(sessionStorage.getItem('selectedNormalCandidates')||'[0,1,2,3]');
   const chosenPairs=selectedIndexes.slice(0,4).map(index=>NORMAL_PAIRS[index]||NORMAL_PAIRS[0]);
-  body.querySelector('.picker-head span').textContent='사진을 누르면 다음 빈칸에 배치';
+  let swapFrom=null;
   sheet.classList.add(frame);
   cards.forEach((card,index)=>{
     card.dataset.pairIndex=String(index);
-    card.classList.remove('selected','swap-ready');
-    card.innerHTML=pairMarkup(chosenPairs[index],`선택한 일반 사진 ${index+1}`)+`<span class="thumb-label">사진 ${index+1}</span><b class="pick-order">＋</b>`;
+    card.innerHTML=pairMarkup(chosenPairs[index],`선택한 일반 사진 ${index+1}`)+`<span class="thumb-label">사진 ${index+1}</span><b class="pick-order">${index+1}</b>`;
   });
   const cardByValue=value=>cards.find(card=>Number(card.dataset.result)===value);
-  const cellHtml=(value,index)=>{
-    if(value===null)return `<button class="print-cell slot-button empty-slot" type="button" data-slot="${index}"><span>${index+1}</span><small>사진 선택</small></button>`;
-    const card=cardByValue(value);
-    return `<button class="print-cell slot-button" type="button" data-slot="${index}" aria-label="${index+1}번 배치 취소">${pairMarkup(chosenPairs[Number(card.dataset.pairIndex)],'일반 4컷 인쇄 사진')}<span class="slot-badge">${index+1}</span></button>`;
-  };
+  const cellHtml=card=>`<div class="print-cell">${pairMarkup(chosenPairs[Number(card.dataset.pairIndex)],'일반 4컷 인쇄 사진')}</div>`;
   const syncFour=()=>{
     cards.forEach(card=>{
       const value=Number(card.dataset.result),position=order.indexOf(value);
-      card.classList.toggle('placed',position>=0);
-      card.querySelector('.pick-order').textContent='＋';
+      card.classList.add('selected');
+      card.classList.toggle('swap-ready',swapFrom===value);
+      card.querySelector('.pick-order').textContent=String(position+1);
     });
     sheet.className=`print-sheet four ${frame}`;
-    sheet.innerHTML=order.map(cellHtml).join('')+'<span class="preview-caption">6×4 · 빈칸부터 순서대로 배치</span>';
-    const filled=order.filter(value=>value!==null).length;
-    status.textContent=filled===4?'사진 4장 배치 완료 · 선택 완료를 눌러 주세요':`배치 ${filled} / 4 · 아래 사진을 누르면 다음 빈칸에 들어갑니다`;
-    nextButton.disabled=filled!==4;
-    sheet.querySelectorAll('.slot-button').forEach(slot=>slot.onclick=()=>{
-      const index=Number(slot.dataset.slot);
-      if(order[index]===null)return;
-      order[index]=null;
-      syncFour();
-    });
+    sheet.innerHTML=order.map(value=>cellHtml(cardByValue(value))).join('')+'<span class="preview-caption">6×4 · 4컷 가로 배치</span>';
+    status.textContent=swapFrom===null?'사진 4장 모두 배치됨 · 두 사진을 차례로 누르면 위치가 바뀝니다':`${order.indexOf(swapFrom)+1}번 사진 선택됨 · 바꿀 사진을 눌러 주세요`;
   };
   cards.forEach(card=>card.onclick=()=>{
     const value=Number(card.dataset.result);
-    if(order.includes(value))return;
-    const empty=order.indexOf(null);
-    if(empty<0)return;
-    order[empty]=value;
-    syncFour();
+    if(swapFrom===null){swapFrom=value;syncFour();return}
+    if(swapFrom===value){swapFrom=null;syncFour();return}
+    const from=order.indexOf(swapFrom),to=order.indexOf(value);
+    [order[from],order[to]]=[order[to],order[from]];
+    swapFrom=null;syncFour();
   });
-  nextButton.disabled=true;
-  nextButton.onclick=()=>{if(order.includes(null))return;sessionStorage.setItem('selectedNormalResults',JSON.stringify(order));go('result-01')};
+  nextButton.disabled=false;
+  nextButton.onclick=()=>{sessionStorage.setItem('selectedNormalResults',JSON.stringify(order));go('result-01')};
   syncFour();
 }
 if(s.kind==='ai-result-select'){
