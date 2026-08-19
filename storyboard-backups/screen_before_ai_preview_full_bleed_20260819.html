@@ -321,13 +321,11 @@ html,body{background:transparent;color:var(--ink)}
 .print-preview-zone{display:grid;place-items:center;min-height:0;padding:8px 10px;border:1px solid rgba(20,66,88,.12);border-radius:19px;background:linear-gradient(145deg,#dbe9ed,#f8fbfb);box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
 .print-sheet{--sheet-frame:#fff;position:relative;display:grid;overflow:hidden;width:min(92%,440px);aspect-ratio:6/4;padding:10px;gap:6px;background:var(--sheet-frame);border:1px solid rgba(14,47,65,.18);box-shadow:0 15px 34px rgba(13,55,79,.21);transition:width .28s ease,aspect-ratio .28s ease,transform .28s ease}
 .print-sheet.one{aspect-ratio:6/4;width:min(92%,440px);grid-template-rows:1fr}
-.print-sheet.two{aspect-ratio:4/6;width:min(54%,260px);grid-template-rows:auto auto;align-content:center}
-.print-sheet.two .print-cell{aspect-ratio:6/4}
+.print-sheet.two{aspect-ratio:4/6;width:min(54%,260px);grid-template-rows:1fr 1fr}
 .print-sheet.four{aspect-ratio:6/4;width:min(92%,440px);grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:5px}
 .print-sheet.frame-white{--sheet-frame:#fff}.print-sheet.frame-black{--sheet-frame:#111820}.print-sheet.frame-gold{--sheet-frame:#c6a459}.print-sheet.frame-pastel{--sheet-frame:#cfe5e2}.print-sheet.frame-minimal{--sheet-frame:#e8e7e2}
 .print-cell{position:relative;min-height:0;overflow:hidden;background:linear-gradient(145deg,#bac9c6,#7c9590)}
 .print-cell img{width:100%;height:100%;display:block;object-fit:cover}.print-cell.costume-cell{background:#ececea}.print-cell.costume-cell img{object-fit:contain;object-position:center top;background:#ececea}
-.print-picker[data-picker="ai"] .print-cell.costume-cell{background:#cfd7d8}.print-picker[data-picker="ai"] .print-cell.costume-cell img{object-fit:cover;object-position:center 8%;background:#cfd7d8}
 .print-cell.duo{display:grid;grid-template-columns:1fr 1fr}.print-cell.duo img{min-width:0}
 .print-empty{display:grid;place-items:center;color:#6c7d85;font-size:11px;font-weight:900;letter-spacing:-.02em;text-align:center}
 .print-empty:before{content:'6 × 4';display:grid;place-items:center;width:60px;height:34px;margin-bottom:5px;border:1px dashed #80959d;border-radius:8px;color:#58717a;font:800 13px Georgia,serif}
