@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI 포토부스 UI 시안 비교 · 2026-08-18</title>
+<style>
+:root{
+  --bg:#f3f9fb;--paper:#fff;--ink:#10223b;--muted:#68798d;--line:#dce8ec;
+  --key:#249df0;--mint:#dff8f3;--pink:#ffe6ec;--purple:#7d74f5;--good:#12a08a;--bad:#e2657f;
+}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 6% 2%,rgba(84,211,202,.18),transparent 26%),radial-gradient(circle at 94% 6%,rgba(255,113,141,.14),transparent 24%),linear-gradient(180deg,#f9fdfe,#eef7fa);color:var(--ink);font-family:Inter,Pretendard,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;padding:26px 22px 60px}
+.wrap{max-width:1500px;margin:0 auto}
+header.top{background:rgba(255,255,255,.9);border:1px solid #fff;border-radius:26px;padding:22px 26px;box-shadow:0 20px 50px rgba(41,84,115,.1);margin-bottom:22px}
+.eyebrow{display:inline-block;background:#e4f5fb;color:#1572af;font-size:9px;font-weight:900;letter-spacing:.14em;padding:6px 10px;border-radius:999px;margin:0 0 9px}
+h1{margin:0;font-size:32px;letter-spacing:-.05em;font-weight:900}
+header.top p{margin:9px 0 0;color:var(--muted);font-size:12.5px;line-height:1.6;max-width:900px}
+section{margin:30px 0 0}
+h2{font-size:20px;letter-spacing:-.04em;margin:0 0 4px;font-weight:900}
+.sub{color:var(--muted);font-size:12px;margin:0 0 16px}
+.quote{display:inline-block;background:#fff3f6;color:#b04a63;border:1px solid #ffd7e0;font-size:11px;font-weight:800;padding:5px 10px;border-radius:8px;margin-left:8px;vertical-align:2px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.opt{background:rgba(255,255,255,.94);border:1px solid #fff;border-radius:22px;padding:16px;box-shadow:0 14px 32px rgba(35,75,102,.09);display:flex;flex-direction:column;gap:12px}
+.opt.reco{outline:3px solid rgba(36,157,240,.28)}
+.opt h3{margin:0;font-size:14px;font-weight:900;letter-spacing:-.02em;display:flex;align-items:center;gap:7px}
+.badge{font-size:9px;font-weight:900;padding:4px 8px;border-radius:999px;background:var(--key);color:#fff}
+.badge.g{background:#e8f7f4;color:#0d8570}
+.desc{margin:0;color:#5d6f84;font-size:11.5px;line-height:1.65}
+ul.pm{margin:0;padding:0;list-style:none;font-size:11px;line-height:1.6}
+ul.pm li{display:flex;gap:6px;margin-bottom:3px}
+ul.pm li b{flex:0 0 auto;font-size:10px;font-weight:900}
+.p b{color:var(--good)}.m b{color:var(--bad)}
+
+/* ===== 미니 키오스크 목업 ===== */
+.k{width:100%;max-width:320px;margin:0 auto;aspect-ratio:4/6;background:linear-gradient(180deg,#fbfeff,#f1f9fb);border:6px solid #23303f;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;position:relative;font-size:10px}
+.k .live{position:relative;width:100%;flex:0 0 auto;overflow:hidden;background-size:cover;background-position:center}
+.k .live.r169{aspect-ratio:16/9}
+.k .live.r46{flex:1 1 auto;aspect-ratio:auto}
+.k .live::before{content:"● LIVE";position:absolute;z-index:6;left:7px;top:7px;background:rgba(13,31,49,.7);color:#fff;font-size:7px;font-weight:800;padding:3px 7px;border-radius:999px}
+.k .live::after{content:"설정 완료";position:absolute;z-index:6;right:7px;top:7px;background:linear-gradient(135deg,#24a8f3,#397feb);color:#fff;font-size:7px;font-weight:800;padding:4px 8px;border-radius:7px}
+.k .figure{position:absolute;left:50%;bottom:0;height:104%;transform:translateX(-50%);z-index:3}
+.k .figure img{height:100%;display:block;filter:drop-shadow(0 8px 12px rgba(8,23,38,.25))}
+.k .facehole{position:absolute;z-index:4;border-radius:50%;border:2px dashed rgba(255,255,255,.95);box-shadow:0 0 0 3px rgba(36,157,240,.25),inset 0 0 12px rgba(0,0,0,.25);background:radial-gradient(circle at 50% 38%,rgba(255,255,255,.30),rgba(36,157,240,.12));backdrop-filter:blur(1px)}
+.k .facehole b{position:absolute;left:50%;top:-13px;transform:translateX(-50%);background:rgba(13,31,49,.78);color:#fff;font-size:6px;font-weight:800;padding:2px 5px;border-radius:4px;white-space:nowrap}
+.k .safe{position:absolute;inset:0;z-index:5;pointer-events:none}
+.k .safe i{position:absolute;top:0;bottom:0;width:calc(50% - 33.5%);background:rgba(7,18,30,.62);backdrop-filter:blur(1px)}
+.k .safe i:first-child{left:0;border-right:1px dashed rgba(255,255,255,.75)}
+.k .safe i:last-child{right:0;border-left:1px dashed rgba(255,255,255,.75)}
+.k .safe u{position:absolute;left:50%;top:6px;transform:translateX(-50%);background:rgba(13,31,49,.72);color:#fff;font-size:6px;font-weight:800;padding:2px 6px;border-radius:4px;text-decoration:none;white-space:nowrap}
+.k .resultcard{position:absolute;z-index:6;right:8px;bottom:8px;width:26%;aspect-ratio:4/6;border:3px solid #fff;border-radius:4px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.3);background-size:cover;background-position:center}
+.k .resultcard span{position:absolute;left:0;top:0;background:rgba(13,31,49,.76);color:#fff;font-size:5.5px;font-weight:800;padding:2px 4px}
+
+/* 오버레이형 설정 */
+.k .overlay{position:absolute;z-index:7;left:0;right:0;bottom:0;background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.95) 22%);backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,.9);padding:8px 9px 10px;display:flex;flex-direction:column;gap:7px}
+
+/* 상태/인물 */
+.k .persons{display:flex;gap:5px;align-items:center}
+.k .persons>em{font-style:normal;color:#6b7f93;font-size:6.5px;font-weight:900;letter-spacing:.06em;margin-right:2px}
+.k .pchip{width:34px;height:40px;border-radius:9px;border:2px solid rgba(255,255,255,.95);background:linear-gradient(145deg,#e4f6fb,#c7e9ef);position:relative;overflow:hidden;box-shadow:0 6px 13px rgba(34,73,101,.1);flex:0 0 auto}
+.k .pchip img{position:absolute;left:50%;top:2px;transform:translateX(-50%);height:78%}
+.k .pchip u{position:absolute;left:0;right:0;bottom:0;background:rgba(255,255,255,.92);color:#33485f;font-size:5px;font-weight:800;text-align:center;text-decoration:none;padding:1px 0;overflow:hidden;white-space:nowrap}
+.k .pchip s{position:absolute;right:2px;top:2px;width:11px;height:11px;border-radius:3px;background:var(--key);color:#fff;font-size:6px;font-weight:900;display:grid;place-items:center;text-decoration:none}
+.k .pchip.on{border-color:#51baf0;box-shadow:0 0 0 3px rgba(36,157,240,.2)}
+
+/* 세그먼트형 인물 */
+.k .seg{display:flex;background:#eaf4f8;border-radius:11px;padding:3px;gap:3px}
+.k .seg button{flex:1;border:0;background:transparent;font:inherit;font-size:8px;font-weight:900;color:#6b7f93;padding:6px 0;border-radius:8px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.k .seg button small{font-size:6px;font-weight:700;color:#8b9cae}
+.k .seg button.on{background:#fff;color:#147db7;box-shadow:0 4px 10px rgba(35,75,102,.12)}
+.k .seg button.on small{color:#4ea9dd}
+
+/* 탭 */
+.k .tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+.k .tab{border:1px solid rgba(255,255,255,.95);background:rgba(255,255,255,.9);border-radius:10px;padding:5px 2px;text-align:center;box-shadow:0 5px 12px rgba(35,75,102,.07)}
+.k .tab b{display:block;font-size:7.5px;font-weight:900}
+.k .tab small{display:block;font-size:5.5px;color:#7d8ea0;margin-top:1px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.k .tab.on{border-color:#60c4f2;background:linear-gradient(145deg,#e8f9ff,#dcf5fb);color:#147db7;box-shadow:0 0 0 3px rgba(36,157,240,.12)}
+.k .tab i{display:block;font-size:11px;font-style:normal;line-height:1.1}
+
+/* 필/아이콘 탭 */
+.k .pills{display:flex;gap:4px;overflow:hidden}
+.k .pill{flex:1;border-radius:999px;background:#eef6f9;border:1px solid #e0edf2;font-size:7.5px;font-weight:900;color:#67798c;padding:6px 0;text-align:center}
+.k .pill.on{background:linear-gradient(135deg,#24a8f3,#3f8bef);color:#fff;border-color:transparent;box-shadow:0 6px 13px rgba(35,126,202,.28)}
+
+/* 스텝바 */
+.k .steps{display:flex;align-items:center;gap:2px}
+.k .step{flex:1;text-align:center;position:relative}
+.k .step em{display:block;width:17px;height:17px;margin:0 auto 2px;border-radius:50%;background:#e6f0f5;color:#7d8ea0;font-size:7px;font-weight:900;line-height:17px;font-style:normal}
+.k .step b{font-size:6.5px;font-weight:900;color:#8496a7}
+.k .step.done em{background:#12a08a;color:#fff}
+.k .step.done b{color:#0d8570}
+.k .step.on em{background:var(--key);color:#fff;box-shadow:0 0 0 3px rgba(36,157,240,.2)}
+.k .step.on b{color:#147db7}
+.k .step:not(:last-child):after{content:"";position:absolute;top:8px;left:calc(50% + 12px);right:calc(-50% + 12px);height:2px;background:#e0ebf1}
+.k .step.done:not(:last-child):after{background:#9fe0d4}
+
+/* 세로 레일 */
+.k .split{flex:1;display:grid;grid-template-columns:44px 1fr;min-height:0}
+.k .rail{background:rgba(244,250,252,.95);border-right:1px solid var(--line);display:flex;flex-direction:column;gap:3px;padding:5px 4px}
+.k .rail div{border-radius:9px;padding:5px 0;text-align:center;font-size:6.5px;font-weight:900;color:#7d8ea0}
+.k .rail div i{display:block;font-size:12px;font-style:normal;line-height:1.2}
+.k .rail div.on{background:linear-gradient(135deg,#24a8f3,#3f8bef);color:#fff;box-shadow:0 5px 12px rgba(35,126,202,.25)}
+
+/* 콘텐츠 영역 */
+.k .panel{flex:1 1 auto;min-height:0;padding:7px 9px 9px;display:flex;flex-direction:column;gap:5px;overflow:hidden}
+.k .ptitle{display:flex;justify-content:space-between;align-items:center;font-size:8px}
+.k .ptitle b{font-weight:900}
+.k .ptitle span{color:#7d8ea0;font-weight:800}
+.k .strip{display:flex;gap:5px;overflow:hidden}
+.k .strip .t{flex:0 0 auto;width:44px;aspect-ratio:1;border-radius:9px;background-size:cover;background-position:center;border:2px solid rgba(255,255,255,.9);box-shadow:0 5px 11px rgba(35,75,102,.12);position:relative}
+.k .strip .t.on{border-color:#4fb9ee;box-shadow:0 0 0 3px rgba(36,157,240,.22)}
+.k .strip .t u,.k .grid2 .t u{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(6,20,33,.8));color:#fff;font-size:5.5px;font-weight:800;text-align:center;text-decoration:none;padding:5px 1px 2px;border-radius:0 0 6px 6px;overflow:hidden;white-space:nowrap}
+.k .grid2{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:5px}
+.k .grid2 .t{width:auto;aspect-ratio:1;border-radius:9px;background-size:cover;background-position:center;border:2px solid rgba(255,255,255,.9);position:relative;box-shadow:0 5px 11px rgba(35,75,102,.12)}
+.k .dots{display:flex;gap:3px;justify-content:center;margin-top:2px}
+.k .dots i{width:4px;height:4px;border-radius:50%;background:#cfdde5}
+.k .dots i.on{background:var(--key);width:11px;border-radius:999px}
+.k .flow3{position:relative;height:56px}
+.k .flow3 .t{position:absolute;top:50%;left:50%;width:40px;aspect-ratio:1;border-radius:9px;background-size:cover;background-position:center;border:2px solid rgba(255,255,255,.92);box-shadow:0 6px 13px rgba(35,75,102,.14)}
+.k .cap{font-size:6.5px;color:#8496a7;font-weight:800;text-align:center}
+.k .tags{display:flex;flex-wrap:wrap;gap:3px}
+.k .tags span{background:rgba(255,255,255,.85);border:1px solid var(--line);border-radius:999px;font-size:6px;font-weight:800;color:#4c6076;padding:3px 6px}
+.note{background:#f4fbfd;border:1px dashed #b9dced;border-radius:14px;padding:11px 13px;color:#3f6a86;font-size:11.5px;line-height:1.7;margin-top:14px}
+.note b{color:#14618f}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <p class="eyebrow">AI PHOTOBOOTH · UI 시안 비교 · 2026-08-18</p>
+  <h1>3개 코멘트에 대한 설계 안 비교</h1>
+  <p>스크린샷에 적어주신 3가지 요청(① 라이브 비율 · ② 설정 영역 시인성 · ③ 배경 테마 영역 축소)에 대해 각각 3개 안을 만들었습니다.
+  아래 목업은 실제로 잘라낸 의상 누끼 이미지와 배경 이미지를 그대로 써서 그렸습니다.
+  <b>얼굴 자리(점선 원)</b>는 촬영된 실제 얼굴 누끼가 합성될 위치이며, 의상별 얼굴 좌표는 <code>costumes.json</code>에 자동 추출해 저장했습니다.</p>
+</header>
+
+<!-- ============ 1 ============ -->
+<section>
+  <h2>① 라이브 화면 비율<span class="quote">"비율 유지 더 효과적으로 보일 방법 제시"</span></h2>
+  <p class="sub">현재 문제 — 라이브는 16:9인데 최종 인화물은 4:6(세로)입니다. 보는 화면과 나오는 사진의 비율이 달라서 사용자가 결과를 예측할 수 없고, 세로 화면에 가로 영상이 들어가 위아래가 비어 보입니다.</p>
+  <div class="opts">
+
+    <div class="opt">
+      <h3>A안 · 16:9 유지 + 4:6 세이프존 <span class="badge g">비율 유지</span></h3>
+      <div class="k">
+        <div class="live r169" id="l1a">
+          <div class="figure" data-fig></div>
+          <div class="facehole" data-face></div>
+          <div class="safe"><i></i><u>실제 인화 영역 4:6</u><i></i></div>
+        </div>
+        <div style="padding:8px 9px 0"><div class="persons" data-persons></div></div>
+        <div style="padding:7px 9px 0"><div class="tabs" data-tabs data-icon></div></div>
+        <div class="panel">
+          <div class="ptitle"><b>배경 테마</b><span>제주 돌담·유채꽃</span></div>
+          <div class="strip" data-bgstrip data-label></div>
+          <div class="cap" style="margin-top:auto">카메라 원본 16:9는 그대로 두고, 잘려나갈 좌우를 어둡게 덮어 결과를 미리 보여줍니다.</div>
+        </div>
+      </div>
+      <ul class="pm">
+        <li class="p"><b>장점</b><span>카메라 비율을 손대지 않아 개발 리스크 0. 잘리는 범위를 사용자가 즉시 이해.</span></li>
+        <li class="m"><b>단점</b><span>실사용 영역이 화면의 절반 정도라 인물이 작게 보임.</span></li>
+      </ul>
+    </div>
+
+    <div class="opt reco">
+      <h3>B안 · 4:6 풀블리드 라이브 <span class="badge">추천</span></h3>
+      <div class="k">
+        <div class="live r46" id="l1b">
+          <div class="figure" data-fig></div>
+          <div class="facehole" data-face></div>
+          <div class="overlay">
+            <div class="tabs" data-tabs></div>
+            <div class="strip" data-bgstrip></div>
+          </div>
+        </div>
+      </div>
+      <ul class="pm">
+        <li class="p"><b>장점</b><span>보는 화면 = 나오는 사진. 인물이 가장 크고 몰입감 최고. 설정은 하단 글래스 오버레이라 화면 손실 없음.</span></li>
+        <li class="m"><b>단점</b><span>카메라 16:9 원본을 세로로 크롭해야 함(중앙 크롭 처리 필요). 설정 목록이 짧아짐.</span></li>
+      </ul>
+    </div>
+
+    <div class="opt">
+      <h3>C안 · 16:9 + 실시간 결과 카드</h3>
+      <div class="k">
+        <div class="live r169" id="l1c">
+          <div class="figure" data-fig></div>
+          <div class="facehole" data-face></div>
+          <div class="resultcard" data-result><span>AI 결과</span></div>
+        </div>
+        <div style="padding:8px 9px 0"><div class="persons" data-persons></div></div>
+        <div style="padding:7px 9px 0"><div class="tabs" data-tabs data-icon></div></div>
+        <div class="panel">
+          <div class="ptitle"><b>배경 테마</b><span>제주 돌담·유채꽃</span></div>
+          <div class="strip" data-bgstrip data-label></div>
+          <div class="cap" style="margin-top:auto">라이브는 넓게 두고, 우측 하단에 프레임까지 적용된 4:6 결과 카드를 겹쳐 보여줍니다.</div>
+        </div>
+      </div>
+      <ul class="pm">
+        <li class="p"><b>장점</b><span>넓은 라이브와 결과 예측을 동시에. 프레임·화풍 변화가 카드에 바로 보여 선택 재미가 큼.</span></li>
+        <li class="m"><b>단점</b><span>시선이 두 곳으로 나뉨. 결과 카드가 작아 세부 확인은 어려움.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section>
+  <h2>② 설정 영역 UI<span class="quote">"효과적 눈에 잘 띄는 방향으로 UI 설계"</span></h2>
+  <p class="sub">현재 문제 — 인물 선택 / 상태 해시태그 / 프레임 미리보기 / 5개 탭이 서로 다른 밴드에 흩어져 있어 "지금 뭘 고르는 중인지"가 안 보입니다. 글자도 6~8px로 키오스크에서 읽기 어렵습니다.</p>
+  <div class="opts">
+
+    <div class="opt reco">
+      <h3>A안 · 인물 세그먼트 + 큰 아이콘 탭 <span class="badge">추천</span></h3>
+      <div class="k">
+        <div class="live r169" id="l2a"><div class="figure" data-fig></div><div class="facehole" data-face></div></div>
+        <div style="padding:8px 9px 0"><div class="seg">
+          <button class="on">인물 1<small>조선 무관</small></button>
+          <button>인물 2<small>고려 귀족</small></button>
+          <button>인물 3<small>미설정</small></button>
+        </div></div>
+        <div style="padding:7px 9px 0"><div class="tabs" data-tabs data-icon></div></div>
+        <div class="panel">
+          <div class="ptitle"><b>배경 테마</b><span>제주 돌담·유채꽃</span></div>
+          <div class="strip" data-bgstrip></div>
+        </div>
+      </div>
+      <ul class="pm">
+        <li class="p"><b>장점</b><span>"누구를" → "무엇을" 두 단계가 위아래로 명확. 인물 칩에 현재 의상명이 붙어 3인 상태가 한눈에. 아이콘으로 원거리 인지 향상.</span></li>
+        <li class="m"><b>단점</b><span>세로 공간을 약 12% 더 씁니다(→ ③안으로 회수).</span></li>
+      </ul>
+    </div>
+
+    <div class="opt">
+      <h3>B안 · 좌측 세로 아이콘 레일</h3>
+      <div class="k">
+        <div class="live r169" id="l2b"><div class="figure" data-fig></div><div class="facehole" data-face></div></div>
+        <div class="split">
+          <div class="rail" data-rail></div>
+          <div class="panel">
+            <div class="ptitle"><b>배경 테마</b><span>제주</span></div>
+            <div class="grid2" data-bggrid></div>
+            <div class="persons" style="margin-top:auto" data-persons><em>인물</em></div>
+          </div>
+        </div>
+      </div>
+      <ul class="pm">
+        <li class="p"><b>장점</b><span>세로 공간을 거의 안 씁니다. 카테고리 전환이 항상 같은 자리라 손이 기억함.</span></li>
+        <li class="m"><b>단점</b><span>가로 폭 44px을 상시 점유. 4:6 좁은 화면에서 콘텐츠가 눌림.</span></li>
+      </ul>
+    </div>
+
+    <div class="opt">
+      <h3>C안 · 진행형 스텝 바</h3>
+      <div class="k">
+        <div class="live r169" id="l2c"><div class="figure" data-fig></div><div class="facehole" data-face></div></div>
+        <div style="padding:9px 9px 0"><div class="steps">
+          <div class="step done"><em>✓</em><b>배경</b></div>
+          <div class="step done"><em>✓</em><b>화풍</b></div>
+          <div class="step on"><em>3</em><b>의상</b></div>
+          <div class="step"><em>4</em><b>얼굴</b></div>
+          <div class="step"><em>5</em><b>프레임</b></div>
+        </div></div>
+        <div class="panel">
+          <div class="ptitle"><b>의상 스타일 · 인물 1</b><span>조선 무관</span></div>
+          <div class="strip" data-outfitstrip></div>
+          <div class="persons" data-persons><em>인물</em></div>
+        </div>
+      </div>
+      <ul class="pm">
+        <li class="p"><b>장점</b><span>처음 쓰는 사용자도 "몇 개 남았는지" 알 수 있어 이탈이 줄고 회전율이 올라감. 무인 키오스크에 가장 적합.</span></li>
+        <li class="m"><b>단점</b><span>자유롭게 되돌아가 바꾸는 재미는 줄어듦(스텝 클릭으로 보완 가능).</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section>
+  <h2>③ 배경 테마(선택 목록) 영역<span class="quote">"영역 줄이기 · 이쁘게 해야 한다"</span></h2>
+  <p class="sub">현재 문제 — 3D 커버플로우가 세로 높이를 크게 먹는데, 정작 카드 안 썸네일은 작고 좌우 카드는 흐려서 실제로 보이는 선택지는 1~2개뿐입니다.</p>
+  <div class="opts">
+
+    <div class="opt reco">
+      <h3>A안 · 가로 스크롤 썸네일 스트립 <span class="badge">추천</span></h3>
+      <div class="k" style="max-width:300px">
+        <div class="live r169" id="l3a"><div class="figure" data-fig></div><div class="facehole" data-face></div></div>
+        <div style="padding:7px 9px 0"><div class="tabs" data-tabs data-icon></div></div>
+        <div class="panel">
+          <div class="ptitle"><b>배경 테마</b><span>제주 돌담·유채꽃</span></div>
+          <div class="strip" data-bgstrip data-label></div>
+          <div class="cap" style="margin-top:auto">높이 ≈ 56px · 한 번에 5개가 또렷하게 보입니다</div>
+        </div>
+      </div>
+      <ul class="pm">
+        <li class="p"><b>장점</b><span>현재 대비 세로 높이 약 45% 절감. 모든 썸네일이 100% 선명, 라벨은 이미지 위에 얹어 공간 0.</span></li>
+        <li class="m"><b>단점</b><span>3D 커버플로우 특유의 "고급스러운" 연출은 사라짐.</span></li>
+      </ul>
+    </div>
+
+    <div class="opt">
+      <h3>B안 · 커버플로우 축소 유지</h3>
+      <div class="k" style="max-width:300px">
+        <div class="live r169" id="l3b"><div class="figure" data-fig></div><div class="facehole" data-face></div></div>
+        <div style="padding:7px 9px 0"><div class="tabs" data-tabs data-icon></div></div>
+        <div class="panel">
+          <div class="ptitle"><b>배경 테마</b><span>제주 돌담·유채꽃</span></div>
+          <div class="flow3" data-flow></div>
+          <div class="cap" style="margin-top:auto">높이 ≈ 70px · 중앙 카드만 라벨 표시</div>
+        </div>
+      </div>
+      <ul class="pm">
+        <li class="p"><b>장점</b><span>기존 코드/연출 그대로. 회전 각도만 줄여 시인성 개선.</span></li>
+        <li class="m"><b>단점</b><span>절감 폭이 가장 작고, 좌우 카드 가독성 문제는 남음.</span></li>
+      </ul>
+    </div>
+
+    <div class="opt">
+      <h3>C안 · 3열 그리드 + 페이지 도트</h3>
+      <div class="k" style="max-width:300px">
+        <div class="live r169" id="l3c"><div class="figure" data-fig></div><div class="facehole" data-face></div></div>
+        <div style="padding:7px 9px 0"><div class="tabs" data-tabs data-icon></div></div>
+        <div class="panel">
+          <div class="ptitle"><b>배경 테마</b><span>제주 돌담·유채꽃</span></div>
+          <div class="grid2" data-bggrid data-label></div>
+          <div class="dots"><i class="on"></i><i></i></div>
+          <div class="cap" style="margin-top:auto">높이 ≈ 96px · 6개를 크게 한 번에</div>
+        </div>
+      </div>
+      <ul class="pm">
+        <li class="p"><b>장점</b><span>썸네일이 가장 커서 배경 분위기를 제대로 판단 가능. 선택 실수가 줄어듦.</span></li>
+        <li class="m"><b>단점</b><span>세로 절감 폭이 A안보다 작고, 항목이 늘면 페이지가 계속 늘어남.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>덧붙임 · 얼굴 합성 표현</b><br>
+    의상 이미지를 <code>clip-path</code> 다각형으로 억지로 오려내던 방식은 제거했습니다. 이제 의상은 배경이 제거된 투명 PNG이고,
+    얼굴 위치(<code>faceCx / faceCy / faceW / faceH</code>)를 20장 모두 자동 검출해 <code>costumes.json</code>에 담았습니다.
+    라이브에서는 그 좌표에 <b>점선 링 + 반투명 원</b>을 띄워 "여기에 손님 얼굴이 합성됩니다"를 명확히 보여주고,
+    실제 서비스에서는 같은 좌표에 카메라 얼굴 누끼를 얹으면 됩니다. 의상을 바꿔도 얼굴 자리가 자동으로 따라갑니다.
+    <div class="legend"><span>· 잘라낸 의상 20장 → <code>assets/generated-concepts-20260812/costumes-cut/</code></span><span>· 원본 2×2 5장 → <code>assets/generated-concepts-20260812/_to_delete/</code></span></div>
+  </div>
+</section>
+</div>
+
+<script>
+const BG='assets/generated-concepts-20260812/backgrounds/';
+const CT='assets/generated-concepts-20260812/costumes-cut/';
+const bgs=[['제주 돌담','01_jeju_stonewall_canola.png'],['한옥 골목','02_rainy_hanok_alley.png'],['부산 노을','03_busan_seaside_sunset.png'],['달빛 궁궐','04_moonlit_palace.png'],['네온 스튜디오','05_seoul_neon_studio.png']];
+const outfits=[['조선 무관','01_joseon_guard'],['고려 귀족','02_goryeo_aristocrat'],['경성 모던','03_gyeongseong_modern'],['K-판타지','04_k_fantasy_guardian'],['모던 포멀','05_modern_formal']];
+const tabs=[['배경','🏞','제주 돌담'],['화풍','🎨','기본'],['의상','👘','조선 무관'],['얼굴','😊','자연스럽게'],['프레임','🖼','화이트']];
+let META={};
+
+function faceStyle(m,scale){ // scale = figure height as % of live height
+  return `left:calc(50% + ${(m.cx-50)*(m.wRatio||1)*0}px);`;
+}
+function build(){
+  // 라이브 배경 + 인물
+  document.querySelectorAll('.live').forEach((live,i)=>{
+    live.style.backgroundImage=`url('${BG}${bgs[0][1]}')`;
+    const fig=live.querySelector('[data-fig]');
+    if(!fig) return;
+    const key='01_joseon_guard_m1.png';
+    const m=META[key];
+    const img=new Image(); img.src=CT+key; fig.appendChild(img);
+    const isTall=live.classList.contains('r46');
+    if(isTall){fig.style.height='92%';}
+    else{fig.style.height='330%';fig.style.bottom='auto';fig.style.top='-3%';}
+    const hole=live.querySelector('[data-face]');
+    img.onload=()=>{
+      const place=()=>{
+        const r=img.getBoundingClientRect(), lr=live.getBoundingClientRect();
+        if(!r.width){requestAnimationFrame(place);return;}
+        const f=m?m.face:{cx:52,cy:11,w:26,h:9};
+        const cx=r.left-lr.left+r.width*f.cx/100;
+        const cy=r.top-lr.top+r.height*f.cy/100;
+        const d=Math.max(r.width*f.w/100, r.height*f.h/100)*1.45;
+        hole.style.cssText=`left:${cx-d/2}px;top:${cy-d/2}px;width:${d}px;height:${d}px`;
+        hole.innerHTML='<b>실제 얼굴 합성 위치</b>';
+      };
+      place();
+    };
+    if(img.complete) img.onload();
+  });
+  // 결과 카드
+  document.querySelectorAll('[data-result]').forEach(el=>el.style.backgroundImage=`url('${BG}${bgs[0][1]}')`);
+  // 배경 스트립
+  document.querySelectorAll('[data-bgstrip]').forEach(el=>{
+    el.innerHTML=bgs.map((b,i)=>`<span class="t${i===0?' on':''}" style="background-image:url('${BG}${b[1]}')">${el.hasAttribute('data-label')?`<u>${b[0]}</u>`:''}</span>`).join('');
+  });
+  document.querySelectorAll('[data-bggrid]').forEach(el=>{
+    el.innerHTML=bgs.concat([bgs[0]]).map((b,i)=>`<span class="t${i===0?' on':''}" style="background-image:url('${BG}${b[1]}')">${el.hasAttribute('data-label')?`<u>${b[0]}</u>`:''}</span>`).join('');
+  });
+  document.querySelectorAll('[data-flow]').forEach(el=>{
+    const t=[[-58,.76,26],[-30,.88,14],[0,1,0],[30,.88,-14],[58,.76,-26]];
+    el.innerHTML=t.map((v,i)=>`<span class="t" style="background-image:url('${BG}${bgs[i][1]}');transform:translate(calc(-50% + ${v[0]}px),-50%) scale(${v[1]}) rotateY(${v[2]}deg);opacity:${i===2?1:(Math.abs(i-2)===1?.7:.42)};z-index:${10-Math.abs(i-2)};${i===2?'border-color:#4fb9ee;box-shadow:0 0 0 3px rgba(36,157,240,.22)':''}"></span>`).join('')+
+      `<span style="position:absolute;left:50%;bottom:-2px;transform:translateX(-50%);font-size:6.5px;font-weight:900;color:#147db7">제주 돌담·유채꽃</span>`;
+  });
+  // 의상 스트립
+  document.querySelectorAll('[data-outfitstrip]').forEach(el=>{
+    el.innerHTML=outfits.map((o,i)=>`<span class="t${i===0?' on':''}" style="background:#fff;background-image:url('${CT}${o[1]}_m1_thumb.png');background-size:contain;background-repeat:no-repeat;background-position:center"><u>${o[0]}</u></span>`).join('');
+  });
+  // 탭
+  document.querySelectorAll('[data-tabs]').forEach(el=>{
+    const ic=el.hasAttribute('data-icon');
+    el.innerHTML=tabs.map((t,i)=>`<span class="tab${i===0?' on':''}">${ic?`<i>${t[1]}</i>`:''}<b>${t[0]}</b><small>${t[2]}</small></span>`).join('');
+  });
+  document.querySelectorAll('[data-rail]').forEach(el=>{
+    el.innerHTML=tabs.map((t,i)=>`<div class="${i===0?'on':''}"><i>${t[1]}</i>${t[0]}</div>`).join('');
+  });
+  // 인물칩
+  document.querySelectorAll('[data-persons]').forEach(el=>{
+    el.innerHTML='<em>인물</em>'+[0,1,2].map(i=>`<span class="pchip${i===0?' on':''}"><img src="${CT}${outfits[i][1]}_${i%2?'f1':'m1'}_thumb.png"><s>${i+1}</s><u>${outfits[i][0]}</u></span>`).join('');
+  });
+}
+fetch(CT+'costumes.json').then(r=>r.json()).then(j=>{META=j;build()}).catch(()=>build());
+</script>
+</body>
+</html>

@@ -19,7 +19,7 @@ body{display:grid;place-items:center;padding:12px}.kiosk{position:relative;width
 .result-photo{flex:1;min-height:0;border-radius:21px;background:url('../assets/backgrounds/idol-library.png') center/cover;box-shadow:inset 0 -90px 80px rgba(0,0,0,.38)}.choice-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.choice-row button{border:1px solid var(--line);border-radius:13px;background:#fff;padding:13px;font-weight:800}.choice-row button:first-child{background:var(--green);color:#fff}
 .sheet-wrap{display:grid;grid-template-columns:42% 1fr;gap:12px;min-height:0;flex:1}.sheet{aspect-ratio:6/4;align-self:center;padding:9px;border-radius:6px;background:#fff;box-shadow:0 8px 26px rgba(0,0,0,.16)}.sheet.vertical{aspect-ratio:4/6}.sheet-grid{display:grid;width:100%;height:100%;gap:5px}.sheet-grid.two{grid-template-rows:1fr 1fr}.sheet-grid.four{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}.slot-photo{border-radius:3px;background:linear-gradient(135deg,#aebeb6,#527263)}.slot-photo:nth-child(2){background:linear-gradient(135deg,#d7c0aa,#976b51)}.slot-photo:nth-child(3){background:linear-gradient(135deg,#c0cddd,#64758a)}.slot-photo:nth-child(4){background:linear-gradient(135deg,#d9ceb6,#88795b)}.settings{display:grid;align-content:center;gap:8px}.pill{padding:10px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:10px;font-weight:800}.pill.active{background:var(--green);color:#fff}
 .sticker-stage{position:relative;flex:1;border-radius:22px;background:linear-gradient(145deg,#c8d7cf,#527061);overflow:hidden}.sticker{position:absolute;display:grid;place-items:center;width:62px;height:62px;border-radius:50%;background:#ffe780;border:3px solid #fff;font-size:29px;box-shadow:0 8px 18px rgba(0,0,0,.2)}.sticker.a{left:20%;top:20%;transform:rotate(-12deg)}.sticker.b{right:18%;bottom:18%;transform:rotate(16deg)}.tools{display:flex;gap:7px;overflow:hidden}.tools span{flex:0 0 52px;height:52px;display:grid;place-items:center;border-radius:13px;background:#fff;border:1px solid var(--line);font-size:23px}
-.pickup{display:grid;place-items:center;flex:1;border-radius:22px;background:#153f33;color:#fff;text-align:center}.pickup .icon{font-size:64px}.pickup strong{display:block;font:800 30px Georgia,serif}.pickup p{font-size:11px;line-height:1.6}.qr{width:116px;height:116px;margin:auto;background:repeating-conic-gradient(#15231d 0 25%,#fff 0 50%) 0/18px 18px;border:8px solid #fff}.goodbye{display:grid;place-items:center;flex:1;text-align:center}.goodbye .mark{display:grid;place-items:center;width:110px;height:110px;border-radius:50%;background:var(--mint);color:var(--green);font-size:45px}.goodbye h2{font:800 35px Georgia,serif}.goodbye p{color:var(--muted);font-size:11px;line-height:1.7}.body.welcome-mode{padding:0;gap:0}.promo-full{position:absolute;inset:0;overflow:hidden;background:#17231f}.promo-full>img{width:100%;height:100%;object-fit:cover}.promo-full:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.1) 36%,rgba(0,0,0,.78))}.language-float{position:absolute;z-index:3;left:6%;right:6%;bottom:5%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.language-start{border:1px solid rgba(255,255,255,.6);border-radius:999px;background:rgba(16,35,28,.7);color:#fff;padding:10px 13px;box-shadow:0 12px 28px rgba(0,0,0,.3);backdrop-filter:blur(10px);text-align:center;cursor:pointer;animation:languageFloat 2.8s ease-in-out infinite}.language-start:nth-child(2n){animation-delay:-1.4s}.language-start strong{display:block;font-size:13px}.language-start span{display:block;margin-top:2px;font-size:8px;opacity:.76}@keyframes languageFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.pickup{display:grid;place-items:center;flex:1;border-radius:22px;background:#153f33;color:#fff;text-align:center}.pickup .icon{font-size:64px}.pickup strong{display:block;font:800 30px Georgia,serif}.pickup p{font-size:11px;line-height:1.6}.qr{width:116px;height:116px;margin:auto;background:repeating-conic-gradient(#15231d 0 25%,#fff 0 50%) 0/18px 18px;border:8px solid #fff}.goodbye{display:grid;place-items:center;flex:1;text-align:center}.goodbye .mark{display:grid;place-items:center;width:110px;height:110px;border-radius:50%;background:var(--mint);color:var(--green);font-size:45px}.goodbye h2{font:800 35px Georgia,serif}.goodbye p{color:var(--muted);font-size:11px;line-height:1.7}.body.welcome-mode{padding:0;gap:0}.promo-full{position:absolute;inset:0;overflow:hidden;background:#17231f}.promo-full>img{width:100%;height:100%;object-fit:cover}.promo-full:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.1) 36%,rgba(0,0,0,.78))}.language-float{position:absolute;z-index:3;left:6%;right:6%;bottom:5%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.language-start{border:1px solid rgba(255,255,255,.6);border-radius:999px;background:rgba(16,35,28,.7);color:#fff;padding:12px 9px;box-shadow:0 12px 28px rgba(0,0,0,.3);backdrop-filter:blur(10px);text-align:center;cursor:pointer}.language-start strong{display:block;font-size:13px}
 /* 세로 키오스크에 가로 참고 화면의 정보 구조를 재배치한 평면형 UI */
 .kiosk{border-radius:0;border:7px solid #292825;box-shadow:none}
 .body{padding-top:7%;background:linear-gradient(180deg,#fffdf9 0 18%,#f7f2eb 18% 100%)}
@@ -242,8 +242,8 @@ html,body{background:transparent;color:var(--ink)}
 .promo-full{background:#10243f}
 .promo-full:after{background:linear-gradient(180deg,rgba(8,23,39,.04),rgba(8,23,39,.18) 45%,rgba(8,23,39,.88))}
 .language-float{left:7%;right:7%;bottom:6%;gap:10px}
-.language-start{border:1px solid rgba(255,255,255,.42);border-radius:15px;background:rgba(255,255,255,.14);padding:11px 14px;box-shadow:0 12px 28px rgba(0,0,0,.22);backdrop-filter:blur(16px)}
-.language-start strong{font-size:14px}.language-start span{font-size:8px}
+.language-start{border:1px solid rgba(255,255,255,.42);border-radius:15px;background:rgba(255,255,255,.14);padding:12px 9px;box-shadow:0 12px 28px rgba(0,0,0,.22);backdrop-filter:blur(16px)}
+.language-start strong{font-size:13px}
 /* 공통 자식 배치 규칙이 화면 전용 absolute 배치를 덮어쓰지 않도록 복원 */
 .body.welcome-mode>.promo-full{
   position:absolute;
@@ -256,7 +256,15 @@ html,body{background:transparent;color:var(--ink)}
   position:absolute;
   top:auto;
   bottom:6%;
+  transition:opacity .34s ease,transform .34s ease;
 }
+.body.welcome-mode .language-float.is-gated{opacity:0;pointer-events:none;transform:translateY(18px)}
+.body.welcome-mode .language-float.is-open{opacity:1;pointer-events:auto;transform:translateY(0)}
+.start-invite{position:absolute;z-index:20;inset:0;border:0;background:transparent;color:#fff;cursor:pointer;transition:opacity .28s ease,transform .28s ease}
+.start-invite.is-hidden{opacity:0;pointer-events:none;transform:translateY(12px)}
+.start-invite span{position:absolute;left:5%;right:5%;bottom:6%;height:74px;display:grid;place-items:center;opacity:0;font-size:34px;font-weight:950;letter-spacing:-.04em;text-shadow:0 3px 18px rgba(0,0,0,.72);animation:startWordCycle 9s infinite}
+.start-invite span:nth-child(2){animation-delay:1.5s}.start-invite span:nth-child(3){animation-delay:3s}.start-invite span:nth-child(4){animation-delay:4.5s}.start-invite span:nth-child(5){animation-delay:6s}.start-invite span:nth-child(6){animation-delay:7.5s}
+@keyframes startWordCycle{0%,24%,100%{opacity:0;transform:translateY(10px) scale(.96)}5%,16%{opacity:1;transform:translateY(0) scale(1)}}
 .body[data-kind="notice"]>.lang-return{
   position:absolute;
   z-index:12;
@@ -270,6 +278,73 @@ html,body{background:transparent;color:var(--ink)}
   .title{font-size:28px}
   .mode-copy strong{font-size:18px}
 }
+
+/* ===== 사람 감지 · 얼굴 촬영 (대기 홍보 화면) ===== */
+.campip{position:absolute;z-index:4;right:6%;top:5%;width:38%;aspect-ratio:16/9;overflow:hidden;border:2px solid rgba(255,255,255,.85);border-radius:12px;background:#0b1b2c center/cover no-repeat;box-shadow:0 14px 30px rgba(0,0,0,.35)}
+.campip::before{content:"CAM";position:absolute;z-index:3;left:6px;top:5px;padding:2px 6px;border-radius:999px;background:rgba(9,24,40,.7);color:#fff;font-size:7px;font-weight:900;letter-spacing:.08em}
+.campip .detbox{position:absolute;border:2px solid #2ee0a8;border-radius:7px;box-shadow:0 0 0 3px rgba(46,224,168,.2);transition:opacity .3s}
+.cam-person{position:absolute;bottom:8%;height:78%;width:auto!important;object-fit:contain;filter:drop-shadow(0 4px 7px rgba(6,20,33,.3))}
+.campip.no-person .cam-person{opacity:0;transition:opacity .3s}
+.campip .detbox u{position:absolute;left:-2px;top:-12px;padding:1px 5px;border-radius:4px;background:#2ee0a8;color:#05261c;font-size:6.5px;font-weight:900;text-decoration:none;white-space:nowrap}
+.campip.no-person .detbox{opacity:0}
+.campip .noone{position:absolute;z-index:2;inset:0;display:none;place-items:center;background:rgba(9,24,40,.55);color:#ffd08a;font-size:9px;font-weight:900}
+.campip.no-person .noone{display:grid}
+
+.detect{grid-column:1/-1;position:relative;z-index:5;display:flex;align-items:center;gap:9px;padding:9px 12px;border:1px solid rgba(255,255,255,.32);border-radius:16px;background:rgba(9,24,40,.52);backdrop-filter:blur(14px);color:#fff}
+.detect .dot{flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:#2ee0a8;box-shadow:0 0 0 5px rgba(46,224,168,.18);animation:detpulse 1.5s ease-in-out infinite}
+.detect.off .dot{background:#ffb648;box-shadow:0 0 0 5px rgba(255,182,72,.18)}
+@keyframes detpulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.7);opacity:.6}}
+.detect .txt strong{display:block;font-size:11px;font-weight:900;letter-spacing:-.02em}
+.detect .txt small{display:block;margin-top:1px;font-size:7.5px;line-height:1.25;opacity:.82}
+.detect .txt{min-width:0}
+.detect .faces{margin-left:auto;display:flex;gap:4px}
+.detect .faces i{position:relative;width:28px;height:28px;overflow:hidden;border:1.5px solid rgba(255,255,255,.85);border-radius:9px;background:rgba(255,255,255,.14)}
+.detect .faces i img{position:absolute;left:50%;top:50%;width:190%;transform:translate(-50%,-46%)}
+.detect .sim{flex:0 0 auto;border:1px solid rgba(255,255,255,.4);border-radius:999px;background:rgba(255,255,255,.12);color:#fff;padding:5px 9px;font-size:7.5px;font-weight:900;cursor:pointer}
+
+.detect .faces i.pending{border-style:dashed;opacity:.55}
+.detect .faces i.done{animation:facePop .32s ease}
+@keyframes facePop{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}
+.campip .scan{position:absolute;z-index:4;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#2ee0a8,transparent);box-shadow:0 0 8px #2ee0a8;animation:scanmove 1.6s ease-in-out infinite}
+.campip.ready .scan{display:none}
+@keyframes scanmove{0%,100%{top:8%}50%{top:88%}}
+.toastmsg{position:absolute;z-index:22;left:50%;bottom:15%;transform:translateX(-50%);padding:9px 14px;border-radius:999px;background:rgba(255,182,72,.95);color:#3a2400;font-size:10px;font-weight:900;opacity:0;transition:.25s;pointer-events:none;white-space:nowrap}
+.toastmsg.on{opacity:1}
+
+.flow-next{position:absolute;z-index:15;left:6%;right:6%;bottom:4.5%;border:0;border-radius:15px;background:linear-gradient(135deg,#24a8f3,#3f8bef);color:#fff;padding:14px 16px;font-size:13px;font-weight:900;box-shadow:0 14px 28px rgba(35,126,202,.3);cursor:pointer}
+.flow-next:active{transform:translateY(1px)}
+
+/* AI 결과 2장 중 인쇄할 1~2장 선택 */
+.body.ai-result-mode{padding-bottom:15%}
+.ai-result-picker{display:grid;grid-template-rows:minmax(0,1fr) auto;gap:11px;flex:1;min-height:0}
+.ai-result-grid{display:grid;grid-template-columns:1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:9px;min-height:0}
+.ai-result-card{position:relative;min-height:0;overflow:hidden;border:2px solid rgba(13,51,77,.12);border-radius:18px;background:#d5d9dc;box-shadow:0 11px 24px rgba(14,45,66,.1);cursor:pointer;transition:.2s ease}
+.ai-result-card .result-gallery{position:absolute;inset:0;display:grid;background:#d5d9dc;transition:transform .25s ease}
+.ai-result-card .result-gallery.two-people{grid-template-columns:1fr 1fr}
+.ai-result-card .result-gallery.one-person{grid-template-columns:1fr}
+.ai-result-card .costume-shot{width:100%;height:100%;min-width:0;object-fit:cover;object-position:center 26%}
+.ai-result-card:after{content:"";position:absolute;z-index:3;inset:0;background:linear-gradient(180deg,rgba(4,18,29,.02) 42%,rgba(4,18,29,.82))}
+.ai-result-card.selected{border-color:#27a6ef;box-shadow:0 0 0 3px rgba(39,166,239,.2),0 14px 28px rgba(14,76,119,.22);transform:translateY(-2px)}
+.ai-result-card.selected .result-gallery{transform:scale(1.015)}
+.ai-result-card .result-copy{position:absolute;z-index:4;left:12px;right:12px;bottom:11px;color:#fff;text-align:left}
+.ai-result-card .result-copy small{display:block;margin-bottom:3px;color:#8fe2ff;font-size:7px;font-weight:900;letter-spacing:.08em}
+.ai-result-card .result-copy strong{display:block;font-size:14px}
+.ai-result-card .result-copy span{display:block;margin-top:3px;font-size:7px;opacity:.78}
+.ai-result-card .pick-order{position:absolute;z-index:5;right:10px;top:10px;display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:rgba(255,255,255,.9);color:#174765;font-size:13px;font-style:normal;box-shadow:0 7px 14px rgba(0,0,0,.2)}
+.ai-result-card.selected .pick-order{background:#27a6ef;color:#fff}
+.ai-layout-summary{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px;padding:10px 12px;border:1px solid rgba(26,69,96,.13);border-radius:17px;background:rgba(255,255,255,.86);box-shadow:0 8px 20px rgba(19,69,100,.08)}
+.ai-layout-summary strong{display:block;font-size:11px;color:#14364d}.ai-layout-summary p{margin:3px 0 0;color:#6d7d86;font-size:8px}
+.ai-mini-sheet{--sheet-frame:#f7f7f3;width:45px;aspect-ratio:4/6;display:grid;grid-template-rows:1fr;gap:2px;padding:4px;border:1px solid rgba(18,47,65,.14);background:var(--sheet-frame);box-shadow:0 6px 13px rgba(12,39,56,.18)}
+.ai-mini-sheet.two{grid-template-rows:1fr 1fr}.ai-mini-sheet span{display:block;background:linear-gradient(145deg,#9db8b0,#d7c2a9 48%,#587685 49%,#b29a83)}.ai-mini-sheet span:nth-child(2){display:none}.ai-mini-sheet.two span:nth-child(2){display:block}
+.ai-mini-sheet.frame-white{--sheet-frame:#fff}.ai-mini-sheet.frame-black{--sheet-frame:#15191d}.ai-mini-sheet.frame-gold{--sheet-frame:#c8a764}.ai-mini-sheet.frame-pastel{--sheet-frame:#d8e8e5}.ai-mini-sheet.frame-minimal{--sheet-frame:#e9e8e2}
+
+/* 대기 홍보 영상 — 세로 화면 전체를 하나의 홍보 화면으로 사용 */
+.promo-full{background:#080f18}
+.promo-bg{display:none}
+.promo-video{position:absolute;z-index:1;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;background:#0a1420;box-shadow:none}
+.promo-full:after{z-index:2;background:linear-gradient(180deg,rgba(8,23,39,.04),rgba(8,23,39,.12) 48%,rgba(8,23,39,.88))}
+.body.welcome-mode .campip{top:4%;right:4%;width:33%;opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .28s ease,transform .28s ease}
+.body.welcome-mode.language-open .campip{opacity:1;transform:translateY(0)}
 </style>
 </head>
 <body>
@@ -279,15 +354,17 @@ html,body{background:transparent;color:var(--ink)}
 const data=window.AI_PHOTOBOOTH_STORYBOARD;const id=new URLSearchParams(location.search).get('id')||'common-01';const item=data.steps.find(x=>x.id===id)||data.steps[0];const s=item.screen;document.title=item.title;
 const body=document.querySelector('#body');const header=()=>`<h1 class="title">${s.headline}</h1><p class="lead">${item.detail}</p>`;
 const tiles=(arr,sel=0)=>`<div class="grid two">${arr.map((x,i)=>`<button class="tile ${i===sel?'selected':''}"><strong>${x}</strong><small>${s.copy[i]||'선택 후 다음 단계로 이동합니다.'}</small></button>`).join('')}</div>`;
+const FACES=['../assets/generated-concepts-20260812/faces/head1.png','../assets/generated-concepts-20260812/faces/head2.png','../assets/generated-concepts-20260812/faces/head3.png'];
+if(s.kind==='option9'){location.replace('../AI_PhotoBooth_UI_Option9_TabExpand_4x6.html?flow=1&ui=20260819-v17');}
 function render(){let html=header();switch(s.kind){
-case'welcome':html=`<div class="promo-full"><img src="../assets/backgrounds/idol-library.png" alt="AI 포토부스 홍보 이미지"><div class="language-float" aria-label="언어별 시작"><button class="language-start" type="button" lang="ko"><strong>시작</strong><span>한국어</span></button><button class="language-start" type="button" lang="en"><strong>Start</strong><span>English</span></button><button class="language-start" type="button" lang="ja"><strong>スタート</strong><span>日本語</span></button><button class="language-start" type="button" lang="zh"><strong>开始</strong><span>中文</span></button><button class="language-start" type="button" lang="ar" dir="rtl"><strong>ابدأ</strong><span>العربية</span></button><button class="language-start" type="button" lang="de"><strong>Starten</strong><span>Deutsch</span></button></div></div>`;break;
+case'welcome':html=`<div class="promo-full"><span class="promo-bg" style="background-image:url('../assets/video/blur.jpg')"></span><video class="promo-video" poster="../assets/video/poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="AI 포토부스 홍보 영상"><source src="../assets/video/promo.mp4" type="video/mp4"><source src="../assets/video/promo.webm" type="video/webm"></video><div class="campip" id="campip" style="background-image:url('../assets/generated-concepts-20260812/backgrounds/01_jeju_stonewall_canola.png')"><img class="cam-person" src="../assets/generated-concepts-20260812/costumes-cut/05_modern_formal_m1_thumb.png" style="left:13%;width:19%" alt=""><img class="cam-person" src="../assets/generated-concepts-20260812/costumes-cut/05_modern_formal_f1_thumb.png" style="left:40.5%;width:19%" alt=""><img class="cam-person" src="../assets/generated-concepts-20260812/costumes-cut/05_modern_formal_m2_thumb.png" style="left:68%;width:19%" alt=""><span class="detbox" style="left:13%;top:16%;width:19%;height:74%"><u>1</u></span><span class="detbox" style="left:40.5%;top:16%;width:19%;height:74%"><u>2</u></span><span class="detbox" style="left:68%;top:16%;width:19%;height:74%"><u>3</u></span><span class="scan"></span><span class="noone">사람 없음</span></div><button class="start-invite" id="startInvite" type="button" aria-label="화면을 터치해 언어 선택 열기"><span>시작</span><span>Start</span><span>スタート</span><span>开始</span><span dir="rtl">ابدأ</span><span>Starten</span></button><div class="language-float is-gated" aria-label="언어 선택"><div class="detect" id="detect"><span class="dot"></span><span class="txt"><strong id="detTitle">사람 3명 감지됨</strong><small id="detSub">언어를 선택하면 다음 단계로 이동합니다</small></span><span class="faces" id="detFaces"></span><button class="sim" type="button" id="simToggle">감지 없음으로 전환</button></div><button class="language-start" type="button" lang="ko"><strong>한국어</strong></button><button class="language-start" type="button" lang="en"><strong>English</strong></button><button class="language-start" type="button" lang="ja"><strong>日本語</strong></button><button class="language-start" type="button" lang="zh"><strong>中文</strong></button><button class="language-start" type="button" lang="ar" dir="rtl"><strong>العربية</strong></button><button class="language-start" type="button" lang="de"><strong>Deutsch</strong></button></div><div class="toastmsg" id="toastMsg"></div></div>`;break;
 case'notice':html+=`<button class="lang-return" type="button" aria-label="언어 선택 화면으로 뒤로 가기" title="언어 선택 화면으로 뒤로 가기"><span class="back-arrow" aria-hidden="true">←</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg><small>KO</small></button><div class="notice">${s.copy.map((x,i)=>`<div class="note"><b>${i+1}</b><div><strong>${['이용 범위','보관·삭제'][i]}</strong><p>${x}</p></div></div>`).join('')}</div>`;break;
 case'mode':html+=`<div class="mode-options"><button class="mode-card" type="button" data-mode="ai"><img class="mode-image" src="../assets/backgrounds/idol-library.png" alt="AI 합성 사진 대표 이미지"><span class="mode-copy"><em>AI COMPOSITE</em><strong>AI 합성 사진</strong><span>배경·의상·화풍을 적용한 새로운 사진</span></span></button><button class="mode-card" type="button" data-mode="normal"><img class="mode-image" src="../assets/backgrounds/gyeongbokgung.png" alt="일반 4컷 촬영 대표 이미지"><span class="fourcut-grid" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="mode-copy"><em>ORIGINAL 4 CUT</em><strong>일반 4컷 촬영</strong><span>원본 촬영 후 AR 스티커로 꾸미기</span></span></button></div>`;break;
 case'payment':html+=`<div class="amount"><small>선택 상품 · AI 합성 사진</small><strong>₩ 12,000</strong></div>${tiles(['신용카드','카카오페이','티머니','간편결제'],-1)}`;break;
 case'capture':html+=`<div class="camera ${s.variant==='normal'?'normal':''}"><span class="cut">${s.variant==='normal'?'CUT 3 / 8':'CUT 2 / 4'}</span><span class="counter">3</span></div><div class="thumbs">${[1,2,3,4].map(x=>`<span class="thumb"><b>${x}</b></span>`).join('')}</div>`;break;
 case'select':{const total=s.variant==='normal'?8:4;const required=s.variant==='normal'?4:2;html+=`<div class="photo-grid">${Array.from({length:Math.min(total,4)},(_,i)=>`<button class="photo" type="button" data-index="${i}"><b>＋</b></button>`).join('')}</div><p class="lead selection-status">선택 0 / ${required}${s.variant==='normal'?' · 4장을 선택하면 자동으로 다음 단계로 이동합니다.':' · 선택한 2장만 업로드됩니다.'}</p>`;break}
 case'progress':html+=`<div class="progress"><div class="ring"><strong>68%</strong></div><p>인물·의상·배경을 자연스럽게 합성하고 있어요</p></div>`;break;
-case'result':html+=`<div class="result-photo"></div><div class="choice-row"><button>이 결과 사용</button><button>다시 만들기</button></div>`;break;
+case'ai-result-select':html+=`<div class="ai-result-picker"><div class="ai-result-grid"><button class="ai-result-card" type="button" data-result="1"><span class="result-gallery two-people"><img class="costume-shot" src="../assets/costumes/male-wine.png" alt="남성 한복 예제"><img class="costume-shot" src="../assets/costumes/female-blue.png" alt="여성 한복 예제"></span><span class="result-copy"><small>촬영 사진 1 기반 · 2명</small><strong>AI 결과 1</strong><span>선택한 의상 예제 적용</span></span><b class="pick-order">＋</b></button><button class="ai-result-card" type="button" data-result="2"><span class="result-gallery one-person"><img class="costume-shot" src="../assets/costumes/male-navy.png" alt="남성 한복 예제"></span><span class="result-copy"><small>촬영 사진 2 기반 · 1명</small><strong>AI 결과 2</strong><span>선택한 의상 예제 적용</span></span><b class="pick-order">＋</b></button></div><div class="ai-layout-summary"><div class="ai-mini-sheet" id="aiMiniSheet"><span></span><span></span></div><div><strong id="aiPickTitle">인쇄할 결과를 1장 또는 2장 선택</strong><p class="ai-selection-status">선택 0 / 최대 2 · 2장은 6×4 용지 위아래 배치</p></div></div></div>`;break;
 case'layout':html+=`<div class="sheet-wrap"><div class="sheet vertical"><div class="sheet-grid ${s.variant==='normal'?'four':'two'}">${Array.from({length:s.variant==='normal'?4:2},()=>'<i class="slot-photo"></i>').join('')}</div></div><div class="settings"><span class="pill active">6×4 ${s.variant==='normal'?'4컷':'2장'}</span><span class="pill">사진 교체</span><span class="pill">위치 조정</span><span class="pill">선택 프레임</span></div></div>`;break;
 case'decorate':html+=`<div class="sticker-stage"><span class="sticker a">★</span><span class="sticker b">♥</span></div><div class="tools"><span>★</span><span>♥</span><span>♛</span><span>☁</span><span>✦</span></div>`;break;
 case'frame':html+=`<div class="sheet-wrap"><div class="sheet vertical"><div class="sheet-grid four">${Array.from({length:4},()=>'<i class="slot-photo"></i>').join('')}</div></div><div class="settings"><span class="pill active">WHITE</span><span class="pill">COLOR</span><span class="pill">SEASON</span><span class="pill">MINIMAL</span></div></div>`;break;
@@ -295,19 +372,80 @@ case'print':html+=`<div class="pickup"><div><div class="qr"></div><strong>72%</s
 case'pickup':html+=`<div class="pickup"><div><div class="icon">⇩</div><strong>인쇄 완료</strong><p>아래 출력구에서 사진을 가져가세요.</p></div></div>`;break;
 case'exit':html=`<div class="goodbye"><div><div class="mark">✓</div><h2>${s.headline}</h2><p>${s.copy.join('<br>')}</p></div></div>`;break;
 default:html+=tiles(s.copy,0)}
-const actionLabels={notice:'안내 확인',layout:'배치 확정',decorate:'꾸미기 완료',frame:'프레임 확정'};
+const actionLabels={notice:'안내 확인','ai-result-select':'선택 완료',layout:'배치 확정',decorate:'꾸미기 완료',frame:'프레임 확정'};
 const actionLabel=actionLabels[s.kind];
 const foot=document.querySelector('.foot');
 const nextButton=foot.querySelector('.next');
 body.classList.toggle('welcome-mode',s.kind==='welcome');
 body.classList.toggle('mode-mode',s.kind==='mode');
 body.classList.toggle('payment-mode',s.kind==='payment');
+body.classList.toggle('ai-result-mode',s.kind==='ai-result-select');
 body.classList.toggle('no-action',!actionLabel);
 body.dataset.kind=s.kind;
 foot.style.display=actionLabel?'block':'none';
 nextButton.textContent=actionLabel||'';
 body.innerHTML=html;
-if(s.kind==='welcome')body.querySelectorAll('.language-start').forEach(button=>button.onclick=()=>{sessionStorage.setItem('photoLanguage',button.lang);location.href='screen.html?id=common-02'});
+if(s.kind==='welcome'){
+let detected=true, ready=false;
+const campip=body.querySelector('#campip'),detect=body.querySelector('#detect'),
+      detTitle=body.querySelector('#detTitle'),detSub=body.querySelector('#detSub'),
+      detFaces=body.querySelector('#detFaces'),toastMsg=body.querySelector('#toastMsg'),
+      simToggle=body.querySelector('#simToggle'),startInvite=body.querySelector('#startInvite'),
+      languageFloat=body.querySelector('.language-float');
+startInvite.onclick=()=>{
+  startInvite.classList.add('is-hidden');
+  body.classList.add('language-open');
+  languageFloat.classList.remove('is-gated');
+  languageFloat.classList.add('is-open');
+};
+detFaces.innerHTML=FACES.map(()=>'<i class="pending"></i>').join('');
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+function toast(t){toastMsg.textContent=t;toastMsg.classList.add('on');setTimeout(()=>toastMsg.classList.remove('on'),1900)}
+
+/* 대기 중 백그라운드에서 자동으로 인원수 판별 + 얼굴만 추출해 둔다 (시작을 눌러도 촬영 단계 없음) */
+let runId=0;
+async function autoExtract(){
+  const my=++runId;
+  ready=false;
+  campip.classList.remove('ready');
+  const slots=[...detFaces.querySelectorAll('i')];
+  slots.forEach(el=>{el.innerHTML='';el.className='pending'});
+  detTitle.textContent='사람 감지 중…';
+  detSub.textContent='카메라 영상에서 인원수를 확인하고 있습니다';
+  await wait(700); if(my!==runId||!detected)return;
+  detTitle.textContent=`사람 ${FACES.length}명 감지됨`;
+  detSub.textContent='얼굴을 자동으로 추출하는 중…';
+  for(let i=0;i<FACES.length;i++){
+    await wait(430); if(my!==runId||!detected)return;
+    slots[i].innerHTML=`<img src="${FACES[i]}" alt="">`;
+    slots[i].className='done';
+  }
+  sessionStorage.setItem('capturedFaces',JSON.stringify(FACES.map(f=>f.replace('../',''))));
+  detSub.textContent=`얼굴 ${FACES.length}명 추출 완료 · 시작을 누르면 바로 설정으로 넘어갑니다`;
+  campip.classList.add('ready');
+  ready=true;
+}
+function syncDetect(){
+  campip.classList.toggle('no-person',!detected);
+  detect.classList.toggle('off',!detected);
+  detFaces.style.display=detected?'flex':'none';
+  if(detected){autoExtract()}
+  else{
+    runId++; ready=false;
+    sessionStorage.removeItem('capturedFaces');
+    detTitle.textContent='감지된 사람 없음';
+    detSub.textContent='카메라 앞에 서면 자동으로 인원과 얼굴을 잡습니다';
+  }
+}
+simToggle.onclick=()=>{detected=!detected;simToggle.textContent=detected?'감지 없음으로 전환':'사람 감지로 전환';syncDetect()};
+body.querySelectorAll('.language-start').forEach(button=>button.onclick=()=>{
+  sessionStorage.setItem('photoLanguage',button.lang);
+  if(!detected){toast('카메라 앞에 서 주세요 · 사람이 감지되지 않았습니다');return}
+  if(!ready){toast('얼굴을 추출하는 중입니다 · 잠시만요');return}
+  location.href='screen.html?id=common-02';
+});
+syncDetect();
+}
 if(s.kind==='notice'){
 body.querySelector('.lang-return').onclick=()=>{location.href='screen.html?id=common-01'};
 nextButton.onclick=()=>{location.href='screen.html?id=common-03'};
@@ -326,6 +464,57 @@ status.textContent=`선택 ${selected.size} / ${required}${s.variant==='normal'?
 if(selected.size===required)setTimeout(()=>{location.href=`screen.html?id=${s.variant==='normal'?'normal-03':'ai-04'}`},420);
 });
 }
+
+/* 화면별 다음 단계로 이동하는 클릭 체인 */
+const NEXT={'ai-02':'ai-03','normal-01':'normal-02','ai-04':'ai-05','ai-05':'result-01',
+            'normal-03':'normal-04','normal-04':'normal-05','normal-05':'result-01',
+            'result-01':'result-02','result-02':'result-03','result-03':'common-01'};
+const go=id=>{location.href='screen.html?id='+id};
+if(NEXT[id]){
+  const target=NEXT[id];
+  if(actionLabel){nextButton.onclick=()=>go(target)}
+  else{
+    const bar=document.createElement('button');
+    bar.type='button'; bar.className='flow-next';
+    bar.textContent=({'ai-02':'촬영 완료 · 사진 고르기','normal-01':'촬영 완료 · 사진 고르기','ai-04':'AI 결과 2장 보기',
+      'result-01':'인쇄 상태 확인','result-02':'사진 받았어요','result-03':'처음으로'}[id])||'다음 단계 →';
+    bar.onclick=()=>go(target);
+    body.appendChild(bar);
+    body.style.paddingBottom='86px';
+  }
+}
+if(s.kind==='ai-result-select'){
+  const selected=[];
+  const cards=[...body.querySelectorAll('.ai-result-card')];
+  const status=body.querySelector('.ai-selection-status');
+  const title=body.querySelector('#aiPickTitle');
+  const sheet=body.querySelector('#aiMiniSheet');
+  const frame=sessionStorage.getItem('selectedFrame')||'frame-white';
+  sheet.classList.add(frame);
+  const sync=()=>{
+    cards.forEach(card=>{
+      const value=Number(card.dataset.result),order=selected.indexOf(value);
+      card.classList.toggle('selected',order>=0);
+      card.querySelector('.pick-order').textContent=order>=0?String(order+1):'＋';
+    });
+    sheet.classList.toggle('two',selected.length===2);
+    title.textContent=selected.length?`${selected.length}장 인쇄 · ${selected.length===2?'위아래 배치':'한 장 크게 배치'}`:'인쇄할 결과를 1장 또는 2장 선택';
+    status.textContent=`선택 ${selected.length} / 최대 2 · 재생성 없이 선택한 결과를 사용합니다`;
+    nextButton.disabled=selected.length===0;
+  };
+  cards.forEach(card=>card.onclick=()=>{
+    const value=Number(card.dataset.result),at=selected.indexOf(value);
+    if(at>=0)selected.splice(at,1);else if(selected.length<2)selected.push(value);
+    sync();
+  });
+  nextButton.onclick=()=>{
+    if(!selected.length)return;
+    sessionStorage.setItem('selectedAiResults',JSON.stringify(selected));
+    go('result-01');
+  };
+  sync();
+}
+if(s.kind==='progress')setTimeout(()=>{},0);
 }render();
 </script>
 </body>

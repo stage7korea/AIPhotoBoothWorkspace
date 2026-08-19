@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI 포토부스 프로세스·스토리보드 워크벤치 V3.1</title>
+<style>
+:root{--bg:#f1eee7;--paper:#fffefa;--ink:#1d211e;--muted:#73766f;--line:#d7d3ca;--green:#174c3c;--orange:#c76f3a;--purple:#754584;--shadow:0 18px 48px rgba(31,35,31,.1)}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(rgba(29,33,30,.032) 1px,transparent 1px),linear-gradient(90deg,rgba(29,33,30,.032) 1px,transparent 1px),var(--bg);background-size:28px 28px;color:var(--ink);font-family:Inter,Pretendard,"Noto Sans KR",Arial,sans-serif}.app{min-height:100vh;padding:22px}.top{max-width:1600px;margin:0 auto 15px;display:flex;justify-content:space-between;align-items:flex-end;gap:18px}.eyebrow{margin:0 0 7px;color:var(--green);font-size:10px;font-weight:900;letter-spacing:.16em}.top h1{margin:0;font:700 clamp(30px,3.8vw,52px)/1 Georgia,"Noto Serif KR",serif;letter-spacing:-.045em}.top p{margin:8px 0 0;color:var(--muted);font-size:13px}.actions{display:flex;gap:7px;flex-wrap:wrap}.btn{border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);padding:10px 13px;font-weight:800;cursor:pointer}.btn:hover{border-color:#999}.btn.primary{background:var(--green);border-color:var(--green);color:#fff}.btn.orange{background:var(--orange);border-color:var(--orange);color:#fff}.btn.story-control{border-color:var(--purple);background:#f8f1fa;color:var(--purple)}.btn.story-control.solid{background:var(--purple);color:#fff}.workspace{max-width:1600px;margin:auto;display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:15px}.panel{border:1px solid #cac7be;background:rgba(255,254,250,.97);box-shadow:var(--shadow)}.board{overflow:auto;padding:17px}.board-tools{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.board-tools strong{font-size:15px}.board-tools span{display:block;margin-top:4px;color:var(--muted);font-size:11px}.lane{margin-bottom:11px;border:1px solid #d2cfc7;border-left:6px solid #c58b24;background:#fbfaf6}.lane.ai{border-left-color:var(--purple);background:#fbf7fc}.lane.normal{border-left-color:#2c7160;background:#f4faf7}.lane.result{border-left-color:#b05d3b}.lane-head{display:flex;align-items:baseline;gap:9px;padding:10px 13px;border-bottom:1px solid var(--line)}.lane-head strong{font:700 17px Georgia,"Noto Serif KR",serif}.lane-head small{color:var(--muted);font-size:10px}.track{display:flex;align-items:stretch;min-width:max-content;padding:12px 9px}.slot{flex:0 0 32px;min-height:157px;display:grid;place-items:center;border-radius:8px;color:#91958f;transition:.16s}.slot.end{flex-basis:45px}.slot b{font:700 20px Georgia,serif}.slot.active{background:rgba(199,111,58,.15);outline:2px dashed var(--orange);outline-offset:-3px;color:var(--orange)}.item{display:flex;align-items:center}.card{position:relative;width:139px;min-height:157px;border:1px solid #cbc8c0;border-top:5px solid var(--accent,#78837d);border-radius:4px;background:var(--paper);padding:12px;box-shadow:0 7px 18px rgba(30,34,31,.06);cursor:grab;transition:.2s}.card:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(30,34,31,.11)}.card.selected{border-color:var(--green);box-shadow:0 0 0 3px rgba(23,76,60,.14),0 12px 25px rgba(30,34,31,.11)}.card h2{margin:21px 0 6px;font-size:13px;line-height:1.3}.card p{margin:0;display:-webkit-box;overflow:hidden;color:var(--muted);font-size:9.5px;line-height:1.45;-webkit-box-orient:vertical;-webkit-line-clamp:3}.num{position:absolute;top:9px;left:12px;color:#9a968c;font:23px Georgia,serif}.tag{display:inline-block;margin-top:24px;color:var(--accent);font-size:8.5px;font-weight:900}.card.category-user{--accent:#345f98}.card.category-branch{--accent:#c58b24}.card.category-shoot{--accent:#91653b}.card.category-ai{--accent:#733f86}.card.category-device{--accent:#2c7160}.card.category-result{--accent:#b05d3b}
+.side{padding:18px;min-height:470px}.side h2{margin:0;font:700 24px Georgia,"Noto Serif KR",serif}.side label{display:grid;gap:5px;margin-top:13px;color:var(--muted);font-size:11px;font-weight:800}.field,.area{width:100%;border:1px solid #cbc8c0;border-radius:7px;background:#fbfaf6;padding:9px;outline:0;font:inherit}.area{resize:vertical}.side-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:13px}.side-actions .wide{grid-column:1/-1}.status{margin-top:14px;padding:11px;border-left:3px solid var(--orange);background:#fff5e9;color:#76513c;font-size:11px;line-height:1.55}.meta{display:flex;gap:5px;flex-wrap:wrap;margin:12px 0 0}.chip{padding:5px 8px;border-radius:999px;background:#e8eee9;color:var(--green);font-size:9px;font-weight:850}.toast{position:fixed;z-index:20;right:22px;bottom:20px;padding:11px 14px;border-radius:999px;background:var(--green);color:#fff;font-size:11px;opacity:0;transform:translateY(8px);transition:.2s}.toast.show{opacity:1;transform:none}
+.story{display:none;max-width:1600px;margin:auto}.story.active{display:grid;grid-template-columns:minmax(520px,1fr) minmax(360px,520px);gap:15px}.preview-panel{display:grid;grid-template-rows:auto 1fr;min-height:calc(100vh - 150px);padding:15px}.preview-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:2px 3px 12px}.preview-head strong{font-size:14px}.preview-nav{display:flex;gap:6px}.stage{min-height:0;display:grid;place-items:center;overflow:hidden;border:1px solid #b86f4e;border-radius:0;background:linear-gradient(90deg,#d9855e 0 18px,#efaa83 18px 34px,#ead9c9 34px calc(100% - 34px),#efaa83 calc(100% - 34px) calc(100% - 18px),#d9855e calc(100% - 18px))}.screen-frame{height:min(79vh,860px);aspect-ratio:4/6;border:7px solid #292825;border-radius:0;background:#fff;box-shadow:0 18px 45px rgba(70,41,26,.24)}.spec{padding:18px;max-height:calc(100vh - 150px);overflow:auto}.spec-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.spec h2{margin:0;font:700 25px Georgia,"Noto Serif KR",serif}.source-block{margin-top:14px;padding:13px;border:1px solid var(--line);border-radius:10px;background:#fbfaf6}.source-block h3{margin:0 0 8px;font-size:11px;letter-spacing:.08em}.list{margin:0;padding-left:17px;color:#555b56;font-size:11px;line-height:1.65}.tts{border-left:4px solid var(--purple);background:#f7f0f9}.tts textarea{min-height:78px}.slide-strip{display:flex;gap:8px;overflow:auto;padding-bottom:4px}.slide{flex:0 0 120px;border:1px solid var(--line);border-radius:7px;overflow:hidden;background:#fff;cursor:pointer}.slide img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}.slide small{display:block;padding:6px;font-weight:800}.edit-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.edit-grid label{margin-top:0}.story-save{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:13px}.ppt-modal{position:fixed;z-index:50;inset:0;display:none;place-items:center;padding:30px;background:rgba(10,15,12,.84)}.ppt-modal.show{display:grid}.ppt-modal img{max-width:min(1100px,90vw);max-height:88vh;border-radius:8px;box-shadow:0 25px 80px #000}.ppt-modal button{position:absolute;right:24px;top:20px;border:0;border-radius:50%;width:42px;height:42px;background:#fff;font-size:22px;cursor:pointer}
+.hidden{display:none!important}.story-main{padding:15px;min-height:calc(100vh - 150px);overflow:hidden}.story-main .stage{position:relative;height:min(76vh,820px);min-height:520px;display:grid;grid-template-columns:minmax(250px,1fr) auto;gap:18px;align-items:center;padding:18px 26px 18px 18px}.story-main .screen-frame{grid-column:2;height:min(70vh,760px)}.story-notes{grid-column:1;display:grid;grid-template-rows:repeat(5,minmax(0,1fr));gap:9px;width:100%;height:100%;min-height:0}.story-note{position:relative;min-height:0;overflow:hidden;border:1px solid #b8a28f;border-left:5px solid #a8ada7;border-radius:0;background:rgba(255,254,250,.96);padding:12px;text-align:left;cursor:pointer;transition:.18s}.story-note:hover{transform:translateX(3px);box-shadow:0 8px 18px rgba(30,34,31,.08)}.story-note.selected{border-color:var(--green);border-left-color:var(--green);background:#eef5f1;box-shadow:0 0 0 3px rgba(23,76,60,.1)}.story-note.tts-note{border-left-color:var(--purple)}.story-note h3{margin:0 0 6px;font-size:11px}.story-note p{margin:0;display:-webkit-box;overflow:hidden;white-space:pre-line;color:var(--muted);font-size:9.5px;line-height:1.5;-webkit-box-orient:vertical;-webkit-line-clamp:4}.story-editor{position:sticky;top:15px;align-self:start;max-height:calc(100vh - 150px)}.selected-field{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}.selected-field h3{margin:0 0 6px;font:700 22px Georgia,"Noto Serif KR",serif}.selected-field>p:not(.eyebrow){margin:0 0 12px;color:var(--muted);font-size:11px;line-height:1.5}.selected-field textarea{min-height:260px}.story-save{grid-template-columns:1fr}.story-save .btn{width:100%}.story-editor:not(.has-selection) #editStoryField,.story-editor:not(.has-selection) .story-save{display:none}
+@media(max-width:1180px){.story-main .stage{grid-template-columns:220px auto;gap:12px;padding:12px}.story-main .screen-frame{height:min(66vh,700px)}}@media(max-width:1050px){.workspace{grid-template-columns:1fr}.story.active{grid-template-columns:1fr}.spec{max-height:none}.story-main{min-height:700px;overflow:auto}.story-editor{position:static}.story-main .stage{height:auto;grid-template-columns:1fr;min-height:0}.story-main .screen-frame{grid-column:1;grid-row:1;height:650px;justify-self:center}.story-notes{grid-column:1;grid-row:2;height:auto;grid-template-rows:none;grid-template-columns:repeat(2,1fr)}.story-note{min-height:110px}}@media(max-width:650px){.app{padding:11px}.top{align-items:flex-start;flex-direction:column}.actions{width:100%}.actions .btn{flex:1}.workspace{min-width:0}.lane{min-width:1050px}.story.active{grid-template-columns:1fr}.story-main{min-height:620px}.screen-frame{width:92%;height:auto}.story-notes{grid-template-columns:1fr}.edit-grid{grid-template-columns:1fr}}
+/* 스토리보드 페이지 안의 실제 키오스크 화면은 액자 없이 표시 */
+.story-main .screen-frame{border:0;border-radius:0;background:transparent;box-shadow:none}
+.story-note{border-radius:10px}
+/* 스토리보드 문서 페이지 바탕: 주황 장식 대신 단색 검정 */
+.story-main .stage{border-color:#090a09;background:#090a09}
+/* 2026-08-13 서비스 UI 디자인 시스템 */
+:root{
+  --bg:#f3f9fb;
+  --paper:#ffffff;
+  --ink:#101d31;
+  --muted:#68758a;
+  --line:#dce7eb;
+  --green:#19bfa3;
+  --orange:#ff718d;
+  --purple:#7d74f5;
+  --blue:#249df0;
+  --blue-dark:#10223c;
+  --mint:#dff7f3;
+  --sky:#e4f5fb;
+  --pink:#ffe5eb;
+  --lavender:#eceaff;
+  --shadow:0 22px 55px rgba(39,75,104,.12);
+}
+html{background:var(--bg)}
+body{
+  min-width:320px;
+  background:
+    radial-gradient(circle at 8% 2%,rgba(84,211,202,.20),transparent 27%),
+    radial-gradient(circle at 92% 8%,rgba(255,113,141,.16),transparent 25%),
+    linear-gradient(180deg,#f8fcfd 0%,#eef7fa 100%);
+  background-attachment:fixed;
+  color:var(--ink);
+  font-family:Inter,Pretendard,"Noto Sans KR",Arial,sans-serif;
+}
+.app{padding:24px 26px 34px}
+.top{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  max-width:1600px;
+  margin:0 auto 20px;
+  padding:23px 25px;
+  align-items:center;
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:30px;
+  background:rgba(255,255,255,.86);
+  box-shadow:0 20px 55px rgba(41,84,115,.10);
+  backdrop-filter:blur(18px);
+}
+.top::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  right:-75px;
+  top:-105px;
+  width:300px;
+  height:230px;
+  border-radius:50%;
+  background:linear-gradient(135deg,rgba(89,211,205,.38),rgba(63,164,246,.20) 58%,rgba(255,120,152,.25));
+  filter:blur(2px);
+}
+.top .eyebrow{
+  display:inline-flex;
+  align-items:center;
+  margin:0 0 9px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:var(--sky);
+  color:#1572af;
+  font-size:9px;
+  letter-spacing:.13em;
+}
+.top h1{
+  margin:0;
+  color:var(--blue-dark);
+  font:900 clamp(29px,3.2vw,46px)/1.02 Inter,Pretendard,"Noto Sans KR",sans-serif;
+  letter-spacing:-.055em;
+}
+.top p{max-width:680px;margin:9px 0 0;color:var(--muted);font-size:12px;line-height:1.55}
+.actions{position:relative;z-index:2;justify-content:flex-end;gap:8px}
+.btn{
+  min-height:42px;
+  border:1px solid #dce8ec;
+  border-radius:13px;
+  background:rgba(255,255,255,.92);
+  color:#34445b;
+  padding:10px 14px;
+  box-shadow:0 7px 17px rgba(35,71,100,.07);
+  font-size:11px;
+  font-weight:850;
+  transition:transform .18s,box-shadow .18s,border-color .18s,background .18s;
+}
+.btn:hover{transform:translateY(-2px);border-color:#9ed6f3;box-shadow:0 11px 23px rgba(35,125,184,.14)}
+.btn.primary{border-color:var(--blue);background:linear-gradient(135deg,#24a7f4,#3587ef);color:#fff}
+.btn.orange{border-color:var(--orange);background:linear-gradient(135deg,#ff829c,#ff6285);color:#fff}
+.btn.story-control{border-color:#ccc8ff;background:var(--lavender);color:#5951d7}
+.btn.story-control.solid{border-color:#6f65ee;background:linear-gradient(135deg,#8378f8,#665de9);color:#fff}
+.workspace{grid-template-columns:minmax(0,1fr) 360px;gap:18px}
+.panel{
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.95);
+  border-radius:28px;
+  background:rgba(255,255,255,.91);
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(14px);
+}
+.board{padding:20px}
+.board-tools{margin:-3px -3px 17px;padding:4px 4px 14px;border-bottom:1px solid #e5eef1}
+.board-tools strong{color:var(--blue-dark);font-size:17px;letter-spacing:-.03em}
+.board-tools span{color:#7a879a;font-size:10px}
+.lane{
+  overflow:hidden;
+  margin-bottom:13px;
+  border:1px solid #e1edf0;
+  border-left:0;
+  border-radius:22px;
+  background:linear-gradient(135deg,#f4fbfd,#eef8fa);
+  box-shadow:0 9px 24px rgba(39,82,109,.055);
+}
+.lane.ai{border-left:0;background:linear-gradient(135deg,#f5f3ff,#ecebff)}
+.lane.normal{border-left:0;background:linear-gradient(135deg,#effbf8,#e2f7f2)}
+.lane.result{border-left:0;background:linear-gradient(135deg,#fff5f7,#ffe9ee)}
+.lane-head{padding:12px 16px;border-bottom:1px solid rgba(113,136,153,.13)}
+.lane-head strong{color:var(--blue-dark);font:850 15px Inter,Pretendard,"Noto Sans KR",sans-serif;letter-spacing:-.035em}
+.lane-head small{color:#718197;font-size:9px}
+.track{padding:14px 11px 16px}
+.slot{flex-basis:35px;min-height:158px;border-radius:14px;color:#9cabb9}
+.slot.end{flex-basis:47px}
+.slot b{display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:rgba(255,255,255,.72);font:800 15px Inter,sans-serif;box-shadow:0 4px 12px rgba(40,75,100,.08)}
+.slot.active{background:rgba(36,157,240,.12);outline:2px dashed var(--blue);color:var(--blue)}
+.card{
+  width:145px;
+  min-height:158px;
+  border:1px solid rgba(255,255,255,.96);
+  border-top:0;
+  border-radius:18px;
+  background:rgba(255,255,255,.94);
+  padding:14px;
+  box-shadow:0 11px 24px rgba(37,72,98,.10);
+}
+.card::before{content:"";position:absolute;left:14px;right:14px;top:0;height:5px;border-radius:0 0 6px 6px;background:var(--accent)}
+.card:hover{transform:translateY(-5px);box-shadow:0 18px 32px rgba(34,79,111,.16)}
+.card.selected{border-color:#77c7f5;box-shadow:0 0 0 4px rgba(36,157,240,.15),0 18px 33px rgba(31,111,164,.16)}
+.card h2{margin:22px 0 7px;color:#18283f;font-size:13px;letter-spacing:-.025em}
+.card p{color:#728095;font-size:9.5px;line-height:1.5}
+.num{top:11px;left:14px;color:#a0adba;font:800 20px Inter,sans-serif;letter-spacing:-.04em}
+.tag{margin-top:24px;font-size:8px;letter-spacing:.05em}
+.card.category-user{--accent:#2fa7f3}.card.category-branch{--accent:#ff9c4a}.card.category-shoot{--accent:#ff718d}.card.category-ai{--accent:#7d74f5}.card.category-device{--accent:#19bfa3}.card.category-result{--accent:#fb6f9b}
+.side{min-height:520px;padding:22px}
+.side h2,.spec h2{color:var(--blue-dark);font:900 23px Inter,Pretendard,"Noto Sans KR",sans-serif;letter-spacing:-.045em}
+.side>.eyebrow,.spec .eyebrow{color:#168fca}
+.side label{gap:7px;margin-top:16px;color:#586a80;font-size:10px}
+.field,.area{
+  border:1px solid #dce8ed;
+  border-radius:14px;
+  background:#f8fbfc;
+  padding:11px 12px;
+  color:var(--ink);
+  transition:border-color .18s,box-shadow .18s,background .18s;
+}
+.field:focus,.area:focus{border-color:#66c2f4;background:#fff;box-shadow:0 0 0 4px rgba(36,157,240,.12)}
+.side-actions{gap:8px;margin-top:16px}
+.status{margin-top:16px;padding:13px 14px;border:0;border-radius:14px;background:#fff2f5;color:#8f4d5d;font-size:10px;line-height:1.55}
+.meta{gap:6px;margin-top:13px}
+.chip{padding:6px 9px;border-radius:999px;background:var(--sky);color:#187db8;font-size:9px}
+.toast{right:26px;bottom:24px;border-radius:14px;background:var(--blue-dark);box-shadow:0 14px 32px rgba(16,34,60,.25)}
+.story{gap:18px}
+.story-main{padding:18px;min-height:calc(100vh - 168px)}
+.preview-head{padding:1px 4px 15px}
+.preview-head strong{color:var(--blue-dark);font-size:15px}
+.story-main .stage{
+  gap:20px;
+  padding:22px 28px 22px 22px;
+  border:1px solid #172a46;
+  border-radius:24px;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(48,177,242,.23),transparent 27%),
+    radial-gradient(circle at 90% 92%,rgba(255,107,142,.18),transparent 26%),
+    #0d1a2d;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.04);
+}
+.story-notes{gap:10px}
+.story-note{
+  border:1px solid rgba(255,255,255,.72);
+  border-left:0;
+  border-radius:18px;
+  background:rgba(255,255,255,.94);
+  padding:14px 15px;
+  box-shadow:0 12px 25px rgba(3,14,27,.17);
+}
+.story-note::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:4px;border-radius:0 4px 4px 0;background:#8fa6b7}
+.story-note:hover{transform:translateX(5px);box-shadow:0 16px 28px rgba(3,14,27,.22)}
+.story-note.selected{border-color:#75d0f7;background:#eaf8ff;box-shadow:0 0 0 3px rgba(62,184,239,.20),0 14px 27px rgba(3,14,27,.18)}
+.story-note.selected::before{background:var(--blue)}
+.story-note.tts-note::before{background:var(--purple)}
+.story-note h3{margin-bottom:7px;color:#15283e;font-size:11px}
+.story-note p{color:#65768a;font-size:9.5px}
+.story-main .screen-frame{filter:drop-shadow(0 24px 35px rgba(0,0,0,.28))}
+.spec{padding:22px;max-height:calc(100vh - 168px)}
+.selected-field{margin-top:20px;padding-top:18px;border-top:1px solid #e2ecef}
+.selected-field h3{color:#192b43;font:900 20px Inter,Pretendard,"Noto Sans KR",sans-serif;letter-spacing:-.035em}
+.selected-field>p:not(.eyebrow){color:#748296}
+.story-save{gap:8px;margin-top:15px}
+@media(max-width:1180px){
+  .workspace{grid-template-columns:minmax(0,1fr) 330px}
+  .story-main .stage{padding:16px;gap:15px}
+}
+@media(max-width:1050px){
+  .top{align-items:flex-start;padding:20px;border-radius:24px}
+  .panel{border-radius:24px}
+  .story-main .stage{padding:16px}
+}
+@media(max-width:650px){
+  .app{padding:12px}
+  .top{margin-bottom:12px;padding:18px;border-radius:21px}
+  .top h1{font-size:30px}
+  .actions{display:grid;grid-template-columns:1fr 1fr;width:100%}
+  .actions .btn{width:100%}
+  .panel{border-radius:20px}
+  .board{padding:13px}
+  .story-main .stage{border-radius:18px}
+}
+</style>
+</head>
+<body>
+<main class="app">
+  <header class="top"><div><p class="eyebrow">AI PHOTOBOOTH · PROCESS + STORYBOARD · V3.1</p><h1>프로세스·스토리보드</h1><p>카드를 선택해 화면과 설명·TTS를 함께 확인하고, 수정 사항은 텍스트 데이터 파일에 저장합니다.</p></div><div class="actions" id="mapActions"><button class="btn" id="undo">프로세스 한 단계 되돌리기</button><button class="btn" id="redo">프로세스 되돌리기 복원</button><button class="btn" id="reset">프로세스 전체 초기화</button><button class="btn primary" id="saveAll">프로세스 변경 저장</button><button class="btn orange" id="confirm">프로세스 확정</button></div><div class="actions hidden" id="storyActions"><button class="btn story-control solid" id="backMapTop">← 프로세스 맵으로 돌아가기</button></div></header>
+  <section class="workspace" id="mapView">
+    <div class="panel board"><div class="board-tools"><div><strong>프로세스 맵</strong><span id="count"></span></div><button class="btn" id="add">＋ 마지막에 단계 추가</button></div><div id="lanes"></div></div>
+    <aside class="panel side"><p class="eyebrow">SELECTED STEP</p><h2>프로세스 단계 편집</h2><div class="meta" id="meta"></div><label>단계 이름<input class="field" id="editTitle"></label><label>설명<textarea class="area" id="editDetail" rows="5"></textarea></label><div class="side-actions"><button class="btn" id="movePrev">← 프로세스 앞으로</button><button class="btn" id="moveNext">프로세스 뒤로 →</button><button class="btn story-control solid wide" id="openStory">스토리보드 열기</button></div><div class="status" id="status">확정 전에는 새 문서를 생성하지 않습니다. 이 도구의 JS 텍스트 데이터만 수정됩니다.</div></aside>
+  </section>
+  <section class="story" id="storyView">
+    <div class="panel story-main"><div class="preview-head"><div><strong id="previewTitle"></strong><span class="chip" id="previewRatio">4 : 6</span></div><div class="preview-nav"><button class="btn story-control" id="nextStory">다음 스토리보드</button></div></div><div class="stage"><div class="story-notes" id="storyNotes"></div><iframe class="screen-frame" id="screenFrame" title="4:6 키오스크 화면"></iframe></div></div>
+    <aside class="panel spec story-editor" id="storyEditor"><div class="spec-top"><div><p class="eyebrow" id="specCode"></p><h2>스토리보드 편집</h2></div><span class="chip" id="saveState">저장됨</span></div><div class="meta" id="sourceChips"></div><div class="selected-field"><p class="eyebrow">SELECTED CONTENT</p><h3 id="storyFieldTitle">왼쪽 항목을 선택하세요</h3><p id="storyFieldHelp">왼쪽 화면 안의 텍스트 박스를 선택하면 이곳이 편집 모드로 바뀝니다.</p><textarea class="area" id="editStoryField" rows="12"></textarea></div><div class="story-save"><button class="btn story-control" id="reloadScreen">키오스크 화면 새로고침</button><button class="btn story-control solid" id="applyStoryField">스토리보드 항목 적용</button></div><div class="status">실제 파일 저장은 프로세스 맵으로 돌아가 ‘프로세스 변경 저장’을 누릅니다.</div></aside>
+  </section>
+</main>
+<div class="toast" id="toast"></div>
+<script src="AI_PhotoBooth_Storyboard_Data.js"></script>
+<script>
+(()=>{
+  const original=structuredClone(window.AI_PHOTOBOOTH_STORYBOARD);let data=window.AI_PHOTOBOOTH_STORYBOARD;let selected=data.steps[0].id,dragged=null,history=[],future=[],dirty=false,selectedStoryField=null;
+  const $=q=>document.querySelector(q),lanes=$('#lanes'),toast=$('#toast');const current=()=>data.steps.find(x=>x.id===selected)||data.steps[0];const laneItems=id=>data.steps.filter(x=>x.lane===id);const ordered=()=>data.lanes.flatMap(l=>laneItems(l.id));const fieldDefs={purpose:{title:'화면 목적',help:'이 화면이 필요한 이유와 달성해야 할 목적을 작성합니다.'},copy:{title:'화면 문구',help:'사용자 화면에 표시할 문구를 한 줄에 하나씩 작성합니다.'},interaction:{title:'사용자 동작',help:'사용자가 화면에서 수행하는 동작을 순서대로 작성합니다.'},system:{title:'시스템 처리',help:'화면 뒤에서 처리해야 하는 동작과 조건을 작성합니다.'},tts:{title:'음성 나레이션 · TTS',help:'이 화면에서 재생할 음성 안내 문장을 작성합니다.'}};const escapeHtml=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  function notify(t){toast.textContent=t;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800)}function markDirty(){dirty=true;$('#saveState').textContent='미저장';}
+  function snapshot(){history.push(structuredClone(data.steps));future=[]}function commit(message){markDirty();renderMap();notify(message)}
+  function reorder(id,lane,index){const moved=data.steps.find(s=>s.id===id);if(!moved)return;snapshot();const rest=data.steps.filter(s=>s.id!==id);const target=rest.filter(s=>s.lane===lane);const at=Math.max(0,Math.min(index,target.length));data.steps=data.lanes.flatMap(def=>{const arr=rest.filter(s=>s.lane===def.id);if(def.id===lane)arr.splice(at,0,{...moved,lane});return arr});selected=id;commit('새 위치에 배치했습니다.')}
+  function slot(lane,index,end=false){const el=document.createElement('div');el.className='slot'+(end?' end':'');el.innerHTML=`<b>${end?'＋':'→'}</b>`;el.ondragover=e=>{e.preventDefault();el.classList.add('active')};el.ondragleave=()=>el.classList.remove('active');el.ondrop=e=>{e.preventDefault();el.classList.remove('active');reorder(dragged||e.dataTransfer.getData('text/plain'),lane,index);dragged=null};return el}
+  function renderMap(){lanes.replaceChildren();$('#count').textContent=`${data.steps.length}개 단계 · 화살표 사이에 놓으면 그 위치로 이동`;data.lanes.forEach(def=>{const section=document.createElement('section');section.className=`lane ${def.id}`;section.innerHTML=`<div class="lane-head"><strong>${def.title}</strong><small>${def.subtitle}</small></div>`;const track=document.createElement('div');track.className='track';track.append(slot(def.id,0));const items=laneItems(def.id);items.forEach((step,i)=>{const wrap=document.createElement('div');wrap.className='item';const card=document.createElement('article');card.className=`card category-${step.category}${step.id===selected?' selected':''}`;card.draggable=true;card.innerHTML=`<span class="num">${def.prefix}${String(i+1).padStart(2,'0')}</span><span class="tag">${step.tag}</span><h2>${step.title}</h2><p>${step.detail}</p>`;card.onclick=()=>{selected=step.id;renderMap()};card.ondblclick=openStory;card.ondragstart=e=>{dragged=step.id;e.dataTransfer.setData('text/plain',step.id)};card.ondragend=()=>dragged=null;card.ondragover=e=>e.preventDefault();card.ondrop=e=>{e.preventDefault();const r=card.getBoundingClientRect();reorder(dragged||e.dataTransfer.getData('text/plain'),def.id,e.clientX<r.left+r.width/2?i:i+1)};wrap.append(card);track.append(wrap,slot(def.id,i+1,i===items.length-1))});section.append(track);lanes.append(section)});const step=current();$('#editTitle').value=step.title;$('#editDetail').value=step.detail;$('#meta').innerHTML=`<span class="chip">${step.id}</span><span class="chip">${step.tag}</span>`}
+  function syncSide(){const step=current();if($('#editTitle').value!==step.title||$('#editDetail').value!==step.detail){snapshot();step.title=$('#editTitle').value.trim()||'제목 없음';step.detail=$('#editDetail').value.trim();markDirty();renderMap()}}
+  function storySrc(step){const version='20260819-v18';return step.screen.kind==='option9'?`${step.screen.src||'AI_PhotoBooth_UI_Option9_TabExpand_4x6.html'}?ui=${version}`:`storyboard-ui/screen.html?id=${encodeURIComponent(step.id)}&ui=${version}`}
+  function showMap(){syncStoryField();$('#storyView').classList.remove('active');$('#mapView').style.display='grid';$('#storyActions').classList.add('hidden');$('#mapActions').classList.remove('hidden');renderMap();window.scrollTo(0,0)}
+  function openStory(){syncSide();selectedStoryField=null;$('#mapView').style.display='none';$('#storyView').classList.add('active');$('#mapActions').classList.add('hidden');$('#storyActions').classList.remove('hidden');renderStory();window.scrollTo(0,0)}
+  function storyValue(s,key){const value=s[key];return Array.isArray(value)?value.join('\n'):(value||'')}
+  function setStoryValue(s,key,value){if(['copy','interaction','system'].includes(key))s[key]=value.split('\n').map(x=>x.trim()).filter(Boolean);else s[key]=value.trim()}
+  function renderStoryNotes(){const s=current().screen;$('#storyNotes').innerHTML=Object.entries(fieldDefs).map(([key,def])=>`<button class="story-note ${key===selectedStoryField?'selected':''} ${key==='tts'?'tts-note':''}" data-field="${key}"><h3>${def.title}</h3><p>${escapeHtml(storyValue(s,key)||'내용 없음')}</p></button>`).join('');$('#storyNotes').querySelectorAll('.story-note').forEach(note=>note.onclick=()=>selectStoryField(note.dataset.field))}
+  function selectStoryField(key,skipSync=false){if(!skipSync)syncStoryField();selectedStoryField=key;renderStoryNotes();const def=fieldDefs[key],s=current().screen;$('#storyEditor').classList.add('has-selection');$('#storyFieldTitle').textContent=def.title;$('#storyFieldHelp').textContent=def.help;$('#editStoryField').value=storyValue(s,key);if(!skipSync)$('#editStoryField').focus()}
+  function resetStoryEditor(){selectedStoryField=null;$('#storyEditor').classList.remove('has-selection');$('#storyFieldTitle').textContent='왼쪽 항목을 선택하세요';$('#storyFieldHelp').textContent='왼쪽 화면 안의 텍스트 박스를 선택하면 이곳이 편집 모드로 바뀝니다.';$('#editStoryField').value=''}
+  function syncStoryField(){const input=$('#editStoryField');if(!selectedStoryField||!input||!$('#storyView').classList.contains('active'))return;const s=current().screen,next=input.value;if(storyValue(s,selectedStoryField)!==next){setStoryValue(s,selectedStoryField,next);markDirty();renderStoryNotes()}}
+  function renderStory(){const step=current(),s=step.screen;$('#previewTitle').textContent=step.title;$('#specCode').textContent=`${step.id.toUpperCase()} · STORYBOARD`;$('#screenFrame').src=storySrc(step);$('#sourceChips').innerHTML=s.figma.map(x=>`<span class="chip">${x}</span>`).join('');$('#saveState').textContent=dirty?'미저장':'저장됨';resetStoryEditor();renderStoryNotes()}
+  async function saveData(confirming=false){syncSide();data.meta.updatedAt=new Date().toISOString();if(confirming){data.meta.confirmed=true;data.meta.confirmedAt=new Date().toISOString()}try{const res=await fetch(confirming?'/api/confirm':'/api/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});if(!res.ok)throw new Error('save failed');dirty=false;$('#saveState').textContent='저장됨';$('#status').textContent=confirming?`프로세스 확정: ${new Date(data.meta.confirmedAt).toLocaleString()}`:'변경 내용을 JS 텍스트 데이터에 저장했습니다.';notify(confirming?'프로세스를 확정하고 저장했습니다.':'변경 내용을 저장했습니다.');return true}catch(e){downloadData();notify('로컬 서버가 없어 수정 데이터 파일을 다운로드했습니다.');return false}}
+  function downloadData(){const text='window.AI_PHOTOBOOTH_STORYBOARD = '+JSON.stringify(data,null,2)+';\n';const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/javascript'}));a.download='AI_PhotoBooth_Storyboard_Data_수정본.js';a.click();URL.revokeObjectURL(a.href)}
+  function move(dir){const step=current(),arr=laneItems(step.lane),i=arr.findIndex(x=>x.id===step.id);if(arr[i+dir])reorder(step.id,step.lane,i+dir)}
+  function storyMove(dir){syncStoryField();const arr=ordered(),i=arr.findIndex(x=>x.id===selected),next=arr[i+dir];if(next){selected=next.id;selectedStoryField=null;renderStory()}}
+  $('#editTitle').onchange=syncSide;$('#editDetail').onchange=syncSide;$('#movePrev').onclick=()=>move(-1);$('#moveNext').onclick=()=>move(1);$('#openStory').onclick=openStory;$('#backMapTop').onclick=showMap;$('#nextStory').onclick=()=>storyMove(1);$('#reloadScreen').onclick=()=>$('#screenFrame').contentWindow?.location.reload();$('#applyStoryField').onclick=()=>{syncStoryField();$('#screenFrame').contentWindow?.location.reload();notify('선택한 설명을 적용했습니다.')};$('#editStoryField').oninput=()=>{syncStoryField();$('#saveState').textContent='미저장'};$('#saveAll').onclick=()=>saveData(false);$('#confirm').onclick=()=>saveData(true);
+  $('#add').onclick=()=>{snapshot();const id=`custom-${Date.now()}`;data.steps.push({id,lane:'common',category:'user',tag:'사용자',title:'새 단계',detail:'새 단계의 설명을 입력하세요.',screen:{kind:'generic',figma:[],ppt:[],purpose:'',headline:'새 화면',copy:[],interaction:[],system:[],tts:''}});selected=id;commit('새 단계를 마지막에 추가했습니다.')};
+  $('#undo').onclick=()=>{const prev=history.pop();if(!prev)return;future.unshift(structuredClone(data.steps));data.steps=prev;selected=data.steps[0].id;markDirty();renderMap()};$('#redo').onclick=()=>{const next=future.shift();if(!next)return;history.push(structuredClone(data.steps));data.steps=next;selected=data.steps[0].id;markDirty();renderMap()};$('#reset').onclick=()=>{if(confirm('처음 구성으로 되돌릴까요?')){snapshot();data=structuredClone(original);selected=data.steps[0].id;markDirty();renderMap()}};
+  window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue=''}});renderMap();
+})();
+</script>
+</body>
+</html>

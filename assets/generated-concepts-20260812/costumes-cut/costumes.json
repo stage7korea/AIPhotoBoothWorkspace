@@ -1,0 +1,262 @@
+{
+ "01_joseon_guard_m1.png": {
+  "face": {
+   "cx": 52.63,
+   "cy": 11.11,
+   "w": 25.39,
+   "h": 9.11
+  },
+  "size": [
+   323.0,
+   900.0
+  ],
+  "gender": "male"
+ },
+ "01_joseon_guard_f1.png": {
+  "face": {
+   "cx": 48.49,
+   "cy": 10.33,
+   "w": 27.11,
+   "h": 10.0
+  },
+  "size": [
+   332.0,
+   900.0
+  ],
+  "gender": "female"
+ },
+ "01_joseon_guard_m2.png": {
+  "face": {
+   "cx": 52.34,
+   "cy": 9.22,
+   "w": 26.17,
+   "h": 9.33
+  },
+  "size": [
+   321.0,
+   900.0
+  ],
+  "gender": "male"
+ },
+ "01_joseon_guard_f2.png": {
+  "face": {
+   "cx": 49.52,
+   "cy": 10.83,
+   "w": 28.34,
+   "h": 9.89
+  },
+  "size": [
+   314.0,
+   900.0
+  ],
+  "gender": "female"
+ },
+ "02_goryeo_aristocrat_m1.png": {
+  "face": {
+   "cx": 51.26,
+   "cy": 11.89,
+   "w": 22.97,
+   "h": 9.11
+  },
+  "size": [
+   357.0,
+   900.0
+  ],
+  "gender": "male"
+ },
+ "02_goryeo_aristocrat_f1.png": {
+  "face": {
+   "cx": 50.18,
+   "cy": 12.57,
+   "w": 15.85,
+   "h": 9.74
+  },
+  "size": [
+   553.0,
+   900.0
+  ],
+  "gender": "female"
+ },
+ "02_goryeo_aristocrat_m2.png": {
+  "face": {
+   "cx": 49.17,
+   "cy": 11.61,
+   "w": 21.76,
+   "h": 8.78
+  },
+  "size": [
+   363.0,
+   900.0
+  ],
+  "gender": "male"
+ },
+ "02_goryeo_aristocrat_f2.png": {
+  "face": {
+   "cx": 50.47,
+   "cy": 12.33,
+   "w": 16.95,
+   "h": 10.0
+  },
+  "size": [
+   531.0,
+   900.0
+  ],
+  "gender": "female"
+ },
+ "03_gyeongseong_modern_m1.png": {
+  "face": {
+   "cx": 49.05,
+   "cy": 8.17,
+   "w": 29.34,
+   "h": 10.33
+  },
+  "size": [
+   317.0,
+   900.0
+  ],
+  "gender": "male"
+ },
+ "03_gyeongseong_modern_f1.png": {
+  "face": {
+   "cx": 49.6,
+   "cy": 9.06,
+   "w": 23.14,
+   "h": 9.67
+  },
+  "size": [
+   376.0,
+   900.0
+  ],
+  "gender": "female"
+ },
+ "03_gyeongseong_modern_m2.png": {
+  "face": {
+   "cx": 48.28,
+   "cy": 8.17,
+   "w": 31.96,
+   "h": 10.33
+  },
+  "size": [
+   291.0,
+   900.0
+  ],
+  "gender": "male"
+ },
+ "03_gyeongseong_modern_f2.png": {
+  "face": {
+   "cx": 50.0,
+   "cy": 8.94,
+   "w": 23.48,
+   "h": 9.0
+  },
+  "size": [
+   345.0,
+   900.0
+  ],
+  "gender": "female"
+ },
+ "04_k_fantasy_guardian_m1.png": {
+  "face": {
+   "cx": 45.22,
+   "cy": 8.44,
+   "w": 15.81,
+   "h": 9.56
+  },
+  "size": [
+   544.0,
+   900.0
+  ],
+  "gender": "male"
+ },
+ "04_k_fantasy_guardian_f1.png": {
+  "face": {
+   "cx": 46.76,
+   "cy": 10.72,
+   "w": 12.79,
+   "h": 9.22
+  },
+  "size": [
+   649.0,
+   900.0
+  ],
+  "gender": "female"
+ },
+ "04_k_fantasy_guardian_m2.png": {
+  "face": {
+   "cx": 44.54,
+   "cy": 8.61,
+   "w": 12.82,
+   "h": 9.0
+  },
+  "size": [
+   632.0,
+   900.0
+  ],
+  "gender": "male"
+ },
+ "04_k_fantasy_guardian_f2.png": {
+  "face": {
+   "cx": 53.45,
+   "cy": 11.72,
+   "w": 13.3,
+   "h": 9.22
+  },
+  "size": [
+   624.0,
+   900.0
+  ],
+  "gender": "female"
+ },
+ "05_modern_formal_m1.png": {
+  "face": {
+   "cx": 54.53,
+   "cy": 8.06,
+   "w": 30.07,
+   "h": 9.22
+  },
+  "size": [
+   276.0,
+   900.0
+  ],
+  "gender": "male"
+ },
+ "05_modern_formal_f1.png": {
+  "face": {
+   "cx": 45.59,
+   "cy": 7.67,
+   "w": 31.62,
+   "h": 9.56
+  },
+  "size": [
+   272.0,
+   900.0
+  ],
+  "gender": "female"
+ },
+ "05_modern_formal_m2.png": {
+  "face": {
+   "cx": 45.3,
+   "cy": 8.0,
+   "w": 29.27,
+   "h": 9.33
+  },
+  "size": [
+   287.0,
+   900.0
+  ],
+  "gender": "male"
+ },
+ "05_modern_formal_f2.png": {
+  "face": {
+   "cx": 55.34,
+   "cy": 8.06,
+   "w": 29.54,
+   "h": 9.22
+  },
+  "size": [
+   281.0,
+   900.0
+  ],
+  "gender": "female"
+ }
+}

@@ -3,456 +3,464 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI 포토부스 9안 · 라이브 강조 탭 확장형</title>
+<title>AI 포토부스 · 라이브 16:9 + 진행형 스텝 + 커버플로우</title>
 <style>
-:root{--bg:#eeeae4;--paper:#fffdf9;--soft:#f3efe8;--ink:#282725;--muted:#77716a;--line:#d8d1c7;--key:#2d6a5c}*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:18px;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Apple SD Gothic Neo",sans-serif}button{font:inherit;color:inherit}.booth{width:min(100%,430px);height:min(94vh,calc(100vw * 1.5));aspect-ratio:4/6;display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--line);border-radius:24px;background:var(--paper);box-shadow:0 18px 45px rgba(43,37,30,.15)}.head{flex:0 0 6%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:6px 12px;border-bottom:1px solid var(--line);font-size:10px}.head span:nth-child(2){text-align:center}.head span:last-child{color:var(--muted);text-align:right}.live{position:relative;flex:0 0 24%;overflow:hidden;transition:background .55s ease}.live.theme-studio{background:radial-gradient(circle at 50% 27%,#d8c6b1 0 13%,transparent 13.5%),linear-gradient(145deg,#ece1d2,#94b6ae)}.live.theme-space{background:radial-gradient(circle at 73% 24%,#f5d16e 0 7%,transparent 8%),radial-gradient(circle at 22% 32%,#fff 0 1%,transparent 2%),linear-gradient(145deg,#132552,#654487)}.live.theme-forest{background:radial-gradient(circle at 70% 25%,#f3d596 0 7%,transparent 8%),linear-gradient(145deg,#1f5544,#9eb475)}.live.theme-retro{background:repeating-radial-gradient(circle at 65% 45%,rgba(30,48,77,.45) 0 1px,transparent 1px 7px),linear-gradient(135deg,#f2c832,#d44c43 50%,#2e68a6 51%)}.live.theme-hanok{background:linear-gradient(28deg,transparent 0 46%,rgba(76,48,34,.45) 47% 52%,transparent 53%),linear-gradient(145deg,#e4cda9,#8f6b52)}.live.theme-beach{background:linear-gradient(#84c8dd 0 48%,#e7d093 49% 100%)}.live.theme-neon{background:linear-gradient(120deg,#101b35,#5c1b73 48%,#0b6f79)}.live.theme-snow{background:radial-gradient(circle at 20% 25%,#fff 0 2%,transparent 3%),linear-gradient(145deg,#e9f3f7,#a6c1cf)}.live.theme-europe{background:linear-gradient(90deg,#d4b48d 0 30%,#9d6c55 31% 45%,#c5a179 46% 70%,#6e8f9a 71%)}.live.theme-garden{background:radial-gradient(circle at 20% 35%,#e67599 0 5%,transparent 6%),radial-gradient(circle at 75% 27%,#f0c153 0 5%,transparent 6%),linear-gradient(145deg,#7dab78,#d9d4a8)}.person{position:absolute;left:50%;bottom:-14%;width:42%;height:67%;transform:translateX(-50%);border-radius:48% 48% 10% 10%;transition:background .45s ease}.person.outfit-casual{background:linear-gradient(90deg,#d38b66 0 50%,#466e9b 51%)}.person.outfit-suit{background:linear-gradient(90deg,#273852 0 44%,#d1a56a 45% 55%,#273852 56%)}.person.outfit-hanbok{background:linear-gradient(90deg,#b8677e 0 48%,#e7c67c 49%)}.person.outfit-fantasy{background:linear-gradient(135deg,#6a4b8d,#b2d1d2 52%,#d798b7 53%)}.person.outfit-denim{background:repeating-linear-gradient(90deg,#315a80 0 5px,#456f94 5px 10px)}.person.outfit-sports{background:linear-gradient(90deg,#e6654c 0 45%,#f1f1e7 46% 55%,#2f5f8d 56%)}.person.outfit-dress{background:linear-gradient(120deg,#c87b95,#e5b8c8 48%,#9b5872 49%)}.person.outfit-school{background:linear-gradient(90deg,#36465f 0 45%,#ebe6dc 46% 55%,#36465f 56%)}.person.outfit-space{background:linear-gradient(90deg,#c9d1d6 0 42%,#eb7d42 43% 55%,#c9d1d6 56%)}.person.outfit-vintage{background:repeating-linear-gradient(45deg,#835f43 0 8px,#b58a62 8px 16px)}.guide{position:absolute;left:50%;top:11%;width:38%;height:61%;transform:translateX(-50%);border:2px solid rgba(255,255,255,.85);border-radius:48% 48% 38% 38%}.live-badge{position:absolute;z-index:3;top:8px;left:9px;padding:4px 8px;border-radius:999px;background:rgba(40,39,37,.68);color:#fff;font-size:9px}.done{position:absolute;z-index:3;top:8px;right:9px;border:1px solid var(--key);border-radius:8px;background:var(--key);color:#fff;padding:6px 10px;cursor:pointer;font-size:10px;font-weight:700}.live-text{position:absolute;z-index:3;right:8px;bottom:7px;display:grid;gap:3px;justify-items:end;color:#fff;font-size:9px}.live-text span{padding:3px 7px;border-radius:999px;background:rgba(40,39,37,.68)}.summary{flex:0 0 6%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:5px 11px;border-bottom:1px solid var(--line);background:var(--soft);font-size:9px}.summary span{color:var(--muted)}.summary strong{overflow:hidden;text-align:right;text-overflow:ellipsis;white-space:nowrap}.menus{flex:1;min-height:0;display:grid;grid-template-rows:repeat(4,1fr);padding:2px 10px}.rail{position:relative;min-height:0;padding:4px 0;border-bottom:1px solid var(--line)}.rail:last-child{border-bottom:0}.rail-head{position:relative;z-index:20;display:flex;justify-content:space-between;gap:6px;height:15px;padding:0 2px 3px;background:var(--paper);font-size:9px}.rail-current{max-width:58%;overflow:hidden;color:var(--muted);text-overflow:ellipsis;white-space:nowrap}.flow{position:relative;height:calc(100% - 15px);overflow:hidden;perspective:900px;mask-image:linear-gradient(90deg,transparent,black 4%,black 96%,transparent)}.flow-card{position:absolute;top:50%;left:50%;width:19%;aspect-ratio:1;padding:3px;border:1px solid var(--line);border-radius:8px;background:var(--soft);cursor:pointer;text-align:left;opacity:0;pointer-events:none;transition:transform .58s cubic-bezier(.2,.75,.25,1),opacity .58s ease,filter .58s ease,border-color .58s ease;transform-origin:center}.flow-card.is-visible{pointer-events:auto}.flow-card.is-center{border-color:var(--key);opacity:1;box-shadow:inset 0 0 0 1px var(--key),0 5px 12px rgba(34,39,36,.15)}.flow-card.is-side{opacity:.68;filter:saturate(.8)}.flow-card.is-far{opacity:.42;filter:saturate(.6)}.flow-card strong{display:block;overflow:hidden;margin-top:2px;text-overflow:ellipsis;white-space:nowrap;font-size:8px}.thumb{display:block;width:100%;height:calc(100% - 13px);border-radius:5px}.tone-0{background:linear-gradient(145deg,#d8cbb9,#88afa5)}.tone-1{background:radial-gradient(circle at 70% 30%,#f6d074 0 8%,transparent 9%),linear-gradient(145deg,#162a56,#614682)}.tone-2{background:linear-gradient(145deg,#285342,#9cae73)}.tone-3{background:repeating-radial-gradient(circle at 60% 50%,#303b58 0 1px,transparent 1px 6px),linear-gradient(135deg,#efc62e,#cf4b44 50%,#2d66a3 51%)}.tone-4{background:linear-gradient(135deg,#b8677e,#e7c67c)}.tone-5{background:linear-gradient(135deg,#66abc6,#e4cf91)}.tone-6{background:linear-gradient(135deg,#1f2752,#a33aa0)}.tone-7{background:linear-gradient(135deg,#edf4f6,#91adbd)}.tone-8{background:linear-gradient(135deg,#c7a27b,#6f8f9b)}.tone-9{background:radial-gradient(circle at 30% 40%,#e8709a 0 8%,transparent 9%),linear-gradient(135deg,#7fac7d,#ead6ad)}@media(max-width:430px){body{padding:0}.booth{width:100%;height:100vh;border-radius:0}.head{font-size:9px}}
-/* 16:9 라이브 화면 · 압축 설정 영역 · 7장 겹침 커버 플로우 */
-.live{flex:0 0 auto;width:100%;aspect-ratio:16/9}
-.menus{flex:0 0 43%;padding:2px 10px}
-.rail{padding:3px 0}
-.rail-head{height:13px;padding:0 2px 2px;font-size:8px}
-.rail-current{text-align:right}
-.flow{height:calc(100% - 13px);mask-image:linear-gradient(90deg,transparent,black 3%,black 97%,transparent)}
-.flow-card{width:18%}
-.flow-card.is-far{opacity:.5;filter:saturate(.68)}
-.flow-card.is-edge{opacity:.3;filter:saturate(.5)}
-.flow-card.is-right,.flow-card.is-right strong{text-align:right}
-.flow-card.is-center,.flow-card.is-center strong{text-align:center}
-.flow-card strong{font-size:7px}
-.thumb{height:calc(100% - 11px)}
-.flow-card{width:auto;height:calc(100% - 4px);max-height:58px}
-.rail-head{align-items:center}
-.people{display:flex;align-items:center;justify-content:center;gap:3px;margin-left:auto}
-.person-shot{position:relative;width:17px;height:17px;padding:0;overflow:hidden;border:1px solid #c9c0b5;border-radius:4px;background:linear-gradient(145deg,#cfd9d6,#a8b9b4);cursor:pointer}
-.person-shot::before{content:"";position:absolute;left:50%;top:3px;width:6px;height:6px;transform:translateX(-50%);border-radius:50%;background:#a8765c}
-.person-shot::after{content:"";position:absolute;left:50%;bottom:-3px;width:12px;height:9px;transform:translateX(-50%);border-radius:7px 7px 2px 2px;background:#526f86}
-.person-shot:nth-child(2){background:linear-gradient(145deg,#ead3bd,#b9a28c)}
-.person-shot:nth-child(2)::after{background:#85634e}
-.person-shot:nth-child(3){background:linear-gradient(145deg,#d9cfeb,#aaa0c6)}
-.person-shot:nth-child(3)::after{background:#6e5687}
-.person-shot.is-active{border-color:var(--key);box-shadow:0 0 0 1px var(--key)}
-.person-shot span{position:absolute;z-index:2;right:1px;bottom:1px;display:grid;width:7px;height:7px;place-items:center;border-radius:2px;background:rgba(26,31,29,.72);color:#fff;font-size:5px;line-height:1}
-.rail[data-kind="outfit"] .rail-current,.rail[data-kind="face"] .rail-current{max-width:33%}
-.live-text{grid-template-columns:auto auto;max-width:78%}
-.live-text span{white-space:nowrap}
-/* 안 8-B · 라이브 우측 인물 선택 패널 */
-.live{width:124%;align-self:center;aspect-ratio:16/9}
-.live-badge{left:calc(9.7% + 9px)}
-.done{right:calc(9.7% + 9px)}
-.live-text{right:auto;left:calc(9.7% + 8px);max-width:62%;justify-items:start;grid-template-columns:auto auto}
-.live-people{position:absolute;z-index:5;right:calc(9.7% + 7px);top:50%;display:grid;gap:5px;padding:5px;transform:translateY(-43%);border:1px solid rgba(255,255,255,.4);border-radius:10px;background:rgba(31,34,32,.34);backdrop-filter:blur(5px)}
-.live-people::before{content:"인물";color:#fff;text-align:center;font-size:7px;font-weight:700}
-.live-people .person-shot{width:33px;height:38px;border-radius:7px;border-color:rgba(255,255,255,.7);box-shadow:0 2px 6px rgba(0,0,0,.18)}
-.live-people .person-shot::before{top:7px;width:12px;height:12px}
-.live-people .person-shot::after{bottom:-4px;width:25px;height:19px;border-radius:12px 12px 3px 3px}
-.live-people .person-shot span{right:2px;bottom:2px;width:11px;height:11px;border-radius:3px;font-size:7px}
-.live-people .person-shot.is-active{border-color:#fff;box-shadow:0 0 0 2px var(--key),0 3px 8px rgba(0,0,0,.28)}
-.rail-scope{color:var(--key);font-size:7px;font-weight:700}
-/* 남는 높이는 설정 UI가 사용하고, 라이브 선택값은 해시태그로 표시 */
-.menus{flex:1 1 auto}
-.live-text{display:flex;flex-wrap:wrap;align-content:flex-end;gap:4px;max-width:64%}
-.live-text span{padding:4px 7px;border:1px solid rgba(255,255,255,.3);background:rgba(28,31,29,.58);backdrop-filter:blur(4px);font-weight:700;letter-spacing:-.02em}
-/* 늘어난 설정 행에 맞춰 카드도 제한 없이 확대 */
-.flow-card{height:calc(100% - 4px);max-height:none;padding:4px}
-.flow-card strong{font-size:8px}
-.thumb{height:calc(100% - 13px)}
-.thumb.has-image{background-repeat:no-repeat;background-size:cover;background-position:center}
-.rail[data-kind="outfit"] .thumb.has-image{background-position:top center}
-.person.person-photo{bottom:-7%;width:38%;height:88%;border-radius:0;background-color:transparent;background-repeat:no-repeat;background-position:center bottom;background-size:contain}
-/* 사진 프레임 선택 */
-.menus{grid-template-rows:repeat(5,1fr)}
-.live::after{content:"";position:absolute;z-index:2;left:10.7%;right:10.7%;top:5px;bottom:5px;border:5px solid rgba(255,255,255,.95);border-radius:3px;pointer-events:none;transition:border .3s ease,box-shadow .3s ease}
-.live[data-frame="frame-black"]::after{border-color:#171717}
-.live[data-frame="frame-gold"]::after{border-color:#c79a3b;box-shadow:inset 0 0 0 2px #f3d793}
-.live[data-frame="frame-film"]::after{border-width:7px;border-color:#171717;border-style:dashed}
-.live[data-frame="frame-pastel"]::after{border-color:#e9b8c8}
-.live[data-frame="frame-minimal"]::after{border-width:2px;border-color:rgba(255,255,255,.92)}
-.live[data-frame="frame-vintage"]::after{border-width:7px;border-color:#795b3d;box-shadow:inset 0 0 0 2px #c8a578}
-.live[data-frame="frame-pink"]::after{border-color:#ee6f9b}
-.live[data-frame="frame-blue"]::after{border-color:#4e82c4}
-.live[data-frame="frame-none"]::after{border-color:transparent;box-shadow:none}
-.rail[data-kind="frame"] .thumb{background:#ddd}
-.rail[data-kind="frame"] .tone-0{border:5px solid #fff;background:#b9c8c3}
-.rail[data-kind="frame"] .tone-1{border:5px solid #171717;background:#b9c8c3}
-.rail[data-kind="frame"] .tone-2{border:5px double #c79a3b;background:#b9c8c3}
-.rail[data-kind="frame"] .tone-3{border:5px dashed #171717;background:#b9c8c3}
-.rail[data-kind="frame"] .tone-4{border:5px solid #e9b8c8;background:#b9c8c3}
-.rail[data-kind="frame"] .tone-5{border:2px solid #fff;background:#b9c8c3}
-.rail[data-kind="frame"] .tone-6{border:6px double #795b3d;background:#b9c8c3}
-.rail[data-kind="frame"] .tone-7{border:5px solid #ee6f9b;background:#b9c8c3}
-.rail[data-kind="frame"] .tone-8{border:5px solid #4e82c4;background:#b9c8c3}
-.rail[data-kind="frame"] .tone-9{border:1px dashed #aaa;background:repeating-linear-gradient(45deg,#eee 0 4px,#ddd 4px 8px)}
-/* 프레임은 라이브 테두리가 아니라 AI 결과 1~2장 외부와 사진 사이를 채우는 인화 배경 */
-.live::after{display:none}
-.rail[data-kind="frame"] .thumb.frame-preview{display:grid;grid-template-columns:1fr;grid-template-rows:repeat(2,1fr);width:100%;height:auto!important;aspect-ratio:6/4;gap:2px;padding:4px;border:0!important;border-radius:5px;box-shadow:inset 0 0 0 1px rgba(35,35,35,.12)}
-.frame-photo{display:block;min-width:0;min-height:0;border-radius:1px;background:linear-gradient(145deg,#8fa9a1,#d6c8b8 48%,#657d88 49%,#b7a28f)}
-.rail[data-kind="frame"] .tone-0{background:#fff}
-.rail[data-kind="frame"] .tone-1{background:#171717}
-.rail[data-kind="frame"] .tone-2{background:linear-gradient(135deg,#9b6c18,#f0d98b 48%,#b78729)}
-.rail[data-kind="frame"] .tone-3{background:repeating-linear-gradient(90deg,#111 0 5px,#333 5px 7px)}
-.rail[data-kind="frame"] .tone-4{background:linear-gradient(135deg,#f3cad7,#c9dff3)}
-.rail[data-kind="frame"] .tone-5{padding:2px;gap:1px;background:#f7f5ef}
-.rail[data-kind="frame"] .tone-6{background:repeating-linear-gradient(45deg,#6f4d30 0 5px,#a9845f 5px 10px)}
-.rail[data-kind="frame"] .tone-7{background:#ee6f9b}
-.rail[data-kind="frame"] .tone-8{background:#4e82c4}
-.rail[data-kind="frame"] .tone-9{padding:0;gap:1px;background:#d8d8d8}
-/* 라이브에는 카메라 테두리 대신 작은 AI 결과 1~2장 인화 미리보기로 표시 */
-.live-frame-preview{position:absolute;z-index:4;left:calc(9.7% + 9px);top:39px;width:62px;height:auto;aspect-ratio:6/4;display:grid;grid-template-columns:1fr;grid-template-rows:repeat(2,1fr);gap:3px;padding:5px;border:1px solid rgba(255,255,255,.6);border-radius:7px;background:#fff;box-shadow:0 5px 14px rgba(0,0,0,.2);transition:background .3s ease,padding .3s ease,gap .3s ease}
-.live-frame-preview::before{content:"AI 1–2장";position:absolute;left:0;top:-12px;padding:2px 5px;border-radius:4px;background:rgba(27,30,28,.62);color:#fff;font-size:6px;font-weight:800;white-space:nowrap}
-.live-frame-preview .frame-photo{border-radius:1px;background:linear-gradient(145deg,#78968d,#d7c5ad 48%,#526e7c 49%,#b49b83)}
-.live-frame-preview.frame-black{background:#171717}
-.live-frame-preview.frame-gold{background:linear-gradient(135deg,#9b6c18,#f0d98b 48%,#b78729)}
-.live-frame-preview.frame-film{background:repeating-linear-gradient(90deg,#111 0 5px,#333 5px 7px)}
-.live-frame-preview.frame-pastel{background:linear-gradient(135deg,#f3cad7,#c9dff3)}
-.live-frame-preview.frame-minimal{padding:2px;gap:1px;background:#f7f5ef}
-.live-frame-preview.frame-vintage{background:repeating-linear-gradient(45deg,#6f4d30 0 5px,#a9845f 5px 10px)}
-.live-frame-preview.frame-pink{background:#ee6f9b}
-.live-frame-preview.frame-blue{background:#4e82c4}
-.live-frame-preview.frame-none{padding:0;gap:1px;background:#d8d8d8}
-.frame-preview.is-one,.live-frame-preview.is-one{grid-template-columns:1fr;grid-template-rows:1fr}
-.frame-preview.is-one .frame-photo:last-child,.live-frame-preview.is-one .frame-photo:last-child{display:none}
-.count-toggle{display:flex;gap:2px;margin-left:auto}
-.count-toggle button{height:13px;padding:0 5px;border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--muted);font-size:6px;font-weight:800;cursor:pointer}
-.count-toggle button.is-active{border-color:var(--key);background:var(--key);color:#fff}
-.rail[data-kind="frame"] .rail-current{max-width:30%}
-/* 선택 프레임을 라이브 위에 1장/2장 인화 레이아웃으로 직접 오버레이 */
-.live-frame-preview{--frame-fill:#fff;z-index:2;left:50%;right:auto;top:0;bottom:auto;width:auto;height:100%;aspect-ratio:6/4;display:block;padding:0!important;gap:0!important;transform:translateX(-50%);border:12px solid var(--frame-fill);border-radius:0;background:transparent!important;box-shadow:none;pointer-events:none}
-.live-frame-preview::before{content:"";position:absolute;left:-1px;right:-1px;top:50%;bottom:auto;width:auto;height:9px;padding:0;transform:translateY(-50%);border-radius:0;background:var(--frame-fill)}
-.live-frame-preview::after{content:none}
-.live-frame-preview .frame-photo{display:none}
-.live-frame-preview.is-one::before{display:none}
-.live-frame-preview.frame-black{--frame-fill:#171717}
-.live-frame-preview.frame-gold{--frame-fill:#c79a3b}
-.live-frame-preview.frame-film{--frame-fill:#171717}
-.live-frame-preview.frame-pastel{--frame-fill:#e9b8c8}
-.live-frame-preview.frame-minimal{--frame-fill:#f7f5ef;border-width:5px}
-.live-frame-preview.frame-vintage{--frame-fill:#795b3d}
-.live-frame-preview.frame-pink{--frame-fill:#ee6f9b}
-.live-frame-preview.frame-blue{--frame-fill:#4e82c4}
-.live-frame-preview.frame-none{--frame-fill:transparent;border-color:transparent}
-/* 의상 모델을 확대해 얼굴 가이드와 상반신 위치를 맞춤 */
-.person.person-photo{top:-3%;bottom:auto;width:54%;height:132%;background-size:auto 118%;background-position:center top}
-.guide{top:8%;width:18%;height:31%;border-radius:50%}
-/* 최종안: 라이브 전체 오버레이 대신 왼쪽에 선택 프레임 미리보기만 표시 */
-.live-frame-preview{z-index:4;left:calc(9.7% + 9px);right:auto;top:42px;bottom:auto;width:60px;height:auto;aspect-ratio:4/6;display:grid;grid-template-columns:1fr;grid-template-rows:repeat(2,1fr);padding:5px!important;gap:3px!important;transform:none;border:1px solid rgba(255,255,255,.7);border-radius:7px;background:var(--frame-fill)!important;box-shadow:0 5px 14px rgba(0,0,0,.22);pointer-events:none}
-.live-frame-preview::before{content:"선택 프레임";position:absolute;left:0;right:auto;top:-13px;bottom:auto;width:auto;height:auto;padding:2px 5px;transform:none;border-radius:4px;background:rgba(27,30,28,.64);color:#fff;font-size:6px;font-weight:800;white-space:nowrap}
-.live-frame-preview .frame-photo{display:block}
-.live-frame-preview.is-one{grid-template-rows:1fr}
-.live-frame-preview.is-one .frame-photo:last-child{display:none}
-.live-frame-preview.frame-none{padding:0!important;gap:1px!important;background:#d8d8d8!important}
-/* 9안 · 라이브 강조 + 하단 상태 바 + 단일 확장 탭 */
-.head{flex:0 0 5%}
-.live{width:138%;align-self:center;aspect-ratio:16/9}
-.status-panel{flex:0 0 10%;min-height:0;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:8px;padding:6px 10px;border-bottom:1px solid var(--line);background:var(--soft)}
-.status-person{display:grid;gap:3px;justify-items:start;transition:opacity .2s}
-.status-person>span,.status-frame>span{color:var(--muted);font-size:6px;font-weight:800}
-.status-panel:not(.person-mode) .status-person{opacity:.58}
-.status-panel.person-mode .status-person>span{color:var(--key)}
-.status-panel .live-people{position:static;display:flex;gap:4px;padding:0;transform:none;border:0;border-radius:0;background:transparent;backdrop-filter:none}
-.status-panel .live-people::before{content:none}
-.status-panel .live-people .person-shot{width:27px;height:31px;border-color:#bdb5aa;box-shadow:none}
-.status-panel .live-people .person-shot::before{top:5px;width:10px;height:10px}
-.status-panel .live-people .person-shot::after{width:21px;height:15px}
-.status-panel .live-text{position:static;display:flex;flex-wrap:nowrap;align-items:center;gap:4px;max-width:none;overflow-x:auto;color:var(--ink);font-size:7px;scrollbar-width:none}
-.status-panel .live-text::-webkit-scrollbar{display:none}
-.status-panel .live-text span{flex:0 0 auto;padding:4px 6px;border:1px solid var(--line);background:rgba(255,255,255,.78);color:var(--ink);backdrop-filter:none}
-.status-frame{display:grid;gap:3px;justify-items:end}
-.status-panel .live-frame-preview{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:28px;height:auto;aspect-ratio:4/6;display:grid;grid-template-columns:1fr;grid-template-rows:repeat(2,1fr);padding:3px!important;gap:2px!important;transform:none;border:1px solid #bab2a7;border-radius:4px;background:var(--frame-fill)!important;box-shadow:none}
-.status-panel .live-frame-preview::before{content:none}
-.status-panel .live-frame-preview .frame-photo{display:block}
-.setting-tabs{flex:0 0 8%;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:6px 9px;border-bottom:1px solid var(--line);background:var(--paper)}
-.setting-tab{display:grid;place-items:center;align-content:center;gap:2px;min-width:0;padding:3px 2px;border:1px solid var(--line);border-radius:7px;background:var(--soft);cursor:pointer}
-.setting-tab span{font-size:8px;font-weight:850}
-.setting-tab small{max-width:100%;overflow:hidden;color:var(--muted);font-size:6px;text-overflow:ellipsis;white-space:nowrap}
-.setting-tab.is-active{border-color:var(--key);background:var(--key);color:#fff}
-.setting-tab.is-active small{color:rgba(255,255,255,.78)}
-.menus{flex:1 1 auto;display:block;min-height:0;padding:5px 10px 8px}
-.menus .rail{display:none;height:100%;padding:0;border:0}
-.menus .rail.is-active{display:block}
-.menus .rail-head{height:18px;padding:0 3px 4px;font-size:9px}
-.menus .flow{height:calc(100% - 18px)}
-.menus .flow-card{width:auto;height:min(110px,calc(100% - 6px));max-height:none;padding:5px}
-.menus .flow-card strong{font-size:8px}
-.menus .thumb{height:calc(100% - 14px)}
-.menus .rail[data-kind="frame"] .thumb.frame-preview{height:auto!important}
-/* 긴 상태값과 버튼명이 잘리지 않도록 2줄까지 자연스럽게 표시 */
-.status-panel{flex-basis:12%;padding-top:7px;padding-bottom:7px}
-.status-panel .live-text{display:flex;flex-wrap:wrap;align-content:center;overflow:visible;row-gap:4px;line-height:1.15}
-.status-panel .live-text span{white-space:normal;overflow:visible;text-overflow:clip}
-.setting-tab{overflow:visible}
-.setting-tab small{max-width:100%;overflow:visible;text-overflow:clip;white-space:normal;word-break:keep-all;line-height:1.1;text-align:center}
-.menus .rail-head{height:24px;align-items:center}
-.menus .flow{height:calc(100% - 24px)}
-.menus .rail-current,.menus .rail[data-kind="outfit"] .rail-current,.menus .rail[data-kind="face"] .rail-current,.menus .rail[data-kind="frame"] .rail-current{max-width:55%;overflow:visible;text-overflow:clip;white-space:normal;word-break:keep-all;line-height:1.1;text-align:right}
-.menus .flow-card strong{overflow:visible;text-overflow:clip;white-space:normal;word-break:keep-all;line-height:1.05}
-.menus .thumb{height:calc(100% - 20px)}
-/* 탭 선택 후 펼쳐지는 커버 플로우 영역을 압축하고 라이브를 확대 */
-.live{width:146%}
-.menus{flex:0 0 20%;padding-top:3px;padding-bottom:5px}
-.menus .flow-card{height:min(94px,calc(100% - 6px))}
-/* 인물별 현재 의상을 크게 확인하는 선택 카드 */
-.live{width:142%}
-.status-panel{flex-basis:14%;grid-template-columns:auto minmax(0,1fr) auto}
-.status-person>span{font-size:7px}
-.status-panel .live-people{gap:5px}
-.status-panel .live-people .person-shot{width:43px;height:52px;border-radius:7px}
-.status-panel .live-people .person-shot::before{top:5px;width:13px;height:13px}
-.status-panel .live-people .person-shot::after{bottom:9px;width:31px;height:23px}
-.person-shot .person-outfit{position:absolute;z-index:3;left:2px;right:2px;bottom:2px;overflow:hidden;padding:2px 1px;border-radius:3px;background:rgba(255,255,255,.9);color:#2d3430;font-size:5px;font-style:normal;line-height:1.05;text-align:center;text-overflow:ellipsis;white-space:nowrap}
-.status-panel .live-people .person-shot span{top:2px;right:2px;bottom:auto;width:12px;height:12px}
-/* 라이브 좌우 크롭 제거: 화면 폭 안에서 온전한 16:9 유지 */
-.live{width:100%;align-self:center;aspect-ratio:16/9}
-.live-badge{left:9px}
-.done{right:9px}
-.status-panel{flex-basis:18%}
-.setting-tabs{flex-basis:9%}
-.menus{flex:1 1 auto}
-.menus .rail.is-active{height:78%}
-/* 생성 콘셉트 적용: 배경은 가로 합성 이미지, 의상은 남2·여2 2×2 보드 */
-.rail[data-kind="theme"] .thumb.has-image{background-position:center;background-size:cover}
-.rail[data-kind="outfit"] .thumb.has-image{background-position:center;background-size:cover}
-.person.person-photo{background-size:200% 200%;background-repeat:no-repeat}
-/* 세로 4:6 본체 유지 · 가로 참고 화면을 상단 라이브/하단 선택으로 재구성 */
-body{padding:18px;background:#e8b08e}
-.booth{width:min(100%,430px,calc(94vh * 2 / 3));height:auto;aspect-ratio:4/6;border:7px solid #292825;border-radius:0;box-shadow:none;background:#fffdf9}
-.live{flex:0 0 auto;width:100%;aspect-ratio:16/9;border-bottom:1px solid #292825}
-.live-badge,.done,.setting-tab,.flow-card,.thumb,.person-shot,.person-shot .person-outfit,.count-toggle button,.live-text span,.live-frame-preview{border-radius:0!important}
-.status-panel{border-bottom:1px solid #9e968c;background:#f5f0e8}
-.setting-tabs{gap:1px;padding:0;border-bottom:1px solid #292825}
-.setting-tab{border:0;border-right:1px solid var(--line);background:#fffdf9}
-.setting-tab:last-child{border-right:0}
-.menus{padding:7px 10px 10px}
-.flow{mask-image:none}
-.flow-card{background:#fff;border-color:#bcb4a9}
-.flow-card.is-center{box-shadow:inset 0 -4px 0 var(--key),0 5px 12px rgba(34,39,36,.15)}
-.art-sample{position:absolute;z-index:6;right:9px;bottom:8px;width:27%;aspect-ratio:1/1.18;display:none;border:2px solid #fff;background:#fff;box-shadow:0 5px 14px rgba(0,0,0,.25);overflow:hidden;pointer-events:none}
+:root{
+  --bg:#f3f9fb;--paper:#f9fcfd;--soft:#eef8fa;--ink:#10223b;--muted:#68798d;--line:#dce8ec;
+  --key:#249df0;--key2:#3f8bef;--done:#12a08a;--mint:#dff8f3;--pink:#ffe6ec;--purple:#7d74f5;
+}
+*{box-sizing:border-box}
+button{font:inherit;color:inherit}
+html,body{width:100%;height:100%;margin:0;background:transparent}
+body{display:grid;place-items:center;color:var(--ink);font-family:Inter,Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+html:not(.embedded) body{padding:18px;background:#f3f9fb}
+html:not(.embedded) .booth{width:min(100%,430px,calc(94vh * 2 / 3));height:auto;aspect-ratio:4/6}
+html.embedded body{padding:0}
+html.embedded .booth{width:100%;height:100%;aspect-ratio:auto}
+
+.booth{
+  position:relative;isolation:isolate;display:flex;flex-direction:column;overflow:hidden;
+  background:
+    radial-gradient(circle at 105% 20%,rgba(255,113,141,.14),transparent 26%),
+    radial-gradient(circle at -5% 94%,rgba(63,210,194,.17),transparent 30%),
+    linear-gradient(180deg,#fbfeff,#f1f9fb);
+}
+
+/* ========== 1. 라이브 (16:9 유지) ========== */
+.live{position:relative;flex:0 0 auto;width:100%;aspect-ratio:16/9;overflow:hidden;background-size:cover;background-position:center;box-shadow:0 14px 30px rgba(26,67,94,.16);transition:background-image .35s ease}
+.live::after{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(180deg,rgba(7,20,34,.03) 50%,rgba(7,20,34,.26));pointer-events:none}
+.live-badge{position:absolute;z-index:7;left:9px;top:8px;padding:5px 9px;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(13,31,49,.66);color:#fff;font-size:9px;font-weight:800;backdrop-filter:blur(8px)}
+
+/* 합성 레이어 순서
+   · 머리 장식 제외(기본): 의상(얼굴 윗부분을 지우고 흐리게 처리) → 그 위에 촬영된 얼굴
+   · 머리 장식 포함: 촬영된 얼굴 → 그 위에 의상(얼굴만 뚫린 이미지) */
+.liveface{position:absolute;pointer-events:none;transition:left .3s ease,top .3s ease,width .3s ease}
+.liveface img{display:block;width:100%;height:auto}
+.live.hat-off .liveface{z-index:4}
+.live.hat-off .liveface img{filter:drop-shadow(0 3px 7px rgba(8,23,38,.26))}
+.live.hat-on .liveface{z-index:2}
+.figure{position:absolute;z-index:3;left:50%;top:-3%;height:330%;transform:translateX(-50%);pointer-events:none}
+.figure img{display:block;height:100%;width:auto;filter:drop-shadow(0 10px 15px rgba(8,23,38,.24))}
+
+/* 화풍 결과 예시 */
+.art-sample{position:absolute;z-index:7;right:9px;bottom:9px;width:23%;aspect-ratio:1/1.18;display:none;overflow:hidden;border:3px solid rgba(255,255,255,.95);border-radius:9px;box-shadow:0 11px 24px rgba(10,36,56,.28)}
 .art-sample.is-visible{display:block}
 .art-sample::before{content:"AI 결과 예시";position:absolute;z-index:2;left:0;top:0;padding:3px 5px;background:rgba(24,25,24,.76);color:#fff;font-size:6px;font-weight:800}
-.art-sample-image{position:absolute;inset:0;background-image:url('assets/ui-references/art-style-samples-reference.png');background-repeat:no-repeat;background-size:300% 200%;background-position:0 0}
+.art-sample-image{position:absolute;inset:0;background-image:url('assets/ui-references/art-style-samples-reference.png');background-repeat:no-repeat;background-size:300% 200%}
 .art-sample[data-art="1"] .art-sample-image{background-position:0 0}
 .art-sample[data-art="2"] .art-sample-image{background-position:50% 0}
 .art-sample[data-art="3"] .art-sample-image{background-position:100% 0}
 .art-sample[data-art="4"] .art-sample-image{background-position:0 100%}
 .art-sample[data-art="5"] .art-sample-image{background-position:50% 100%}
 .art-sample[data-art="6"] .art-sample-image{background-position:100% 100%}
-.rail[data-kind="art"] .thumb.has-art-sample{background-image:url('assets/ui-references/art-style-samples-reference.png');background-repeat:no-repeat;background-size:300% 200%}
-.rail[data-kind="art"] .art-1{background-position:0 0}.rail[data-kind="art"] .art-2{background-position:50% 0}.rail[data-kind="art"] .art-3{background-position:100% 0}.rail[data-kind="art"] .art-4{background-position:0 100%}.rail[data-kind="art"] .art-5{background-position:50% 100%}.rail[data-kind="art"] .art-6{background-position:100% 100%}
-/* 스토리보드의 화면 예시: 별도 액자 없이 4:6 화면 전체를 사용 */
-html,body{width:100%;height:100%;min-height:0;background:transparent}
-body{padding:0}
-.booth{width:100%;height:100%;aspect-ratio:auto;border:0;border-radius:0;box-shadow:none}
-.live{border-radius:0}
-/* 실제 조작 요소에만 라운드 적용 */
-.live-badge{border-radius:999px!important}
-.done{border-radius:9px!important}
-.setting-tabs{gap:4px;padding:5px 8px}
-.setting-tab{border:1px solid var(--line);border-radius:8px!important}
-.setting-tab:last-child{border-right:1px solid var(--line)}
-.flow-card{border-radius:12px!important}
-.thumb{border-radius:8px!important}
-.person-shot{border-radius:9px!important}
-.person-shot .person-outfit{border-radius:5px!important}
-.count-toggle button{border-radius:6px!important}
-.art-sample{border-radius:8px}
-.status-panel{flex-basis:13%;grid-template-columns:minmax(0,1fr) auto;padding:7px 10px}
-.status-panel .live-text{display:none!important}
-.status-frame{justify-items:end}
-.status-panel .live-frame-preview{border-radius:6px!important}
-/* 실제 서비스용 통합 설정 화면 */
-:root{
-  --bg:#f3f9fb;
-  --paper:#f9fcfd;
-  --soft:#eef8fa;
-  --ink:#10223b;
-  --muted:#68798d;
-  --line:#dce8ec;
-  --key:#249df0;
-  --mint:#dff8f3;
-  --pink:#ffe6ec;
-  --purple:#7d74f5;
-}
-html,body{background:transparent}
-.booth{
-  position:relative;
-  isolation:isolate;
-  background:
-    radial-gradient(circle at 105% 23%,rgba(255,113,141,.15),transparent 25%),
-    radial-gradient(circle at -5% 92%,rgba(63,210,194,.18),transparent 29%),
-    linear-gradient(180deg,#fbfeff,#f1f9fb);
-  color:var(--ink);
-}
-.live{border-bottom:0;box-shadow:0 14px 32px rgba(26,67,94,.17)}
-.live::after{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(180deg,rgba(7,20,34,.02) 45%,rgba(7,20,34,.30));pointer-events:none}
-.live-badge{z-index:7;border:1px solid rgba(255,255,255,.26);background:rgba(13,31,49,.68);padding:5px 9px;backdrop-filter:blur(8px);font-weight:800}
-.done{z-index:7;border:0;background:linear-gradient(135deg,#24a8f3,#397feb);padding:7px 12px;box-shadow:0 9px 20px rgba(35,126,202,.28)}
-.guide{z-index:3;border:3px solid rgba(255,255,255,.9);box-shadow:0 0 0 5px rgba(36,157,240,.18),0 7px 19px rgba(10,30,45,.25)}
-.art-sample{z-index:7;border:3px solid rgba(255,255,255,.94);border-radius:12px;box-shadow:0 11px 25px rgba(10,36,56,.25)}
-.status-panel{
-  position:relative;
-  z-index:5;
-  border:0;
-  background:rgba(255,255,255,.88);
-  box-shadow:0 10px 24px rgba(34,74,101,.09);
-}
-.status-person>span,.status-frame>span{color:#668097;font-size:7px;font-weight:850;letter-spacing:.05em}
-.status-panel .live-people .person-shot{
-  border:2px solid rgba(255,255,255,.95);
-  border-radius:10px!important;
-  background:linear-gradient(145deg,#e4f6fb,#c7e9ef);
-  box-shadow:0 7px 15px rgba(34,73,101,.10);
-}
-.status-panel .live-people .person-shot.is-active{border-color:#51baf0;box-shadow:0 0 0 3px rgba(36,157,240,.14),0 8px 17px rgba(32,110,165,.14)}
-.person-shot span{background:var(--key);color:#fff}
-.person-shot .person-outfit{background:rgba(255,255,255,.92)!important;color:#344a61!important}
-.status-panel .live-frame-preview{border:1px solid #d5e2e7;box-shadow:0 7px 16px rgba(33,75,102,.11)}
-.setting-tabs{
-  position:relative;
-  z-index:4;
-  gap:6px;
-  padding:7px 9px;
-  border:0;
-  background:rgba(244,250,252,.90);
-}
-.setting-tab{
-  min-width:0;
-  border:1px solid rgba(255,255,255,.94)!important;
-  border-radius:11px!important;
-  background:rgba(255,255,255,.88);
-  box-shadow:0 7px 15px rgba(35,75,102,.07);
-  transition:transform .18s,box-shadow .18s,background .18s;
-}
-.setting-tab.is-active{border-color:#60c4f2!important;background:linear-gradient(145deg,#e8f9ff,#dcf5fb);color:#147db7;box-shadow:0 0 0 3px rgba(36,157,240,.10),0 9px 18px rgba(33,118,175,.12)}
-.setting-tab span{font-weight:900}.setting-tab small{color:#77889a}
-.menus{padding:7px 11px 11px}
-.rail{border-bottom:0;padding:4px 0}
-.rail-head{height:17px;padding:0 3px 4px;background:transparent;color:#20354c}
-.rail-head strong{font-weight:900}.rail-current{color:#718398}
-.flow{mask-image:linear-gradient(90deg,transparent,black 4%,black 96%,transparent)}
+
+/* 선택 프레임 미리보기 */
+.live-frame-preview{--frame-fill:#fff;position:absolute;z-index:6;left:9px;bottom:9px;width:15%;aspect-ratio:4/6;display:block;padding:4px;border:1px solid rgba(255,255,255,.75);border-radius:6px;background:var(--frame-fill);box-shadow:0 7px 16px rgba(0,0,0,.24);pointer-events:none}
+.live-frame-preview::before{content:"프레임";position:absolute;left:0;top:-13px;padding:2px 5px;border-radius:4px;background:rgba(13,31,49,.66);color:#fff;font-size:6px;font-weight:800;white-space:nowrap}
+.live-frame-preview i{display:block;width:100%;height:100%;border-radius:1px;background:linear-gradient(145deg,#78968d,#d7c5ad 48%,#526e7c 49%,#b49b83)}
+.frame-white{--frame-fill:#fff}.frame-black{--frame-fill:#171717}
+.frame-gold{--frame-fill:linear-gradient(135deg,#9b6c18,#f0d98b 48%,#b78729)}
+.frame-film{--frame-fill:repeating-linear-gradient(90deg,#111 0 5px,#333 5px 7px)}
+.frame-pastel{--frame-fill:linear-gradient(135deg,#f3cad7,#c9dff3)}
+.frame-minimal{--frame-fill:#f7f5ef}
+.frame-vintage{--frame-fill:repeating-linear-gradient(45deg,#6f4d30 0 5px,#a9845f 5px 10px)}
+.frame-pink{--frame-fill:#ee6f9b}.frame-blue{--frame-fill:#4e82c4}
+.frame-none{--frame-fill:#d8d8d8}
+
+/* ========== 2. 진행형 스텝 바 ========== */
+.steps{position:relative;z-index:5;flex:0 0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;padding:9px 10px 8px;background:rgba(255,255,255,.9);box-shadow:0 8px 20px rgba(34,74,101,.08)}
+.step{position:relative;display:grid;justify-items:center;gap:3px;border:0;background:transparent;padding:0;cursor:pointer}
+.step em{position:relative;z-index:2;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#e7f0f5;color:#8496a7;font:900 10px/1 Inter,sans-serif;font-style:normal;transition:.2s}
+.step b{font-size:8.5px;font-weight:900;color:#8496a7;letter-spacing:-.02em;transition:.2s}
+.step small{font-size:6.5px;font-weight:800;color:#a4b3c1;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.step:not(:last-child)::after{content:"";position:absolute;z-index:1;top:10px;left:calc(50% + 14px);right:calc(-50% + 14px);height:2px;border-radius:2px;background:#e1ebf1}
+.step.is-done em{background:var(--done);color:#fff}
+.step.is-done b{color:#0d8570}
+.step.is-done:not(:last-child)::after{background:#9fe0d4}
+.step.is-active em{background:linear-gradient(135deg,#24a8f3,#3f8bef);color:#fff;box-shadow:0 0 0 4px rgba(36,157,240,.18)}
+.step.is-active b{color:#147db7}
+.step.is-active small{color:#5fadd8}
+
+/* ========== 3. 인물 선택 밴드 (의상/얼굴 단계) ========== */
+.person-band{flex:0 0 auto;display:none;align-items:center;gap:7px;padding:7px 11px;background:rgba(238,248,250,.92);border-top:1px solid rgba(255,255,255,.9);border-bottom:1px solid var(--line)}
+.person-band.is-on{display:flex}
+.person-band>span{flex:0 0 auto;color:#5f7488;font-size:7px;font-weight:900;letter-spacing:.07em;writing-mode:horizontal-tb}
+.person-shot{position:relative;flex:1 1 0;min-width:0;height:44px;overflow:hidden;border:2px solid rgba(255,255,255,.96);border-radius:10px;background:linear-gradient(145deg,#e4f6fb,#c7e9ef);box-shadow:0 6px 14px rgba(34,73,101,.1);cursor:pointer;padding:0;transition:.18s}
+.person-shot img.outfit{position:absolute;left:50%;top:2px;transform:translateX(-50%);height:74%;width:auto}
+.person-shot s{position:absolute;z-index:2;right:3px;top:3px;display:grid;place-items:center;width:13px;height:13px;border-radius:4px;background:var(--key);color:#fff;font-size:7px;font-weight:900;text-decoration:none}
+.person-shot b{position:absolute;z-index:2;left:3px;top:3px;width:16px;height:16px;border-radius:50%;overflow:hidden;border:1.5px solid #fff;background:#dfeef4;box-shadow:0 2px 5px rgba(12,40,60,.2)}
+.person-shot b img{position:absolute;left:50%;top:50%;width:250%;transform:translate(-50%,-42%)}
+.person-shot u{position:absolute;left:0;right:0;bottom:0;padding:2px 3px;background:rgba(255,255,255,.93);color:#33485f;font-size:6.5px;font-weight:800;text-align:center;text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.person-shot.is-active{border-color:#51baf0;box-shadow:0 0 0 3px rgba(36,157,240,.16),0 8px 17px rgba(32,110,165,.14)}
+
+/* ========== 4. 커버플로우 (크게) ========== */
+.menus{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;padding:8px 10px 10px}
+.rail{display:none;flex:1 1 auto;min-height:0;flex-direction:column}
+.rail.is-active{display:flex}
+.rail-head{flex:0 0 auto;display:flex;align-items:center;gap:6px;padding:0 3px 6px;font-size:10px;color:#20354c}
+.rail-head strong{font-weight:900;letter-spacing:-.02em}
+.rail-scope{color:var(--key);font-size:8px;font-weight:900}
+.rail-current{margin-left:auto;color:#5f7488;font-size:9px;font-weight:800;text-align:right;max-width:52%;word-break:keep-all;line-height:1.15}
+.hat-toggle{display:flex;align-items:center;gap:3px;margin-left:auto;height:20px;padding:0 8px;border:1px solid #d7e5ea;border-radius:999px;background:#fff;color:#8496a7;font-size:8px;font-weight:900;cursor:pointer;white-space:nowrap;transition:.18s}
+.hat-toggle i{font-style:normal;font-size:9px;filter:grayscale(1);opacity:.55}
+.hat-toggle.is-on{border-color:var(--key);background:linear-gradient(135deg,#24a8f3,#3f8bef);color:#fff;box-shadow:0 5px 12px rgba(35,126,202,.24)}
+.hat-toggle.is-on i{filter:none;opacity:1}
+.hat-toggle::after{content:"제외";font-size:7.5px;opacity:.8}
+.hat-toggle.is-on::after{content:"포함"}
+.hat-toggle+.rail-current{margin-left:7px}
+
+.flow{position:relative;flex:1 1 auto;min-height:0;perspective:1000px;touch-action:pan-y;cursor:grab;user-select:none}
+.flow:active{cursor:grabbing}
+.flow-arrow{position:absolute;z-index:30;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:26px;height:26px;border:1px solid rgba(255,255,255,.9);border-radius:50%;background:rgba(255,255,255,.94);color:#3d5470;font:900 13px/1 Inter,sans-serif;box-shadow:0 6px 14px rgba(35,75,102,.16);cursor:pointer;transition:.16s}
+.flow-arrow:hover{background:#fff;box-shadow:0 8px 18px rgba(35,75,102,.24)}
+.flow-arrow.prev{left:1px}.flow-arrow.next{right:1px}
+.flow-dots{position:absolute;z-index:30;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:3px;pointer-events:none}
+.flow-dots i{width:4px;height:4px;border-radius:50%;background:#c6d7e0;transition:.2s}
+.flow-dots i.on{width:12px;border-radius:999px;background:var(--key)}
 .flow-card{
-  border:2px solid rgba(255,255,255,.92);
-  border-radius:15px!important;
-  background:rgba(255,255,255,.88);
-  box-shadow:0 10px 21px rgba(35,75,102,.10);
+  position:absolute;top:50%;left:50%;width:31%;max-height:100%;aspect-ratio:.82;
+  display:flex;flex-direction:column;gap:4px;padding:6px;
+  border:2px solid rgba(255,255,255,.94);border-radius:15px;background:rgba(255,255,255,.9);
+  box-shadow:0 12px 24px rgba(35,75,102,.13);cursor:pointer;opacity:0;pointer-events:none;
+  transition:transform .62s cubic-bezier(.22,.68,.24,1),opacity .5s cubic-bezier(.22,.68,.24,1),box-shadow .4s ease,border-color .4s ease;
+  will-change:transform,opacity;backface-visibility:hidden;
+  transform-origin:center;
 }
-.flow-card.is-center{border-color:#64c2ed;box-shadow:0 0 0 4px rgba(36,157,240,.12),0 15px 27px rgba(33,112,164,.16)}
-.flow-card strong{color:#34475e;font-weight:850}
-.thumb{border-radius:11px!important}
-.count-toggle button{border:1px solid #d7e5ea;background:#fff;color:#65778a}
-.count-toggle button.is-active{border-color:var(--key);background:var(--key);color:#fff}
-/* 라이브 복장 합성: 원본 사각 배경을 최소화하고 얼굴을 끼우는 영역은 비움 */
-.person.person-photo{
-  top:-1%;
-  width:52%;
-  height:124%;
-  background-color:transparent;
-  border-radius:0;
-  clip-path:polygon(45% 0,55% 0,57% 7%,59% 11%,59% 20%,62% 25%,64% 39%,61% 58%,60% 100%,40% 100%,39% 58%,36% 39%,38% 25%,41% 20%,41% 11%,43% 7%);
-  -webkit-clip-path:polygon(45% 0,55% 0,57% 7%,59% 11%,59% 20%,62% 25%,64% 39%,61% 58%,60% 100%,40% 100%,39% 58%,36% 39%,38% 25%,41% 20%,41% 11%,43% 7%);
-  -webkit-mask-image:radial-gradient(ellipse 17% 13% at 50% 19%,transparent 0 91%,#000 100%);
-  mask-image:radial-gradient(ellipse 17% 13% at 50% 19%,transparent 0 91%,#000 100%);
-  filter:drop-shadow(0 8px 12px rgba(8,23,38,.20));
-}
-/* 단독 HTML은 4:6 키오스크로, 스토리보드 iframe에서는 영역을 가득 채움 */
-html:not(.embedded) body{padding:18px;background:#f3f9fb}
-html:not(.embedded) .booth{width:min(100%,430px,calc(94vh * 2 / 3));height:auto;aspect-ratio:4/6}
-html.embedded body{padding:0;background:transparent}
-html.embedded .booth{width:100%;height:100%;aspect-ratio:auto}
+.flow-card.is-visible{pointer-events:auto}
+.flow-card.is-center{border-color:#5cc0ef;box-shadow:0 0 0 4px rgba(36,157,240,.14),0 18px 32px rgba(33,112,164,.18)}
+.flow-card strong{flex:0 0 auto;font-size:9px;font-weight:850;color:#34475e;text-align:center;line-height:1.15;word-break:keep-all;overflow:hidden;transition:opacity .35s ease}
+.flow-card:not(.is-center) strong{opacity:0}
+.thumb{flex:1 1 auto;min-height:0;display:block;width:100%;border-radius:10px;background-size:cover;background-position:center;background-repeat:no-repeat}
+.rail[data-kind="outfit"] .thumb{background-size:contain;background-color:#f2f8fb}
+.tone-0{background:linear-gradient(145deg,#d8cbb9,#88afa5)}.tone-1{background:linear-gradient(145deg,#162a56,#614682)}
+.tone-2{background:linear-gradient(145deg,#285342,#9cae73)}.tone-3{background:linear-gradient(135deg,#efc62e,#cf4b44 50%,#2d66a3 51%)}
+.tone-4{background:linear-gradient(135deg,#b8677e,#e7c67c)}.tone-5{background:linear-gradient(135deg,#66abc6,#e4cf91)}
+.tone-6{background:linear-gradient(135deg,#1f2752,#a33aa0)}.tone-7{background:linear-gradient(135deg,#edf4f6,#91adbd)}
+.tone-8{background:linear-gradient(135deg,#c7a27b,#6f8f9b)}.tone-9{background:linear-gradient(135deg,#7fac7d,#ead6ad)}
+.thumb.has-art-sample{background-image:url('assets/ui-references/art-style-samples-reference.png');background-size:300% 200%}
+.art-1{background-position:0 0}.art-2{background-position:50% 0}.art-3{background-position:100% 0}
+.art-4{background-position:0 100%}.art-5{background-position:50% 100%}.art-6{background-position:100% 100%}
+.thumb.facecrop{position:relative;overflow:hidden;background:#e9f2f6}
+.thumb.facecrop img{position:absolute;left:50%;top:50%;display:block;height:auto}
+.thumb.facecrop::after{content:attr(data-fx);position:absolute;left:0;right:0;bottom:0;padding:2px 0;background:linear-gradient(transparent,rgba(6,20,33,.72));color:#fff;font-size:6px;font-weight:800;text-align:center}
+.thumb.frame-preview{display:block;padding:5px;background:var(--frame-fill,#fff);box-shadow:inset 0 0 0 1px rgba(35,35,35,.1)}
+.thumb.frame-preview i{display:block;width:100%;height:100%;border-radius:1px;background:linear-gradient(145deg,#8fa9a1,#d6c8b8 48%,#657d88 49%,#b7a28f)}
+
+/* ========== 5. 하단 진행 버튼 ========== */
+.stepnav{flex:0 0 auto;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:7px;padding:0 10px 10px}
+.stepnav button{border:1px solid #d7e5ea;border-radius:11px;background:#fff;color:#5b6f84;padding:9px 12px;font-size:10px;font-weight:900;cursor:pointer;transition:.18s;white-space:nowrap}
+.stepnav button.next{border-color:transparent;background:linear-gradient(135deg,#24a8f3,#3f8bef);color:#fff;box-shadow:0 9px 19px rgba(35,126,202,.26)}
+.stepnav button.done{border-color:transparent;background:linear-gradient(135deg,#12b39a,#0d9080);color:#fff;box-shadow:0 9px 19px rgba(14,146,129,.28)}
+.stepnav.is-last{grid-template-columns:auto minmax(0,1fr)}
+.stepnav.is-last .next{display:none}
+.stepnav button:disabled{opacity:.4;cursor:default}
 </style>
 </head>
 <body>
 <main class="booth" id="booth">
-  <section class="live theme-studio" id="live" aria-label="라이브 카메라 화면">
-    <span class="live-badge">● LIVE</span><div class="person outfit-casual" id="person"></div><div class="guide"></div><div class="art-sample" id="artSample" data-art="0" aria-label="선택 화풍 AI 결과 예시"><span class="art-sample-image"></span></div><button class="done" type="button">설정 완료</button>
+
+  <section class="live" id="live" aria-label="라이브 카메라 화면">
+    <span class="live-badge">● LIVE</span>
+    <div class="liveface" id="liveface"><img alt="촬영된 얼굴"></div>
+    <div class="figure" id="figure"></div>
+    <div class="live-frame-preview frame-white" id="framePreview" aria-label="선택 프레임 미리보기"><i></i></div>
+    <div class="art-sample" id="artSample" data-art="0" aria-label="선택 화풍 AI 결과 예시"><span class="art-sample-image"></span></div>
   </section>
-  <section class="status-panel" id="statusPanel"><div class="status-person"><span>인물 선택</span><div class="live-people" id="livePeople" aria-label="설정할 인물 선택"></div></div><div class="live-text"><span id="themeText">#배경_제주돌담유채꽃</span><span id="personText">#인물1</span><span id="outfitText">#의상_조선무관호위대</span><span id="faceText">#보정_자연스럽게</span><span id="artText">#화풍_기본</span><span id="frameText">#프레임_화이트</span></div><div class="status-frame"><span>프레임</span><div class="live-frame-preview frame-white" id="framePreview" aria-label="선택한 AI 사진 1~2장 프레임 미리보기"><i class="frame-photo"></i><i class="frame-photo"></i></div></div></section>
-  <nav class="setting-tabs" aria-label="설정 메뉴"><button type="button" class="setting-tab is-active" data-tab="theme"><span>배경</span><small>제주 돌담·유채꽃</small></button><button type="button" class="setting-tab" data-tab="art"><span>화풍</span><small>기본</small></button><button type="button" class="setting-tab" data-tab="outfit"><span>의상</span><small>조선 무관·호위대</small></button><button type="button" class="setting-tab" data-tab="face"><span>얼굴</span><small>자연스럽게</small></button><button type="button" class="setting-tab" data-tab="frame"><span>프레임</span><small>화이트</small></button></nav>
+
+  <nav class="steps" id="steps" aria-label="설정 진행 단계"></nav>
+
+  <div class="person-band" id="personBand" aria-label="설정할 인물 선택"><span>인물</span></div>
+
   <div class="menus">
-    <section class="rail is-active" data-kind="theme"><div class="rail-head"><strong>배경 테마</strong><span class="rail-current">제주 돌담·유채꽃</span></div><div class="flow"></div></section>
-    <section class="rail" data-kind="art"><div class="rail-head"><strong>화풍</strong><span class="rail-current">기본</span></div><div class="flow"></div></section>
-    <section class="rail" data-kind="outfit"><div class="rail-head"><strong>의상 스타일 <span class="rail-scope">· 인물 1</span></strong><span class="rail-current">조선 무관·호위대</span></div><div class="flow"></div></section>
-    <section class="rail" data-kind="face"><div class="rail-head"><strong>얼굴 보정 <span class="rail-scope">· 인물 1</span></strong><span class="rail-current">자연스럽게</span></div><div class="flow"></div></section>
-    <section class="rail" data-kind="frame"><div class="rail-head"><strong>사진 프레임</strong><div class="count-toggle" aria-label="프레임에 배치할 사진 수"><button type="button" data-count="1">1장</button><button type="button" class="is-active" data-count="2">2장</button></div><span class="rail-current">화이트</span></div><div class="flow"></div></section>
+    <section class="rail is-active" data-kind="theme"><div class="rail-head"><strong>배경 테마</strong><span class="rail-current"></span></div><div class="flow"></div></section>
+    <section class="rail" data-kind="art"><div class="rail-head"><strong>화풍</strong><span class="rail-current"></span></div><div class="flow"></div></section>
+    <section class="rail" data-kind="outfit"><div class="rail-head"><strong>의상 스타일</strong><span class="rail-scope">· 인물 1</span><button type="button" class="hat-toggle" id="hatToggle" aria-pressed="false"><i>🎩</i>머리 장식</button><span class="rail-current"></span></div><div class="flow"></div></section>
+    <section class="rail" data-kind="face"><div class="rail-head"><strong>얼굴 보정</strong><span class="rail-scope">· 인물 1</span><span class="rail-current"></span></div><div class="flow"></div></section>
+    <section class="rail" data-kind="frame"><div class="rail-head"><strong>사진 프레임</strong><span class="rail-current"></span></div><div class="flow"></div></section>
   </div>
+
+  <div class="stepnav"><button type="button" id="prevStep">← 이전</button><button type="button" class="next" id="nextStep">다음 단계 →</button><button type="button" class="done" id="doneBtn">설정 완료</button></div>
 </main>
+
 <script>
 (()=>{
   document.documentElement.classList.toggle('embedded',window.self!==window.top);
+  const BG='assets/generated-concepts-20260812/backgrounds/';
+  const CT='assets/generated-concepts-20260812/costumes-cut/';
+
+  /* 의상 누끼 얼굴 좌표 (파일명 → %, 자동 검출값) */
+  const FACE={
+    '01_joseon_guard_m1':[52.63,11.11,25.39,9.11], '01_joseon_guard_f1':[48.49,10.33,27.11,10.00],
+    '01_joseon_guard_m2':[52.34,9.22,26.17,9.33],  '01_joseon_guard_f2':[49.52,10.83,28.34,9.89],
+    '02_goryeo_aristocrat_m1':[51.26,11.89,22.97,9.11], '02_goryeo_aristocrat_f1':[50.18,12.57,15.85,9.74],
+    '02_goryeo_aristocrat_m2':[49.17,11.61,21.76,8.78], '02_goryeo_aristocrat_f2':[50.47,12.33,16.95,10.00],
+    '03_gyeongseong_modern_m1':[49.05,8.17,29.34,10.33], '03_gyeongseong_modern_f1':[49.60,9.06,23.14,9.67],
+    '03_gyeongseong_modern_m2':[48.28,8.17,31.96,10.33], '03_gyeongseong_modern_f2':[50.00,8.94,23.48,9.00],
+    '04_k_fantasy_guardian_m1':[45.22,8.44,15.81,9.56], '04_k_fantasy_guardian_f1':[46.76,10.72,12.79,9.22],
+    '04_k_fantasy_guardian_m2':[44.54,8.61,12.82,9.00], '04_k_fantasy_guardian_f2':[53.45,11.72,13.30,9.22],
+    '05_modern_formal_m1':[54.53,8.06,30.07,9.22], '05_modern_formal_f1':[45.59,7.67,31.62,9.56],
+    '05_modern_formal_m2':[45.30,8.00,29.27,9.33], '05_modern_formal_f2':[55.34,8.06,29.54,9.22]
+  };
+
   const data={
     theme:[
-      ['제주 돌담·유채꽃','theme-studio','assets/generated-concepts-20260812/backgrounds/01_jeju_stonewall_canola.png'],
-      ['비 오는 한옥 골목','theme-studio','assets/generated-concepts-20260812/backgrounds/02_rainy_hanok_alley.png'],
-      ['부산 바다 노을','theme-studio','assets/generated-concepts-20260812/backgrounds/03_busan_seaside_sunset.png'],
-      ['달빛 궁궐','theme-studio','assets/generated-concepts-20260812/backgrounds/04_moonlit_palace.png'],
-      ['서울 네온 스튜디오','theme-studio','assets/generated-concepts-20260812/backgrounds/05_seoul_neon_studio.png']
+      ['제주 돌담·유채꽃',BG+'01_jeju_stonewall_canola.png'],
+      ['비 오는 한옥 골목',BG+'02_rainy_hanok_alley.png'],
+      ['부산 바다 노을',BG+'03_busan_seaside_sunset.png'],
+      ['달빛 궁궐',BG+'04_moonlit_palace.png'],
+      ['서울 네온 스튜디오',BG+'05_seoul_neon_studio.png']
     ],
-    outfit:[
-      ['조선 무관·호위대','outfit-hanbok','assets/generated-concepts-20260812/costumes/01_joseon_guard_2x2.png'],
-      ['고려 귀족','outfit-hanbok','assets/generated-concepts-20260812/costumes/02_goryeo_aristocrat_2x2.png'],
-      ['경성 모던룩','outfit-vintage','assets/generated-concepts-20260812/costumes/03_gyeongseong_modern_2x2.png'],
-      ['K-판타지 수호자','outfit-fantasy','assets/generated-concepts-20260812/costumes/04_k_fantasy_guardian_2x2.png'],
-      ['모던 포멀','outfit-suit','assets/generated-concepts-20260812/costumes/05_modern_formal_2x2.png']
-    ],
-    face:[['자연스럽게',''],['화사하게',''],['선명하게',''],['부드럽게',''],['잡티 완화',''],['윤곽 보정',''],['눈 강조',''],['피부톤 정리',''],['흑백 보정',''],['보정 없음','']],
     art:[['기본',''],['팝아트','art-1'],['벤데이 도트','art-2'],['석판화','art-3'],['우키요에','art-4'],['목판화','art-5'],['에칭','art-6']],
+    outfit:[
+      ['조선 무관·호위대','01_joseon_guard'],
+      ['고려 귀족','02_goryeo_aristocrat'],
+      ['경성 모던룩','03_gyeongseong_modern'],
+      ['K-판타지 수호자','04_k_fantasy_guardian'],
+      ['모던 포멀','05_modern_formal']
+    ],
+    face:[
+      ['자연스럽게','none'],
+      ['화사하게','brightness(1.13) saturate(1.16)'],
+      ['선명하게','contrast(1.2) saturate(1.08)'],
+      ['부드럽게','blur(.5px) brightness(1.06)'],
+      ['잡티 완화','blur(.8px) saturate(.96) brightness(1.04)'],
+      ['윤곽 보정','contrast(1.14) brightness(1.02)'],
+      ['눈 강조','contrast(1.18) saturate(1.06)'],
+      ['피부톤 정리','sepia(.16) saturate(1.14) brightness(1.05)'],
+      ['흑백 보정','grayscale(1) contrast(1.06)'],
+      ['보정 없음','saturate(.9) brightness(.98)']
+    ],
     frame:[['화이트','frame-white'],['블랙','frame-black'],['골드','frame-gold'],['필름','frame-film'],['파스텔','frame-pastel'],['미니멀','frame-minimal'],['빈티지','frame-vintage'],['핑크','frame-pink'],['블루','frame-blue'],['프레임 없음','frame-none']]
   };
+
+  const STEPS=[
+    {kind:'theme', label:'배경'},
+    {kind:'outfit',label:'의상', perPerson:true},
+    {kind:'face',  label:'얼굴', perPerson:true},
+    {kind:'art',   label:'화풍'},
+    {kind:'frame', label:'프레임'}
+  ];
   const people=['인물 1','인물 2','인물 3'];
+  const variants=['m1','f1','m2'];              // 인물별 사용 누끼 컷
   const index={theme:0,art:0,frame:0};
-  const personSettings=people.map(()=>({outfit:0,face:0}));
-  let activePerson=0,outputCount=2,activeKind='theme';
-  const live=document.querySelector('#live'),person=document.querySelector('#person'),artSample=document.querySelector('#artSample'),framePreview=document.querySelector('#framePreview'),statusPanel=document.querySelector('#statusPanel'),themeText=document.querySelector('#themeText'),personText=document.querySelector('#personText'),outfitText=document.querySelector('#outfitText'),faceText=document.querySelector('#faceText'),artText=document.querySelector('#artText'),frameText=document.querySelector('#frameText');
-  function selectedIndex(kind){return kind==='outfit'||kind==='face'?personSettings[activePerson][kind]:index[kind]}
-  function selectedLabel(kind){return data[kind][selectedIndex(kind)][0]}
+  const personSettings=people.map(()=>({outfit:0,face:0,headwear:false}));   // 기본: 모자 제외
+  const visited=new Set(['theme']);
+  let activePerson=0,stepIndex=0;
+
+  const $=q=>document.querySelector(q);
+  const live=$('#live'),figure=$('#figure'),liveface=$('#liveface'),artSample=$('#artSample'),
+        framePreview=$('#framePreview'),personBand=$('#personBand'),stepsEl=$('#steps');
+
+  const selIndex=k=>(k==='outfit'||k==='face')?personSettings[activePerson][k]:index[k];
+  const selLabel=k=>data[k][selIndex(k)][0];
+  const outfitKey=(p=activePerson)=>data.outfit[personSettings[p].outfit][1]+'_'+variants[p];
+
+  /* ---------- 라이브 ---------- */
+  let figImg=null;
   function updateLive(){
-    const themeItem=data.theme[selectedIndex('theme')],outfitItem=data.outfit[selectedIndex('outfit')];
-    live.className=`live ${themeItem[1]}`;
-    live.style.backgroundImage=themeItem[2]?`url("${encodeURI(themeItem[2])}")`:'';
-    live.style.backgroundSize=themeItem[2]?'cover':'';
-    live.style.backgroundPosition=themeItem[2]?'center':'';
-    person.className=outfitItem[2]?'person person-photo':`person ${outfitItem[1]}`;
-    person.style.backgroundImage=outfitItem[2]?`url("${encodeURI(outfitItem[2])}")`:'';
-    const outfitQuadrants=[['0%','0%'],['100%','0%'],['0%','100%'],['100%','100%']],quadrant=outfitQuadrants[activePerson%outfitQuadrants.length];
-    person.style.backgroundPosition=outfitItem[2]?`${quadrant[0]} ${quadrant[1]}`:'';
-    const artIndex=selectedIndex('art');artSample.dataset.art=String(artIndex);artSample.classList.toggle('is-visible',artIndex>0);
-    const frameClass=data.frame[selectedIndex('frame')][1];
-    framePreview.className=`live-frame-preview ${frameClass}${outputCount===1?' is-one':''}`;
-    live.dataset.frame=frameClass;
-    themeText.textContent=`#배경_${selectedLabel('theme').replaceAll(' ','')}`;
-    personText.textContent=`#${people[activePerson].replaceAll(' ','')}`;
-    outfitText.textContent=`#의상_${selectedLabel('outfit').replaceAll(' ','')}`;
-    faceText.textContent=`#보정_${selectedLabel('face').replaceAll(' ','')}`;
-    artText.textContent=`#화풍_${selectedLabel('art').replaceAll(' ','')}`;
-    frameText.textContent=`#프레임_${selectedLabel('frame').replaceAll(' ','')}_${outputCount}장`;
-    ['theme','art','outfit','face','frame'].forEach(kind=>{const value=document.querySelector(`.setting-tab[data-tab="${kind}"] small`);if(value)value.textContent=selectedLabel(kind)});
+    live.style.backgroundImage=`url("${encodeURI(data.theme[index.theme][1])}")`;
+    const hat=personSettings[activePerson].headwear;
+    live.classList.toggle('hat-on',hat); live.classList.toggle('hat-off',!hat);
+    const file=outfitKey()+(hat?'_hole':'_soft')+'.png';
+    if(!figImg){figImg=new Image();figImg.alt='';figure.appendChild(figImg);figImg.addEventListener('load',placeFace)}
+    if(!figImg.src.endsWith(encodeURI(file)))figImg.src=encodeURI(CT+file);
+    placeFace();
+    artSample.dataset.art=String(index.art);
+    artSample.classList.toggle('is-visible',index.art>0);
+    const frameClass=data.frame[index.frame][1];
+    framePreview.className=`live-frame-preview ${frameClass}`;
   }
-  function syncPeople(){document.querySelectorAll('.person-shot').forEach(button=>{const personIndex=Number(button.dataset.person),active=personIndex===activePerson,outfitName=data.outfit[personSettings[personIndex].outfit][0];button.classList.toggle('is-active',active);button.setAttribute('aria-pressed',String(active));button.setAttribute('aria-label',`${people[personIndex]}, 의상 ${outfitName}`);const outfitLabel=button.querySelector('.person-outfit');if(outfitLabel)outfitLabel.textContent=outfitName});document.querySelectorAll('.rail-scope').forEach(label=>label.textContent=`· ${people[activePerson]}`)}
-  function selectPerson(personIndex){activePerson=personIndex;syncPeople();draw('outfit');draw('face');updateLive()}
-  function setOutputCount(count){outputCount=count;document.querySelectorAll('.count-toggle button').forEach(button=>button.classList.toggle('is-active',Number(button.dataset.count)===count));document.querySelectorAll('.frame-preview').forEach(preview=>preview.classList.toggle('is-one',count===1));updateLive()}
-  function setActiveTab(kind){activeKind=kind;document.querySelectorAll('.setting-tab').forEach(button=>button.classList.toggle('is-active',button.dataset.tab===kind));document.querySelectorAll('.rail').forEach(rail=>rail.classList.toggle('is-active',rail.dataset.kind===kind));statusPanel.classList.toggle('person-mode',kind==='outfit'||kind==='face');draw(kind)}
-  function draw(kind){
-    const rail=document.querySelector(`.rail[data-kind="${kind}"]`),cards=[...rail.querySelectorAll('.flow-card')],count=data[kind].length;
-    cards.forEach((card,i)=>{
-      let offset=(i-selectedIndex(kind)+count)%count;
-      if(offset>count/2)offset-=count;
-      const distance=Math.abs(offset),visible=distance<=3;
-      const x=offset*60,scale=distance===0?1:distance===1?0.9:distance===2?0.8:0.7,rotate=offset<0?28:offset>0?-28:0;
-      card.classList.toggle('is-visible',visible);card.classList.toggle('is-center',offset===0);card.classList.toggle('is-side',distance===1);card.classList.toggle('is-far',distance===2);card.classList.toggle('is-edge',distance===3);card.classList.toggle('is-right',offset>0);
-      card.style.transform=`translateX(calc(-50% + ${x}%)) translateY(-50%) translateZ(${offset===0?20:-35}px) rotateY(${rotate}deg) scale(${scale})`;
-      card.style.zIndex=String(20-Math.abs(offset));
+  /* 대기·홍보 화면에서 감지·촬영한 머리 누끼 (없으면 기본 3종) */
+  const FD='assets/generated-concepts-20260812/faces/';
+  const FACE_SRC=(()=>{
+    try{const v=JSON.parse(sessionStorage.getItem('capturedFaces')||'null');if(Array.isArray(v)&&v.length)return v}catch(e){}
+    return [FD+'head1.png',FD+'head2.png',FD+'head3.png'];
+  })();
+  const CROP_K=3.4;   // 머리 누끼 제작 시 배율 (얼굴폭 대비 크롭 한 변)
+  const faceImg=liveface.querySelector('img');
+
+  function placeFace(){
+    const f=FACE[outfitKey()]; if(!f||!figImg||!figImg.complete||!figImg.naturalWidth)return;
+    const r=figImg.getBoundingClientRect(), lr=live.getBoundingClientRect();
+    if(!r.width||!lr.width)return;
+    const cx=r.left-lr.left+r.width*f[0]/100, cy=r.top-lr.top+r.height*f[1]/100;
+    const w=r.width*f[2]/100*CROP_K;                 // 합성 머리 폭
+    const src=FACE_SRC[activePerson%FACE_SRC.length];
+    if(!faceImg.src.endsWith(encodeURI(src)))faceImg.src=encodeURI(src);
+    liveface.style.left=(cx-w/2)+'px'; liveface.style.top=(cy-w/2)+'px'; liveface.style.width=w+'px';
+  }
+  addEventListener('resize',()=>{placeFace();draw(STEPS[stepIndex].kind)});
+
+  /* ---------- 스텝 바 ---------- */
+  function renderSteps(){
+    stepsEl.innerHTML=STEPS.map((s,i)=>{
+      const state=i===stepIndex?'is-active':(visited.has(s.kind)&&i<stepIndex?'is-done':'');
+      const mark=(visited.has(s.kind)&&i<stepIndex)?'✓':(i+1);
+      return `<button type="button" class="step ${state}" data-step="${i}"><em>${mark}</em><b>${s.label}</b><small>${selLabel(s.kind)}</small></button>`;
+    }).join('');
+    stepsEl.querySelectorAll('.step').forEach(b=>b.onclick=()=>goStep(Number(b.dataset.step)));
+    $('#prevStep').disabled=stepIndex===0;
+    $('.stepnav').classList.toggle('is-last',stepIndex===STEPS.length-1);
+  }
+  function goStep(i){
+    stepIndex=Math.max(0,Math.min(STEPS.length-1,i));
+    const s=STEPS[stepIndex]; visited.add(s.kind);
+    document.querySelectorAll('.rail').forEach(r=>r.classList.toggle('is-active',r.dataset.kind===s.kind));
+    personBand.classList.toggle('is-on',!!s.perPerson);
+    draw(s.kind); renderSteps(); requestAnimationFrame(placeFace);
+  }
+
+  /* ---------- 인물 밴드 ---------- */
+  function buildPeople(){
+    people.forEach((name,i)=>{
+      const b=document.createElement('button');
+      b.type='button'; b.className='person-shot'; b.dataset.person=i; b.title=name;
+      b.innerHTML=`<img class="outfit" alt=""><b><img alt=""></b><s>${i+1}</s><u></u>`;
+      b.onclick=()=>selectPerson(i);
+      personBand.appendChild(b);
     });
-    rail.querySelector('.rail-current').textContent=selectedLabel(kind);updateLive();
   }
+  function syncPeople(){
+    personBand.querySelectorAll('.person-shot').forEach(b=>{
+      const i=Number(b.dataset.person), on=i===activePerson, name=data.outfit[personSettings[i].outfit][0];
+      b.classList.toggle('is-active',on); b.setAttribute('aria-pressed',String(on));
+      b.setAttribute('aria-label',`${people[i]}, 의상 ${name}`);
+      b.querySelector('u').textContent=name;
+      b.querySelector('img.outfit').src=encodeURI(CT+data.outfit[personSettings[i].outfit][1]+'_'+variants[i]+'_thumb.png');
+      b.querySelector('b img').src=encodeURI(FACE_SRC[i%FACE_SRC.length]);
+    });
+    document.querySelectorAll('.rail-scope').forEach(el=>el.textContent='· '+people[activePerson]);
+  }
+  function selectPerson(i){
+    activePerson=i;syncPeople();
+    const hb=$('#hatToggle'),on=personSettings[i].headwear;
+    hb.classList.toggle('is-on',on); hb.setAttribute('aria-pressed',String(on));
+    draw('outfit');draw('face');updateLive();renderSteps();
+  }
+
+  /* ---------- 커버플로우 ---------- */
+  function draw(kind){
+    const rail=document.querySelector(`.rail[data-kind="${kind}"]`);
+    const cards=[...rail.querySelectorAll('.flow-card')], n=data[kind].length, cur=selIndex(kind);
+    const fw=rail.querySelector('.flow').clientWidth||320;
+    cards.forEach((card,i)=>{
+      let off=(i-cur+n)%n; if(off>n/2)off-=n;
+      const d=Math.abs(off), visible=d<=2;
+      const scale=d===0?1:d===1?.82:.66, rot=off<0?26:off>0?-26:0;
+      card.classList.toggle('is-visible',visible);
+      card.classList.toggle('is-center',off===0);
+      card.style.opacity=d===0?1:d===1?.8:d===2?.48:0;
+      // 위치도 transform 안에서 px 로 처리해야 한 번의 transition 으로 스르륵 미끄러진다.
+      // (translate 의 % 는 카드 자기 크기 기준이라 컨테이너 간격으로 못 쓰고,
+      //  left 로 잡으면 transition 대상이 아니라 툭툭 끊겨 보인다)
+      const gap=Math.sign(off)*(d===1?fw*0.27:d===2?fw*0.45:0);
+      // 목록 끝↔처음으로 감길 때만 순간이동(트랜지션 끄기). 그래야 화면을 가로질러 날아가는 깜박임이 없다.
+      const prev=card._off;
+      if(prev!==undefined&&Math.abs(off-prev)>2){card.style.transition='none';void card.offsetWidth;requestAnimationFrame(()=>{card.style.transition=''})}
+      card._off=off;
+      card.style.transform=`translate(calc(-50% + ${gap}px),-50%) translateZ(${off===0?30:-50}px) rotateY(${rot}deg) scale(${scale})`;
+      card.style.zIndex=String(20-d);
+      if(kind==='outfit'){
+        const t=card.querySelector('.thumb');
+        t.style.backgroundImage=`url("${encodeURI(CT+data.outfit[i][1]+'_'+variants[activePerson]+'_thumb.png')}")`;
+      }else if(kind==='face'){
+        const img=card.querySelector('.thumb img');
+        const src=FACE_SRC[activePerson%FACE_SRC.length];
+        if(!img.src.endsWith(encodeURI(src)))img.src=encodeURI(src);
+        img.style.width='210%'; img.style.transform='translate(-50%,-43%)';
+      }
+    });
+    rail.querySelector('.rail-current').textContent=selLabel(kind);
+    const dots=rail.querySelector('.flow-dots');
+    if(dots)[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===cur));
+    updateLive();
+  }
+  /* 커버플로우 조작: 화살표 · 드래그/스와이프 · 휠 · 좌우 키 */
+  function shift(kind,dir){
+    const n=data[kind].length, cur=selIndex(kind), next=(cur+dir+n)%n;
+    if(kind==='outfit'||kind==='face'){personSettings[activePerson][kind]=next;syncPeople()}else index[kind]=next;
+    draw(kind); renderSteps();
+  }
+  function wireFlow(kind){
+    const rail=document.querySelector(`.rail[data-kind="${kind}"]`), flow=rail.querySelector('.flow');
+    const prev=document.createElement('button'); prev.type='button'; prev.className='flow-arrow prev'; prev.textContent='‹';
+    const next=document.createElement('button'); next.type='button'; next.className='flow-arrow next'; next.textContent='›';
+    prev.onclick=e=>{e.stopPropagation();shift(kind,-1)};
+    next.onclick=e=>{e.stopPropagation();shift(kind,1)};
+    const dots=document.createElement('div'); dots.className='flow-dots';
+    dots.innerHTML=data[kind].map(()=>'<i></i>').join('');
+    flow.append(prev,next,dots);
+
+    let sx=0,pid=null,moved=0,captured=false;
+    flow.addEventListener('pointerdown',e=>{
+      if(e.target.closest('.flow-arrow'))return;
+      pid=e.pointerId; sx=e.clientX; moved=0; captured=false;      // 여기서 캡처하면 카드 클릭이 죽는다
+    });
+    flow.addEventListener('pointermove',e=>{
+      if(pid===null||e.pointerId!==pid)return;
+      const d=e.clientX-sx;
+      if(Math.abs(d)<34)return;
+      if(!captured){captured=true;try{flow.setPointerCapture(pid)}catch(err){}}   // 드래그가 시작된 뒤에만 캡처
+      shift(kind,d<0?1:-1); sx=e.clientX; moved++;
+    });
+    const endDrag=()=>{
+      if(captured&&pid!==null){try{flow.releasePointerCapture(pid)}catch(err){}}
+      pid=null; captured=false;
+    };
+    flow.addEventListener('pointerup',endDrag);
+    flow.addEventListener('pointercancel',endDrag);
+    flow.addEventListener('click',e=>{ if(moved){e.stopPropagation();e.preventDefault();moved=0} },true);
+    let wheelLock=0;
+    flow.addEventListener('wheel',e=>{
+      const d=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;
+      if(!d)return; e.preventDefault();
+      const now=Date.now(); if(now-wheelLock<230)return; wheelLock=now;
+      shift(kind,d>0?1:-1);
+    },{passive:false});
+  }
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight')shift(STEPS[stepIndex].kind,1);
+    else if(e.key==='ArrowLeft')shift(STEPS[stepIndex].kind,-1);
+  });
   function build(kind){
     const flow=document.querySelector(`.rail[data-kind="${kind}"] .flow`);
-    data[kind].forEach(([label,,image],i)=>{const card=document.createElement('button');card.type='button';card.className='flow-card';const imageStyle=image?` style="background-image:url('${encodeURI(image)}')"`:'';const artThumb=kind==='art'&&i>0?`<span class="thumb has-art-sample art-${i}"></span>`:'';const thumb=kind==='frame'?`<span class="thumb tone-${i} frame-preview"><i class="frame-photo"></i><i class="frame-photo"></i></span>`:artThumb||`<span class="thumb tone-${i}${image?' has-image':''}"${imageStyle}></span>`;card.innerHTML=`${thumb}<strong>${label}</strong>`;card.onclick=()=>{if(kind==='outfit'||kind==='face'){personSettings[activePerson][kind]=i;syncPeople()}else index[kind]=i;draw(kind)};flow.appendChild(card)});draw(kind);
+    data[kind].forEach((row,i)=>{
+      const card=document.createElement('button'); card.type='button'; card.className='flow-card';
+      let thumb;
+      if(kind==='theme')       thumb=`<span class="thumb" style="background-image:url('${encodeURI(row[1])}')"></span>`;
+      else if(kind==='art')    thumb=i>0?`<span class="thumb has-art-sample ${row[1]}"></span>`:`<span class="thumb tone-0"></span>`;
+      else if(kind==='outfit') thumb=`<span class="thumb"></span>`;
+      else if(kind==='frame')  thumb=`<span class="thumb frame-preview ${row[1]}"><i></i></span>`;
+      else                     thumb=`<span class="thumb facecrop"><img alt="" style="filter:${row[1]}"></span>`;
+      card.innerHTML=`${thumb}<strong>${row[0]}</strong>`;
+      card.onclick=()=>{
+        if(kind==='outfit'||kind==='face'){personSettings[activePerson][kind]=i;syncPeople()}
+        else index[kind]=i;
+        draw(kind); renderSteps();
+      };
+      flow.appendChild(card);
+    });
   }
-  people.forEach((name,i)=>{const button=document.createElement('button');button.type='button';button.className='person-shot';button.dataset.person=i;button.title=name;button.setAttribute('aria-label',name);button.innerHTML=`<span>${i+1}</span><b class="person-outfit">${data.outfit[personSettings[i].outfit][0]}</b>`;button.onclick=()=>selectPerson(i);document.querySelector('#livePeople').appendChild(button)});
+  /* ---------- 초기화 ---------- */
+  buildPeople();
   ['theme','art','outfit','face','frame'].forEach(build);
-  document.querySelectorAll('.setting-tab').forEach(button=>button.onclick=()=>setActiveTab(button.dataset.tab));
-  document.querySelectorAll('.count-toggle button').forEach(button=>button.onclick=()=>setOutputCount(Number(button.dataset.count)));
-  syncPeople();
-  setActiveTab('theme');
-  document.querySelector('.done').onclick=e=>{e.currentTarget.textContent='완료됨'};
+  ['theme','art','outfit','face','frame'].forEach(wireFlow);
+  ['theme','art','outfit','face','frame'].forEach(draw);
+  $('#hatToggle').onclick=()=>{
+    const s=personSettings[activePerson]; s.headwear=!s.headwear;
+    $('#hatToggle').classList.toggle('is-on',s.headwear);
+    $('#hatToggle').setAttribute('aria-pressed',String(s.headwear));
+    updateLive();
+  };
+  $('#prevStep').onclick=()=>goStep(stepIndex-1);
+  $('#nextStep').onclick=()=>goStep(stepIndex+1);
+  $('#doneBtn').onclick=e=>{
+    e.currentTarget.textContent='완료됨';
+    sessionStorage.setItem('selectedFrame',data.frame[index.frame][1]);
+    if(new URLSearchParams(location.search).get('flow')==='1')
+      setTimeout(()=>{location.href='storyboard-ui/screen.html?id=ai-02'},320);
+  };
+  syncPeople(); goStep(0); updateLive();
 })();
 </script>
 </body>
