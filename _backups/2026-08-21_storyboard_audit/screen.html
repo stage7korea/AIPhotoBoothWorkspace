@@ -69,7 +69,7 @@ html,body{background:transparent;color:var(--ink)}
   isolation:isolate;
   gap:2.4%;
   padding:6.2% 5.2% 14%;
-  overflow:clip;
+  overflow:hidden;
   background:
     radial-gradient(circle at 100% 0,rgba(255,113,141,.17),transparent 27%),
     radial-gradient(circle at 0 100%,rgba(63,210,194,.20),transparent 31%),
@@ -90,7 +90,7 @@ html,body{background:transparent;color:var(--ink)}
   text-wrap:balance;
 }
 .lead{max-width:94%;margin:0;color:var(--muted);font-size:11px;font-weight:600;line-height:1.55}
-.foot{bottom:2.5%}
+.foot{bottom:6%}
 .next{
   min-width:150px;
   border-radius:14px;
@@ -376,7 +376,7 @@ html,body{background:transparent;color:var(--ink)}
 .cover-arrow{display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(20,61,80,.16);border-radius:50%;background:#fff;color:#174765;font-size:18px;font-weight:900;cursor:pointer;box-shadow:0 6px 15px rgba(17,59,79,.12)}
 
 /* A02 — 배경 위에 실시간 누끼 인물이 보이는 6:4 AI 촬영 화면 */
-.body.ai-capture-mode{padding:24px 5% 28px;gap:8px;background:linear-gradient(180deg,#f7fbfd,#eaf5f8)}
+.body.ai-capture-mode{padding:24px 5% 82px;gap:8px;background:linear-gradient(180deg,#f7fbfd,#eaf5f8)}
 .body.ai-capture-mode>.title{font-size:27px}.body.ai-capture-mode>.lead{font-size:9px}
 .ai-camera{position:relative;flex:none;width:min(100%,660px);aspect-ratio:6/4;align-self:center;overflow:hidden;border-radius:18px;background:#10243b;box-shadow:0 16px 34px rgba(20,64,94,.2)}
 .ai-camera .pair-shot{background-position:center}.ai-camera .pair-shot img{filter:drop-shadow(0 0 2px #67f5d5) drop-shadow(0 0 8px rgba(28,255,206,.72)) drop-shadow(0 9px 11px rgba(0,0,0,.28))}
@@ -384,15 +384,13 @@ html,body{background:transparent;color:var(--ink)}
 .live-mask-state{position:absolute;z-index:7;left:14px;right:14px;bottom:11px;display:flex;justify-content:space-between;align-items:center;color:#fff;font-size:8px;font-weight:850}.live-mask-state strong{display:flex;align-items:center;gap:6px;font-size:10px}.live-mask-state strong:before{content:'';width:7px;height:7px;border-radius:50%;background:#42e6bd;box-shadow:0 0 0 4px rgba(66,230,189,.22)}
 .ai-scan{position:absolute;z-index:5;left:0;right:0;top:36%;height:2px;background:linear-gradient(90deg,transparent,#67f5d5,transparent);box-shadow:0 0 12px #67f5d5;animation:aiScan 2.2s ease-in-out infinite}@keyframes aiScan{0%,100%{transform:translateY(-80px);opacity:.2}50%{transform:translateY(120px);opacity:1}}
 .ai-capture-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;width:min(100%,660px);align-self:center}.ai-capture-thumb{position:relative;aspect-ratio:6/4;overflow:hidden;border:2px solid rgba(255,255,255,.9);border-radius:9px;background:#d8e5e7;box-shadow:0 6px 13px rgba(26,72,98,.12)}.ai-capture-thumb.empty{display:grid;place-items:center;border-style:dashed;border-color:#9fb4bc;background:#edf4f5;color:#78909a;font-size:8px}.ai-capture-thumb b{position:absolute;z-index:5;right:4px;bottom:3px;display:grid;place-items:center;width:17px;height:17px;border-radius:50%;background:rgba(8,30,44,.76);color:#fff;font-size:7px}
-.body.ai-capture-mode>.flow-next{position:static;left:auto;right:auto;bottom:auto;width:min(100%,660px);align-self:center;margin:4px 0 0;flex:none}
+.body.ai-capture-mode>.flow-next{position:absolute;left:5%;right:5%;bottom:6%;width:auto;align-self:auto;margin:0}
 
 /* A03 — 6:4 후보 4장 중 2장을 고른 뒤 버튼으로 확정 */
 .body.ai-select-mode{padding:28px 5% 82px;gap:8px;background:linear-gradient(180deg,#f7fbfd,#edf7f8)}
 .body.ai-select-mode>.title{font-size:27px}.body.ai-select-mode>.lead{font-size:9px}
 .photo-grid.ai-four{flex:none;width:min(90%,660px);align-self:center;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,auto);gap:8px}.photo-grid.ai-four .photo{aspect-ratio:6/4;border-radius:12px}.photo-grid.ai-four .photo>b{z-index:6}
-.body.ai-select-mode>.foot.inline-selection,
-.body.normal-select-mode>.foot.inline-selection,
-.body>.foot.inline-notice{position:static;left:auto;bottom:auto;transform:none;display:block;align-self:center;margin-top:4px;flex:none}
+.body.ai-select-mode>.foot.inline-ai-select{position:static;left:auto;bottom:auto;transform:none;display:block;align-self:center;margin-top:2px;flex:none}
 
 /* B01 — 8장 자동 촬영 진행 */
 .body.normal-capture-mode{padding:4.5% 5% 5%;gap:1.8%;background:linear-gradient(180deg,#f7faf8,#eef5f2)}
@@ -417,7 +415,7 @@ html,body{background:transparent;color:var(--ink)}
 .pair-shot img:first-child{left:5%}.pair-shot img:nth-child(2){right:5%}
 
 /* B03 — 6:4 작업 사진 1장 + 나머지 3장 + 카테고리별 커버플로우 */
-.body.decorate-mode{padding:24px 5% 120px;gap:7px;background:linear-gradient(180deg,#f8faf8,#f0f5f2)}
+.body.decorate-mode{padding:24px 5% 70px;gap:7px;background:linear-gradient(180deg,#f8faf8,#f0f5f2)}
 .body.decorate-mode>.title{font-size:25px}.body.decorate-mode>.lead{font-size:8px;margin-bottom:2px}
 .decorate-workspace{display:grid;grid-template-rows:auto auto auto;justify-content:center;gap:7px;flex:1;min-height:0}.decorate-workspace>*{width:min(100%,450px);justify-self:center}
 .decorate-canvas{position:relative;aspect-ratio:6/4;overflow:hidden;border-radius:15px;background:#121a22;box-shadow:0 12px 25px rgba(10,39,53,.17)}
@@ -470,7 +468,7 @@ function render(){let html=header();switch(s.kind){
 case'welcome':html=`<div class="promo-full"><span class="promo-bg" style="background-image:url('../assets/video/blur.jpg')"></span><video class="promo-video" poster="../assets/video/poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="AI 포토부스 홍보 영상"><source src="../assets/video/promo.mp4" type="video/mp4"><source src="../assets/video/promo.webm" type="video/webm"></video><div class="campip" id="campip" style="background-image:url('../assets/generated-concepts-20260812/backgrounds/01_jeju_stonewall_canola.png')"><img class="cam-person" src="../assets/generated-concepts-20260812/costumes-cut/05_modern_formal_m1_thumb.png" style="left:13%;width:19%" alt=""><img class="cam-person" src="../assets/generated-concepts-20260812/costumes-cut/05_modern_formal_f1_thumb.png" style="left:40.5%;width:19%" alt=""><img class="cam-person" src="../assets/generated-concepts-20260812/costumes-cut/05_modern_formal_m2_thumb.png" style="left:68%;width:19%" alt=""><span class="detbox" style="left:13%;top:16%;width:19%;height:74%"><u>1</u></span><span class="detbox" style="left:40.5%;top:16%;width:19%;height:74%"><u>2</u></span><span class="detbox" style="left:68%;top:16%;width:19%;height:74%"><u>3</u></span><span class="scan"></span><span class="noone">사람 없음</span></div><button class="start-invite" id="startInvite" type="button" aria-label="화면을 터치해 언어 선택 열기"><span>시작</span><span>Start</span><span>スタート</span><span>开始</span><span dir="rtl">ابدأ</span><span>Starten</span></button><div class="language-float is-gated" aria-label="언어 선택"><div class="detect" id="detect"><span class="dot"></span><span class="txt"><strong id="detTitle">사람 3명 감지됨</strong><small id="detSub">언어를 선택하면 다음 단계로 이동합니다</small></span><span class="faces" id="detFaces"></span><button class="sim" type="button" id="simToggle">감지 없음으로 전환</button></div><button class="language-start" type="button" lang="ko"><strong>한국어</strong></button><button class="language-start" type="button" lang="en"><strong>English</strong></button><button class="language-start" type="button" lang="ja"><strong>日本語</strong></button><button class="language-start" type="button" lang="zh"><strong>中文</strong></button><button class="language-start" type="button" lang="ar" dir="rtl"><strong>العربية</strong></button><button class="language-start" type="button" lang="de"><strong>Deutsch</strong></button></div><div class="toastmsg" id="toastMsg"></div></div>`;break;
 case'notice':html+=`<button class="lang-return" type="button" aria-label="언어 선택 화면으로 뒤로 가기" title="언어 선택 화면으로 뒤로 가기"><span class="back-arrow" aria-hidden="true">←</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg><small>KO</small></button><div class="notice">${s.copy.map((x,i)=>`<div class="note"><b>${i+1}</b><div><strong>${['이용 범위','보관·삭제'][i]}</strong><p>${x}</p></div></div>`).join('')}</div>`;break;
 case'mode':html+=`<div class="mode-options"><button class="mode-card" type="button" data-mode="ai"><img class="mode-image" src="../assets/backgrounds/idol-library.png" alt="AI 합성 사진 대표 이미지"><span class="mode-copy"><em>AI COMPOSITE</em><strong>AI 합성 사진</strong><span>배경·의상·화풍을 적용한 새로운 사진</span></span></button><button class="mode-card" type="button" data-mode="normal"><img class="mode-image" src="../assets/backgrounds/gyeongbokgung.png" alt="일반 4컷 촬영 대표 이미지"><span class="fourcut-grid" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="mode-copy"><em>ORIGINAL 4 CUT</em><strong>일반 4컷 촬영</strong><span>원본 촬영 후 AR 스티커로 꾸미기</span></span></button></div>`;break;
-case'payment':{const normalMode=sessionStorage.getItem('photoMode')==='normal';const productName=normalMode?'일반 4컷 촬영':'AI 합성 사진';const productPrice=normalMode?'₩ 8,000':'₩ 12,000';html+=`<div class="amount"><small>선택 상품 · ${productName}</small><strong>${productPrice}</strong></div>${tiles(['신용카드','카카오페이','티머니','간편결제'],-1)}`;break}
+case'payment':html+=`<div class="amount"><small>선택 상품 · AI 합성 사진</small><strong>₩ 12,000</strong></div>${tiles(['신용카드','카카오페이','티머니','간편결제'],-1)}`;break;
 case'capture':html+=s.variant==='normal'?`<div class="normal-camera"><span class="cut">CUT 3 / 8</span><span class="counter">3</span><div class="capture-guide"><strong>2인 촬영 · 8장 자동 촬영 중</strong><span>촬영이 끝나면 사진 선택으로 이동합니다</span></div></div><div class="capture-eight">${NORMAL_PAIRS.map((pair,i)=>`<span class="capture-slot ${i<2?'done':i===2?'current':'empty'}">${i<3?pairMarkup(pair,`촬영 사진 ${i+1}`):''}<b>${i+1}</b></span>`).join('')}</div><p class="auto-note">두 사람이 함께 찍힌 가로 6:4 사진 8장을 연속 촬영합니다</p>`:`<div class="ai-camera"><span class="cut">CUT 2 / 4</span>${pairMarkup(NORMAL_PAIRS[2],'실시간 누끼 촬영 화면')}<span class="ai-scan"></span><span class="counter">3</span><div class="live-mask-state"><strong>실시간 인물 분리 적용</strong><span>가로 6:4 촬영 프레임</span></div></div><div class="ai-capture-thumbs">${NORMAL_PAIRS.slice(0,4).map((pair,i)=>i<2?`<span class="ai-capture-thumb">${pairMarkup(pair,`AI 촬영 사진 ${i+1}`)}<b>${i+1}</b></span>`:`<span class="ai-capture-thumb empty">촬영 대기<b>${i+1}</b></span>`).join('')}</div><p class="auto-note">선택한 배경 위에서 실시간 누끼 상태를 확인하며 4장을 촬영합니다</p>`;break;
 case'select':{const normal=s.variant==='normal',required=normal?4:2;html+=`<div class="photo-grid ${normal?'normal-eight':'ai-four'}">${Array.from({length:normal?8:4},(_,i)=>`<button class="photo" type="button" data-index="${i}">${pairMarkup(NORMAL_PAIRS[i],`${normal?'일반':'AI'} 촬영 후보 ${i+1}`)}<b>＋</b></button>`).join('')}</div><p class="lead selection-status">선택 0 / ${required}${normal?' · 2인 가로 사진 8장 중 4장을 선택해 주세요.':' · 두 장을 고른 뒤 선택 완료를 눌러 주세요.'}</p>`;break}
 case'progress':html+=`<div class="progress"><div class="ring"><strong>68%</strong></div><p>인물·의상·배경을 자연스럽게 합성하고 있어요</p></div>`;break;
@@ -500,12 +498,8 @@ body.dataset.kind=s.kind;
 foot.style.display=actionLabel?'block':'none';
 nextButton.textContent=actionLabel||'';
 body.innerHTML=html;
-if(s.kind==='select'){
-  foot.classList.add('inline-selection');
-  body.appendChild(foot);
-}
-if(s.kind==='notice'){
-  foot.classList.add('inline-notice');
+if(s.kind==='select'&&s.variant==='ai'){
+  foot.classList.add('inline-ai-select');
   body.appendChild(foot);
 }
 if(s.kind==='welcome'){
@@ -611,9 +605,6 @@ if(s.kind==='decorate'){
   const chosen=selectedIndexes.slice(0,4).map(index=>NORMAL_PAIRS[index]||NORMAL_PAIRS[0]);
   const main=body.querySelector('#decorateMain');
   const thumbs=[...body.querySelectorAll('.decorate-thumb')];
-  const overlayTargets={headband:body.querySelector('#arHeadband'),phrase:body.querySelector('#arPhrase'),accent:body.querySelector('#arAccent')};
-  const photoStickerState=chosen.map(()=>({headband:'👑',phrase:'우리 오늘 최고!',accent:'✨'}));
-  const flowControllers=[];
   let activePhoto=0;
   const syncPhoto=()=>{
     main.innerHTML=pairMarkup(chosen[activePhoto],`현재 꾸미는 사진 ${activePhoto+1}`);
@@ -621,23 +612,21 @@ if(s.kind==='decorate'){
       thumb.innerHTML=pairMarkup(chosen[index],`선택한 사진 ${index+1}`)+`<b>${index+1}</b>`;
       thumb.classList.toggle('active',index===activePhoto);
     });
-    flowControllers.forEach(sync=>sync());
   };
+  thumbs.forEach((thumb,index)=>thumb.onclick=()=>{activePhoto=index;syncPhoto()});
+  const overlayTargets={headband:body.querySelector('#arHeadband'),phrase:body.querySelector('#arPhrase'),accent:body.querySelector('#arAccent')};
   body.querySelectorAll('.sticker-flow-row').forEach(row=>{
     const cards=[...row.querySelectorAll('.sticker-card')];
-    const category=row.dataset.category;
-    let active=0;
+    let active=Math.max(0,cards.findIndex(card=>card.classList.contains('selected')));
     const signedDistance=index=>{let d=index-active;const half=Math.floor(cards.length/2);if(d>half)d-=cards.length;if(d<-half)d+=cards.length;return d};
     const syncFlow=()=>{
-      active=Math.max(0,cards.findIndex(card=>card.dataset.value===photoStickerState[activePhoto][category]));
       cards.forEach((card,index)=>{const d=signedDistance(index);card.dataset.distance=String(d);card.classList.toggle('selected',d===0)});
       const value=cards[active].dataset.value;
-      overlayTargets[category].textContent=value==='없음'?'':value;
+      overlayTargets[row.dataset.category].textContent=value==='없음'?'':value;
     };
-    cards.forEach((card,index)=>card.onclick=()=>{active=index;photoStickerState[activePhoto][category]=card.dataset.value;syncFlow()});
-    flowControllers.push(syncFlow);
+    cards.forEach((card,index)=>card.onclick=()=>{active=index;syncFlow()});
+    syncFlow();
   });
-  thumbs.forEach((thumb,index)=>thumb.onclick=()=>{activePhoto=index;syncPhoto()});
   syncPhoto();
 }
 
@@ -658,7 +647,6 @@ if(NEXT[id]){
   }
 }
 if(id==='ai-04')setTimeout(()=>go('ai-05'),2200);
-if(id==='normal-01')setTimeout(()=>go('normal-02'),2600);
 if(id==='result-01'){
   const session=body.querySelector('#resultSession');
   const statusText=body.querySelector('#printStatusText');
