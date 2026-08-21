@@ -60,7 +60,7 @@ html.embedded .booth{width:100%;height:100%;aspect-ratio:auto}
 .live-frame-preview>i,.thumb.frame-preview>i{display:block;flex:0 0 auto;width:82%;aspect-ratio:5/4;min-width:0;min-height:0;background-size:cover;background-position:center}
 .live-frame-preview>i:nth-of-type(1),.thumb.frame-preview>i:nth-of-type(1){background-image:var(--photo-image-one)}
 .live-frame-preview>i:nth-of-type(2),.thumb.frame-preview>i:nth-of-type(2){background-image:var(--photo-image-two)}
-.mini-print-brand{display:grid;flex:0 0 11%;place-items:center;width:100%;height:11%;padding:1px 4px;background:transparent;overflow:visible}.mini-print-brand img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
+.mini-print-brand{display:grid;flex:0 0 9%;place-items:center;width:100%;height:9%;background:transparent;overflow:hidden}.mini-print-brand img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
 
 /* ========== 2. 진행형 스텝 바 ========== */
 .steps{position:relative;z-index:5;flex:0 0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;padding:9px 10px 8px;background:rgba(255,255,255,.9);box-shadow:0 8px 20px rgba(34,74,101,.08)}
@@ -157,7 +157,7 @@ html.embedded .booth{width:100%;height:100%;aspect-ratio:auto}
     <span class="live-badge">● LIVE</span>
     <div class="liveface" id="liveface"><img alt="촬영된 얼굴"></div>
     <div class="figure" id="figure"></div>
-    <div class="live-frame-preview" id="framePreview" aria-label="4×6 인화지에 가로 5×4 사진 두 장과 하단 브랜드 마크 배치 예시"><i></i><i></i><span class="mini-print-brand"><img src="assets/branding/stage7-ai-photo-mark-horizontal.png?v=20260820-reference-exact" alt="Stage7 AI PHOTO 2026.08.20"></span></div>
+    <div class="live-frame-preview" id="framePreview" aria-label="4×6 인화지에 가로 5×4 사진 두 장과 하단 브랜드 마크 배치 예시"><i></i><i></i><span class="mini-print-brand"><img src="assets/branding/stage7-ai-photo-mark-horizontal.png" alt="Stage7 AI PHOTO 2026.08.20"></span></div>
     <div class="art-sample" id="artSample" data-art="0" aria-label="선택 화풍 AI 결과 예시"><span class="art-sample-image"></span></div>
   </section>
 
@@ -228,7 +228,7 @@ html.embedded .booth{width:100%;height:100%;aspect-ratio:auto}
     frame:[
       ['제주 유채·돌담','mat-jeju',FR+'mat-jeju.png'],
       ['한옥 한지','mat-hanok',FR+'mat-hanok.png'],
-      ['부산 바다','mat-busan',FR+'mat-busan.png?v=20260820-clean'],
+      ['부산 바다','mat-busan',FR+'mat-busan.png'],
       ['달빛 궁궐','mat-palace',FR+'mat-palace.png'],
       ['서울 나이트','mat-seoul-night',FR+'mat-seoul-night.png'],
       ['프레임 없음','frame-none','']
@@ -435,7 +435,7 @@ html.embedded .booth{width:100%;height:100%;aspect-ratio:auto}
       if(kind==='theme')       thumb=`<span class="thumb" style="background-image:url('${encodeURI(row[1])}')"></span>`;
       else if(kind==='art')    thumb=i>0?`<span class="thumb has-art-sample ${row[1]}"></span>`:`<span class="thumb tone-0"></span>`;
       else if(kind==='outfit') thumb=`<span class="thumb"></span>`;
-      else if(kind==='frame')  thumb=`<span class="thumb frame-preview" aria-label="가로 5×4 사진 두 장을 위아래로 배치하고 마크를 맨 아래 둔 4×6 인화 예시"><i></i><i></i><span class="mini-print-brand"><img src="assets/branding/stage7-ai-photo-mark-horizontal.png?v=20260820-reference-exact" alt="Stage7 AI PHOTO 2026.08.20"></span></span>`;
+      else if(kind==='frame')  thumb=`<span class="thumb frame-preview" aria-label="가로 5×4 사진 두 장을 위아래로 배치하고 마크를 맨 아래 둔 4×6 인화 예시"><i></i><i></i><span class="mini-print-brand"><img src="assets/branding/stage7-ai-photo-mark-horizontal.png" alt="Stage7 AI PHOTO 2026.08.20"></span></span>`;
       else                     thumb=`<span class="thumb facecrop"><img alt="" style="filter:${row[1]}"></span>`;
       card.innerHTML=`${thumb}<strong>${row[0]}</strong>`;
       card.onclick=()=>{

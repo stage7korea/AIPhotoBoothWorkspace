@@ -54,13 +54,12 @@ html.embedded .booth{width:100%;height:100%;aspect-ratio:auto}
 .art-sample[data-art="5"] .art-sample-image{background-position:50% 100%}
 .art-sample[data-art="6"] .art-sample-image{background-position:100% 100%}
 
-/* 선택한 인화 배경 위에 5:4 사진 두 장과 하단 S7 마크가 놓이는 4×6 인화 예시 */
-.live-frame-preview{--mat-image:linear-gradient(#f2f2f2,#f2f2f2);--photo-image-one:url('assets/backgrounds/idol-library.png');--photo-image-two:url('assets/backgrounds/gyeongbokgung.png');position:absolute;z-index:6;left:9px;bottom:9px;width:19%;aspect-ratio:4/6;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:2px;padding:4px 4px 2px;overflow:hidden;border:1px solid rgba(255,255,255,.82);border-radius:7px;background-color:#eef4f5;background-image:var(--mat-image);background-size:cover;background-position:center;box-shadow:0 7px 16px rgba(0,0,0,.24);pointer-events:none}
+/* 선택한 인화 배경이 1장·2장·4장 배치에서 차지하는 여백 미리보기 */
+.live-frame-preview{--mat-image:linear-gradient(#f2f2f2,#f2f2f2);--photo-image-one:url('assets/backgrounds/idol-library.png');--photo-image-two:url('assets/backgrounds/gyeongbokgung.png');position:absolute;z-index:6;left:9px;bottom:9px;width:19%;aspect-ratio:4/6;display:flex;flex-direction:column;justify-content:space-between;gap:3px;padding:5px;overflow:hidden;border:1px solid rgba(255,255,255,.82);border-radius:7px;background-color:#eef4f5;background-image:var(--mat-image);background-size:cover;background-position:center;box-shadow:0 7px 16px rgba(0,0,0,.24);pointer-events:none}
 .live-frame-preview::before{content:"인화 배경";position:absolute;z-index:6;left:0;top:0;padding:2px 5px;border-radius:0 0 4px 0;background:rgba(13,31,49,.66);color:#fff;font-size:6px;font-weight:800;white-space:nowrap}
-.live-frame-preview>i,.thumb.frame-preview>i{display:block;flex:0 0 auto;width:82%;aspect-ratio:5/4;min-width:0;min-height:0;background-size:cover;background-position:center}
-.live-frame-preview>i:nth-of-type(1),.thumb.frame-preview>i:nth-of-type(1){background-image:var(--photo-image-one)}
-.live-frame-preview>i:nth-of-type(2),.thumb.frame-preview>i:nth-of-type(2){background-image:var(--photo-image-two)}
-.mini-print-brand{display:grid;flex:0 0 11%;place-items:center;width:100%;height:11%;padding:1px 4px;background:transparent;overflow:visible}.mini-print-brand img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
+.live-frame-preview>i,.thumb.frame-preview>i{display:block;flex:0 0 auto;width:100%;aspect-ratio:6/4;min-width:0;min-height:0;background-size:cover;background-position:center}
+.live-frame-preview>i:first-child,.thumb.frame-preview>i:first-child{background-image:var(--photo-image-one)}
+.live-frame-preview>i:last-child,.thumb.frame-preview>i:last-child{background-image:var(--photo-image-two)}
 
 /* ========== 2. 진행형 스텝 바 ========== */
 .steps{position:relative;z-index:5;flex:0 0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;padding:9px 10px 8px;background:rgba(255,255,255,.9);box-shadow:0 8px 20px rgba(34,74,101,.08)}
@@ -138,7 +137,7 @@ html.embedded .booth{width:100%;height:100%;aspect-ratio:auto}
 .thumb.facecrop{position:relative;overflow:hidden;background:#e9f2f6}
 .thumb.facecrop img{position:absolute;left:50%;top:50%;display:block;height:auto}
 .thumb.facecrop::after{content:attr(data-fx);position:absolute;left:0;right:0;bottom:0;padding:2px 0;background:linear-gradient(transparent,rgba(6,20,33,.72));color:#fff;font-size:6px;font-weight:800;text-align:center}
-.thumb.frame-preview{--mat-image:linear-gradient(#f2f2f2,#f2f2f2);--photo-image-one:url('assets/backgrounds/idol-library.png');--photo-image-two:url('assets/backgrounds/gyeongbokgung.png');flex:1 1 auto;width:auto;aspect-ratio:4/6;align-self:center;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:2px;padding:3px 3px 2px;overflow:hidden;background-color:#eaf1f3;background-image:var(--mat-image);background-size:cover;background-position:center;box-shadow:inset 0 0 0 1px rgba(35,35,35,.1)}
+.thumb.frame-preview{--mat-image:linear-gradient(#f2f2f2,#f2f2f2);--photo-image-one:url('assets/backgrounds/idol-library.png');--photo-image-two:url('assets/backgrounds/gyeongbokgung.png');flex:1 1 auto;width:auto;aspect-ratio:4/6;align-self:center;display:flex;flex-direction:column;justify-content:space-between;gap:5px;padding:7px;overflow:hidden;background-color:#eaf1f3;background-image:var(--mat-image);background-size:cover;background-position:center;box-shadow:inset 0 0 0 1px rgba(35,35,35,.1)}
 
 /* ========== 5. 하단 진행 버튼 ========== */
 .stepnav{flex:0 0 auto;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:7px;padding:0 10px 10px}
@@ -157,7 +156,7 @@ html.embedded .booth{width:100%;height:100%;aspect-ratio:auto}
     <span class="live-badge">● LIVE</span>
     <div class="liveface" id="liveface"><img alt="촬영된 얼굴"></div>
     <div class="figure" id="figure"></div>
-    <div class="live-frame-preview" id="framePreview" aria-label="4×6 인화지에 가로 5×4 사진 두 장과 하단 브랜드 마크 배치 예시"><i></i><i></i><span class="mini-print-brand"><img src="assets/branding/stage7-ai-photo-mark-horizontal.png?v=20260820-reference-exact" alt="Stage7 AI PHOTO 2026.08.20"></span></div>
+    <div class="live-frame-preview" id="framePreview" aria-label="4×6 인화지에 가로 6×4 사진 두 장 배치 예시"><i></i><i></i></div>
     <div class="art-sample" id="artSample" data-art="0" aria-label="선택 화풍 AI 결과 예시"><span class="art-sample-image"></span></div>
   </section>
 
@@ -181,7 +180,7 @@ html.embedded .booth{width:100%;height:100%;aspect-ratio:auto}
   document.documentElement.classList.toggle('embedded',window.self!==window.top);
   const BG='assets/generated-concepts-20260812/backgrounds/';
   const CT='assets/generated-concepts-20260812/costumes-cut/';
-  const FR='assets/frame-mats-20260820-v2/';
+  const FR='assets/frame-mats-20260820/';
 
   /* 의상 누끼 얼굴 좌표 (파일명 → %, 자동 검출값) */
   const FACE={
@@ -228,7 +227,7 @@ html.embedded .booth{width:100%;height:100%;aspect-ratio:auto}
     frame:[
       ['제주 유채·돌담','mat-jeju',FR+'mat-jeju.png'],
       ['한옥 한지','mat-hanok',FR+'mat-hanok.png'],
-      ['부산 바다','mat-busan',FR+'mat-busan.png?v=20260820-clean'],
+      ['부산 바다','mat-busan',FR+'mat-busan.png'],
       ['달빛 궁궐','mat-palace',FR+'mat-palace.png'],
       ['서울 나이트','mat-seoul-night',FR+'mat-seoul-night.png'],
       ['프레임 없음','frame-none','']
@@ -435,7 +434,7 @@ html.embedded .booth{width:100%;height:100%;aspect-ratio:auto}
       if(kind==='theme')       thumb=`<span class="thumb" style="background-image:url('${encodeURI(row[1])}')"></span>`;
       else if(kind==='art')    thumb=i>0?`<span class="thumb has-art-sample ${row[1]}"></span>`:`<span class="thumb tone-0"></span>`;
       else if(kind==='outfit') thumb=`<span class="thumb"></span>`;
-      else if(kind==='frame')  thumb=`<span class="thumb frame-preview" aria-label="가로 5×4 사진 두 장을 위아래로 배치하고 마크를 맨 아래 둔 4×6 인화 예시"><i></i><i></i><span class="mini-print-brand"><img src="assets/branding/stage7-ai-photo-mark-horizontal.png?v=20260820-reference-exact" alt="Stage7 AI PHOTO 2026.08.20"></span></span>`;
+      else if(kind==='frame')  thumb=`<span class="thumb frame-preview" aria-label="가로 6×4 사진 두 장을 위아래로 배치한 4×6 인화 예시"><i></i><i></i></span>`;
       else                     thumb=`<span class="thumb facecrop"><img alt="" style="filter:${row[1]}"></span>`;
       card.innerHTML=`${thumb}<strong>${row[0]}</strong>`;
       card.onclick=()=>{

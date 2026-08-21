@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <rect width="1200" height="1200" fill="#e7eaf0"/>
+  <defs>
+    <pattern id="cloud" width="260" height="160" patternUnits="userSpaceOnUse">
+      <path d="M30 100c18-35 62-37 82-8 12-31 61-36 82-6 27-7 48 7 57 31H30c-12-4-12-13 0-17Z" fill="none" stroke="#7d879f" stroke-width="5" opacity=".11"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#cloud)"/>
+  <rect x="14" y="14" width="1172" height="1172" fill="none" stroke="#26364e" stroke-width="9" opacity=".36"/>
+  <rect x="28" y="28" width="1144" height="1144" fill="none" stroke="#b18a3c" stroke-width="4" opacity=".42"/>
+  <circle cx="1110" cy="94" r="38" fill="#d3b76b" opacity=".32"/>
+</svg>

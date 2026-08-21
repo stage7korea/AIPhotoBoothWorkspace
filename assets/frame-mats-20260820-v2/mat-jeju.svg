@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <rect width="1200" height="1200" fill="#f4f1de"/>
+  <defs>
+    <pattern id="stone" width="150" height="90" patternUnits="userSpaceOnUse">
+      <path d="M0 45H150M30 0v45M105 45v45" stroke="#66746b" stroke-width="3" opacity=".10"/>
+      <circle cx="18" cy="19" r="6" fill="#e1bf42" opacity=".35"/>
+      <circle cx="26" cy="14" r="3" fill="#f4d867" opacity=".55"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#stone)"/>
+  <rect x="14" y="14" width="1172" height="1172" fill="none" stroke="#97a28e" stroke-width="8" opacity=".38"/>
+  <path d="M20 1128c160-26 310 30 470 0s310 24 690-4" fill="none" stroke="#657268" stroke-width="12" opacity=".18"/>
+</svg>
